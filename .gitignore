@@ -1,0 +1,12 @@
+# Syncthing
+.stfolder/
+.stversions/
+*.sync-conflict-*
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+*.swp
