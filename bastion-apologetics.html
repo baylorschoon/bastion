@@ -1225,22 +1225,32 @@ function buildVerseSheet(topic, trans){
 /* ---- verification ---- */
 function extractQuotes(text){
   const out = [];
-  const re = /["“]([^"”]{25,400})["”]/g;
+  const re = /["“]([^"”]{10,400})["”]/g;
   let m;
   while((m = re.exec(text)) !== null) out.push(m[1]);
   return out;
 }
 
-/* A quote counts as real if any 5 consecutive words of it appear
-   verbatim in either translation. Tolerates ellipsis and light
-   paraphrase; still catches wholesale invention. */
+function inBible(phrase){
+  const p = ' ' + phrase + ' ';
+  return BIBLE_FLAT.DRC.indexOf(p) >= 0 || BIBLE_FLAT.KJVA.indexOf(p) >= 0;
+}
+
+/* Short quotes must appear verbatim in full — a 4-word "quotation"
+   that exists nowhere is exactly the failure mode we're catching
+   ("I am your bread", attributed to Mark 14:22).
+   Longer quotes pass if any 5 consecutive words match, which tolerates
+   ellipsis and light paraphrase while still catching invention.
+   Under 3 words is treated as terminology, not quotation. */
 function quoteIsReal(q){
   const words = normText(q).trim().split(' ').filter(Boolean);
-  if(words.length < 6) return true;
-  const W = 5;
+  if(words.length < 3) return true;
+  if(words.length <= 7) return inBible(words.join(' '));
+  // W=6 tested best: catches fabrications that happen to contain a real
+  // 5-word run, without rejecting legitimate paraphrase or ellipsis.
+  const W = 6;
   for(let i = 0; i + W <= words.length; i++){
-    const win = ' ' + words.slice(i, i+W).join(' ') + ' ';
-    if(BIBLE_FLAT.DRC.indexOf(win) >= 0 || BIBLE_FLAT.KJVA.indexOf(win) >= 0) return true;
+    if(inBible(words.slice(i, i+W).join(' '))) return true;
   }
   return false;
 }
