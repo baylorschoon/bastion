@@ -1103,6 +1103,174 @@ let sparSetup = { oppId:'protestant', topic:'Open — any topic', tier:2 };
 let spar = null;   // {messages:[], busy:bool, controller}
 
 /* =========================================================
+   SCRIPTURE — grounding + citation verification
+
+   Local models invent Bible verses. Two defences:
+     1. GROUND — inject the real text of the relevant passages into the
+        prompt and forbid quoting anything not on that sheet.
+     2. VERIFY — after each reply, check every quoted span against the
+        actual text of both translations. Anything not found is flagged
+        in the transcript rather than silently trusted.
+
+   Bundled: DRC (Douay-Rheims Challoner) and KJVA (KJV with Apocrypha),
+   both public domain. KJVA is used for Protestant/Reformed/atheist
+   opponents since that is what they would actually quote; DRC for the
+   Orthodox opponent. Both are searched during verification.
+   ========================================================= */
+const BIBLES     = { DRC:null, KJVA:null };
+const BIBLE_FLAT = { DRC:'',   KJVA:'' };
+let biblePromise = null;
+
+function normText(s){
+  return ' ' + String(s).toLowerCase()
+    .replace(/[‘’]/g, "'")
+    .replace(/[^a-z0-9' ]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim() + ' ';
+}
+
+function loadBibles(){
+  if(biblePromise) return biblePromise;
+  biblePromise = (async ()=>{
+    for(const t of ['DRC','KJVA']){
+      const r = await fetch('bible/' + t + '.json');
+      if(!r.ok) throw new Error('Could not load ' + t + '.json (HTTP ' + r.status + ')');
+      BIBLES[t] = await r.json();
+      const parts = [];
+      const books = BIBLES[t].b;
+      for(const name in books){
+        for(const ch of books[name]){
+          for(const v of ch){ if(v) parts.push(v); }
+        }
+      }
+      BIBLE_FLAT[t] = normText(parts.join(' '));
+    }
+  })().catch(e=>{ biblePromise = null; throw e; });
+  return biblePromise;
+}
+
+/* Book names in the data use Roman numerals ("I Corinthians").
+   Accept "1 Cor", "1 Corinthians", "First Corinthians", etc. */
+const ROMAN = {'1':'I','2':'II','3':'III'};
+function resolveBook(t, name){
+  const books = BIBLES[t] && BIBLES[t].b;
+  if(!books) return null;
+  if(books[name]) return name;
+  let n = String(name).trim().replace(/\./g,'');
+  n = n.replace(/^([123])\s*/, (m,d)=> ROMAN[d] + ' ');
+  n = n.replace(/^(first|second|third)\s+/i, (m,w)=>
+        ({first:'I ', second:'II ', third:'III '})[w.toLowerCase()]);
+  const keys = Object.keys(books);
+  let hit = keys.find(k=>k.toLowerCase() === n.toLowerCase());
+  if(hit) return hit;
+  const m = n.match(/^(I{1,3})\s+(.*)$/i);
+  const num  = m ? m[1].toUpperCase() : '';
+  const rest = (m ? m[2] : n).toLowerCase();
+  if(rest.length < 3) return null;
+  return keys.find(k=>{
+    const km = k.match(/^(I{1,3})\s+(.*)$/);
+    const knum  = km ? km[1] : '';
+    const krest = (km ? km[2] : k).toLowerCase();
+    return knum === num && krest.indexOf(rest.slice(0,3)) === 0;
+  }) || null;
+}
+
+function getVerses(t, book, ch, from, to){
+  const b = resolveBook(t, book);
+  if(!b) return null;
+  const chapters = BIBLES[t].b[b];
+  if(!chapters || ch < 1 || ch > chapters.length) return null;
+  const arr = chapters[ch-1] || [];
+  const out = [];
+  const last = to || from;
+  for(let v = from; v <= last; v++){
+    if(v >= 1 && v <= arr.length && arr[v-1]) out.push({v:v, text:arr[v-1]});
+  }
+  return out.length ? {book:b, ch:ch, verses:out} : null;
+}
+
+/* Passages injected into the prompt per topic. References only —
+   the wording always comes from the bundled text, never from memory. */
+const TOPIC_REFS = {
+  'Scripture & Tradition':[['II Thessalonians',2,14,15],['I Timothy',3,15,15],['II Timothy',3,15,17],['I Corinthians',11,2,2],['John',21,25,25],['II Peter',1,20,21]],
+  'Faith & Works':[['James',2,14,26],['Ephesians',2,8,10],['Galatians',5,6,6],['Romans',3,27,28],['Philippians',2,12,13],['I Corinthians',9,27,27]],
+  'The Papacy':[['Matthew',16,15,19],['Isaiah',22,20,22],['John',21,15,17],['Luke',22,31,32],['Matthew',18,18,18]],
+  'Mary':[['Luke',1,26,38],['Luke',1,41,49],['John',19,25,27],['Genesis',3,15,15],['Revelation',12,1,6],['I Timothy',2,5,5]],
+  'The Eucharist':[['John',6,48,69],['Matthew',26,26,28],['Mark',14,22,24],['Luke',22,19,20],['I Corinthians',10,16,17],['I Corinthians',11,23,29]],
+  'Purgatory':[['I Corinthians',3,11,15],['II Maccabees',12,43,46],['Matthew',12,32,32],['Revelation',21,27,27],['Hebrews',12,14,14]],
+  'Saints & Communion':[['Revelation',5,8,8],['Revelation',6,9,10],['Revelation',8,3,4],['James',5,16,16],['Hebrews',12,1,1],['Luke',16,19,31],['Acts',19,11,12]]
+};
+
+function sheetTranslation(oppId){
+  return oppId === 'orthodox' ? 'DRC' : 'KJVA';
+}
+
+function buildVerseSheet(topic, trans){
+  const refs = TOPIC_REFS[topic];
+  if(!refs) return '';
+  const lines = [];
+  let count = 0;
+  for(const r of refs){
+    const got = getVerses(trans, r[0], r[1], r[2], r[3]);
+    if(!got) continue;
+    for(const v of got.verses){
+      if(count >= 70) break;
+      count++;
+      lines.push(got.book + ' ' + got.ch + ':' + v.v + ' - ' + v.text);
+    }
+  }
+  return lines.join('\n');
+}
+
+/* ---- verification ---- */
+function extractQuotes(text){
+  const out = [];
+  const re = /["“]([^"”]{25,400})["”]/g;
+  let m;
+  while((m = re.exec(text)) !== null) out.push(m[1]);
+  return out;
+}
+
+/* A quote counts as real if any 5 consecutive words of it appear
+   verbatim in either translation. Tolerates ellipsis and light
+   paraphrase; still catches wholesale invention. */
+function quoteIsReal(q){
+  const words = normText(q).trim().split(' ').filter(Boolean);
+  if(words.length < 6) return true;
+  const W = 5;
+  for(let i = 0; i + W <= words.length; i++){
+    const win = ' ' + words.slice(i, i+W).join(' ') + ' ';
+    if(BIBLE_FLAT.DRC.indexOf(win) >= 0 || BIBLE_FLAT.KJVA.indexOf(win) >= 0) return true;
+  }
+  return false;
+}
+
+const REF_RE = /\b((?:[123]\s*|I{1,3}\s+)?[A-Z][a-zA-Z]+)\s+(\d{1,3}):(\d{1,3})/g;
+
+function extractRefs(text){
+  const out = [];
+  let m;
+  REF_RE.lastIndex = 0;
+  while((m = REF_RE.exec(text)) !== null){
+    out.push({raw:m[0], book:m[1].trim(), ch:+m[2], v:+m[3]});
+    if(out.length > 8) break;
+  }
+  return out;
+}
+
+function verifyReply(text){
+  if(!BIBLES.DRC || !BIBLES.KJVA) return null;
+  const bad = extractQuotes(text).filter(q=>!quoteIsReal(q));
+  if(!bad.length) return null;
+  const refs = extractRefs(text).map(r=>{
+    const got = getVerses('KJVA', r.book, r.ch, r.v, r.v) ||
+                getVerses('DRC',  r.book, r.ch, r.v, r.v);
+    return got ? {ref: got.book + ' ' + got.ch + ':' + got.verses[0].v, text: got.verses[0].text} : null;
+  }).filter(Boolean);
+  return {bad:bad, refs:refs};
+}
+
+/* =========================================================
    SPARRING — DOM refs
    ========================================================= */
 const sparSetupScreen = document.getElementById('spar-setup-screen');
@@ -1166,6 +1334,16 @@ function renderSparSetup(){
 function buildSystemPrompt(){
   const opp  = OPPONENTS.find(o=>o.id===sparSetup.oppId);
   const tier = TIERS.find(t=>t.n===sparSetup.tier);
+  const trans = sheetTranslation(opp.id);
+  const sheet = buildVerseSheet(sparSetup.topic, trans);
+  const sheetBlock = sheet ? `
+
+VERSE SHEET — ${trans === 'DRC' ? 'Douay-Rheims' : 'King James Version'}. These verses are provided to you verbatim:
+
+${sheet}
+
+QUOTATION RULE: You may put quotation marks ONLY around wording copied exactly from the verse sheet above. Any other passage you may argue from, refer to, or summarise in your own words — but WITHOUT quotation marks and WITHOUT pretending to quote it. If a verse you want is not on the sheet, make the point without quoting.` : '';
+
   return `${opp.persona}
 
 SETTING: You are sparring with a Catholic apologetics student inside a training app. The student is practising how to defend Catholic teaching against your position.
@@ -1188,7 +1366,8 @@ ACCURACY — THIS OVERRIDES EVERYTHING ABOVE:
 - Only quote a verse word-for-word if you are certain of the exact wording. Otherwise describe the passage in your own words without quotation marks.
 - If you are not certain a reference says what you need it to say, make the argument WITHOUT a citation. An uncited argument is fine; a fabricated citation is not.
 - Prefer few, well-known, correctly-used references over many impressive-sounding ones.
-- A made-up citation ruins the training exercise. Accuracy matters more than sounding scholarly.`;
+- A made-up citation ruins the training exercise. Accuracy matters more than sounding scholarly.
+- Never invent Greek or Hebrew words. If you are not certain a term appears in the passage, do not name one.${sheetBlock}`;
 }
 
 /* =========================================================
@@ -1278,16 +1457,51 @@ function addMsg(cls, text, who){
   return body;
 }
 
-function startSpar(){
+async function startSpar(){
   const opp = OPPONENTS.find(o=>o.id===sparSetup.oppId);
   const tier = TIERS.find(t=>t.n===sparSetup.tier);
-  spar = { messages:[{role:'system', content:buildSystemPrompt()}], busy:false, controller:null };
   sparLog.innerHTML = '';
   sparTitle.textContent = `${opp.icon} ${opp.name} · ${tier.name}`;
   showScreen(sparScreen);
-  addMsg('sys', `${sparSetup.topic} — ${tier.name} tier. They open. Answer as best you can.\n\n⚠️ Your opponent runs on a local model and can misquote Scripture. Verify any verse before trusting it — catching a bad citation is good practice too.`);
+
+  const loading = addMsg('sys', 'Loading Scripture…');
+  try{
+    await loadBibles();
+    loading.parentNode.remove();
+  }catch(e){
+    loading.textContent = 'Scripture files failed to load — citation checking is OFF for this session. (' + e.message + ')';
+  }
+
+  spar = { messages:[{role:'system', content:buildSystemPrompt()}], busy:false, controller:null };
+  const grounded = !!TOPIC_REFS[sparSetup.topic] && !!BIBLES.KJVA;
+  addMsg('sys', `${sparSetup.topic} — ${tier.name} tier. They open. Answer as best you can.\n\n` +
+    (grounded
+      ? '📖 Your opponent has been given the real text of this topic\'s key passages and may only quote from those. Every quote it makes is checked against the Douay-Rheims and KJV — anything invented gets flagged.'
+      : '⚠️ No verse sheet for this topic, so quotes are unrestricted. They are still checked against the bundled Bible and flagged if invented.'));
+
   // Opponent speaks first.
   runTurn('Open the debate with your strongest specific objection on this topic.', true);
+}
+
+function addCitationFlag(result){
+  const box = document.createElement('div');
+  box.className = 'msg err';
+  let html = '<span class="who">⚠️ Citation check failed</span>' +
+    'Your opponent quoted text that appears nowhere in the Douay-Rheims or the KJV:';
+  result.bad.forEach(q=>{
+    html += '<br><br>“' + q.replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) + '”';
+  });
+  if(result.refs.length){
+    html += '<br><br><strong>What the cited verses actually say:</strong>';
+    result.refs.forEach(r=>{
+      html += '<br><br><strong>' + r.ref + '</strong> — ' +
+              r.text.replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+    });
+  }
+  html += '<br><br><em>Calling this out is a legitimate move. Try it.</em>';
+  box.innerHTML = html;
+  sparLog.appendChild(box);
+  box.scrollIntoView({block:'end'});
 }
 
 async function runTurn(userText, hidden){
@@ -1325,6 +1539,8 @@ async function runTurn(userText, hidden){
 
     if(acc.trim()){
       spar.messages.push({role:'assistant', content:acc});
+      const check = verifyReply(acc);
+      if(check) addCitationFlag(check);
       if(!hidden){
         state.xp += 5;           // reward the exchange
         saveState();
