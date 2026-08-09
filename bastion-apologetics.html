@@ -137,6 +137,52 @@
 
   .fail .big-emoji{}
 
+  /* ---------- path select ---------- */
+  .path-list{padding:20px 20px 50px;display:flex;flex-direction:column;gap:12px;}
+  .path-card{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+    border:2px solid var(--gray-200);border-radius:16px;padding:16px 14px;
+    background:#fff;cursor:pointer;font-family:inherit;
+    box-shadow:0 4px 0 var(--gray-200);
+  }
+  .path-card:active{transform:translateY(3px);box-shadow:0 1px 0 var(--gray-200);}
+  .path-card::after{
+    content:'';position:absolute;left:0;bottom:0;height:4px;
+    width:var(--pct,0%);background:var(--green);transition:width .3s ease;
+  }
+  .path-card.soon{background:var(--gray-100);cursor:not-allowed;box-shadow:none;opacity:.7;}
+  .path-card.soon:active{transform:none;}
+  .path-ic{font-size:30px;flex-shrink:0;}
+  .path-txt{flex:1;}
+  .path-n{display:block;font-weight:800;font-size:16px;color:var(--navy);}
+  .path-b{display:block;font-size:12px;color:var(--gray-600);margin-top:2px;}
+  .path-count{font-weight:800;font-size:13px;color:var(--green-dark);flex-shrink:0;}
+  .path-badge{
+    font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;
+    color:var(--gray-600);background:var(--gray-200);
+    padding:4px 8px;border-radius:8px;flex-shrink:0;
+  }
+
+  /* ---------- teaching cards ---------- */
+  .q-kicker.teach{color:var(--blue);}
+  .q-kicker.verse{color:#8a6d00;}
+  .q-kicker.tf{color:var(--green-dark);}
+  .teach-h{font-size:21px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:12px;}
+  .teach-p{font-size:16px;line-height:1.6;color:var(--gray-900);margin-bottom:18px;}
+  .verse-box{
+    background:#fffdf2;border:2px solid #ffe08a;border-left:5px solid var(--gold);
+    border-radius:10px;padding:14px 16px;margin-bottom:16px;
+  }
+  .verse-ref{
+    font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;
+    color:#8a6d00;margin-bottom:8px;
+  }
+  .verse-line{font-size:15px;line-height:1.55;color:var(--gray-900);margin-bottom:5px;}
+  .verse-line sup{color:var(--gray-400);font-weight:700;font-size:10px;}
+  .teach-nav{display:flex;gap:10px;margin-top:26px;}
+  .teach-nav .btn{flex:1;}
+
   /* ---------- sparring: entry card ---------- */
   .spar-cta{
     display:flex;align-items:center;gap:14px;text-align:left;
@@ -240,17 +286,33 @@
 <body>
 <div id="app">
 
-  <!-- ================= HOME SCREEN ================= -->
-  <div id="home-screen">
+  <!-- ================= PATH SELECT (top level) ================= -->
+  <div id="path-select-screen">
     <div class="topbar">
+      <div class="stat streak"><span class="icon">🔥</span><span id="ps-streak">0</span></div>
+      <div class="stat xp"><span class="icon">⭐</span><span id="ps-xp">0</span> XP</div>
+      <div class="stat hearts"><span class="icon">❤️</span><span id="ps-level">Lvl 1</span></div>
+      <button class="gear" id="open-settings-2" title="AI settings">⚙️</button>
+    </div>
+    <div class="hero">
+      <h1>🏰 BASTION</h1>
+      <p>Choose who you're training to answer.</p>
+    </div>
+    <div class="path-list" id="path-list"></div>
+  </div>
+
+  <!-- ================= HOME SCREEN (units within a path) ============ -->
+  <div id="home-screen" class="hidden">
+    <div class="topbar">
+      <button class="close-btn" id="back-to-paths">‹</button>
       <div class="stat streak"><span class="icon">🔥</span><span id="streak-count">0</span></div>
       <div class="stat xp"><span class="icon">⭐</span><span id="xp-count">0</span> XP</div>
       <div class="stat hearts"><span class="icon">❤️</span><span id="level-count">Lvl 1</span></div>
       <button class="gear" id="open-settings" title="AI settings">⚙️</button>
     </div>
     <div class="hero">
-      <h1>🏰 BASTION</h1>
-      <p>Train to defend the Catholic faith, one objection at a time.</p>
+      <h1 id="path-name">🏰 BASTION</h1>
+      <p id="path-sub">Train to defend the Catholic faith.</p>
     </div>
     <button class="spar-cta" id="open-spar">
       <span class="big">⚔️</span>
@@ -354,421 +416,21 @@
 
 </div>
 
+<script src="content/paths.js"></script>
 <script>
 /* =========================================================
-   CONTENT — 7 units, objection/response + recall drills
+   CONTENT ACCESS
+   All lesson content lives in content/paths.js as window.PATHS.
    ========================================================= */
-const UNITS = [
-  {
-    id:'scripture', title:'Scripture & Tradition', icon:'📖',
-    questions:[
-      {type:'objection', quote:'"The Bible alone is the only authority a Christian needs — sola scriptura."',
-        q:'What is the strongest Catholic response?',
-        options:[
-          'Agree — Scripture alone is sufficient and interprets itself.',
-          '2 Thessalonians 2:15 tells believers to hold to traditions taught "either by word of mouth or by letter" — Scripture itself points to an authoritative oral Tradition alongside it.',
-          'Tradition is just human opinion and should be ignored.',
-          'The Church added books to the Bible, so none of it can be trusted.'],
-        correct:1,
-        explain:'Sola scriptura is nowhere taught in Scripture itself. St. Paul explicitly commends both written and orally-delivered tradition (2 Thess 2:15).'},
-      {type:'objection', quote:'"The Bible is the only infallible rule of faith — the Church can and does err."',
-        q:'How should a Catholic respond?',
-        options:[
-          'By admitting the Church has no real authority.',
-          'The Bible never lists its own table of contents — it was the Church\'s authority that discerned the canon; 1 Timothy 3:15 calls the Church, not Scripture alone, "the pillar and foundation of truth."',
-          'By saying the Old Testament doesn\'t matter.',
-          'By avoiding the question entirely.'],
-        correct:1,
-        explain:'Someone had to authoritatively determine which books belong in the Bible — that was the Church, guided by the Spirit, not a self-evident list within Scripture.'},
-      {type:'recall', quote:null,
-        q:'What does "Sacred Tradition" mean in Catholic teaching?',
-        options:[
-          'Any old custom passed down in a parish.',
-          'The teaching of Christ and the apostles, handed down (not necessarily in writing) and faithfully preserved and interpreted by the Church across the centuries.',
-          'Whatever the pope personally prefers.',
-          'Local folk devotions with no doctrinal content.'],
-        correct:1,
-        explain:'Sacred Tradition is the living transmission of the apostolic deposit of faith — distinct from small "t" traditions like customs or disciplines, which can and do change.'},
-      {type:'objection', quote:'"Catholics don\'t really read the Bible."',
-        q:'What\'s a fair response?',
-        options:[
-          'That\'s basically true, so there\'s nothing to say.',
-          'The Mass itself is saturated with Scripture — readings cycle through most of the Bible over a 3-year Sunday and 2-year weekday lectionary, and Vatican II strongly urged Catholics toward personal Scripture reading.',
-          'Catholics only need the Catechism, not the Bible.',
-          'Bible reading is a Protestant invention Catholics should avoid.'],
-        correct:1,
-        explain:'The claim is a common stereotype, but the liturgy and official Church teaching place heavy emphasis on regular exposure to and study of Scripture.'},
-      {type:'objection', quote:'"Faith alone" and "Scripture alone" are core biblical phrases.',
-        q:'What is true about these exact phrases in the Bible?',
-        options:[
-          'Both phrases appear word-for-word multiple times.',
-          'Neither phrase appears anywhere in Scripture — in fact James 2:24 explicitly states "a person is justified by works and not by faith alone."',
-          'Only "faith alone" appears, not "scripture alone."',
-          'They appear only in the Old Testament.'],
-        correct:1,
-        explain:'James 2:24 is the only verse in the Bible that uses the phrase "faith alone" — and it explicitly denies it as sufficient by itself.'},
-      {type:'recall', quote:null,
-        q:'Where does St. Paul most directly affirm oral Tradition as equal in authority to his written letters?',
-        options:['Romans 8:28','2 Thessalonians 2:15','1 Corinthians 13:4','Philippians 4:6'],
-        correct:1,
-        explain:'"So then, brothers, stand firm and hold to the traditions that you were taught by us, either by word of mouth or by letter." (2 Thess 2:15)'}
-    ]
-  },
-  {
-    id:'faith-works', title:'Faith & Works', icon:'⚖️',
-    questions:[
-      {type:'objection', quote:'"We are saved by faith alone, not works — sola fide."',
-        q:'What does James 2:24 say directly on this?',
-        options:[
-          '"Faith alone saves, apart from any works."',
-          '"You see that a person is justified by works and not by faith alone."',
-          'James never discusses justification.',
-          '"Works alone save, faith is optional."'],
-        correct:1,
-        explain:'James 2:24 is the most direct biblical rebuttal of "faith alone" as a formula, teaching that living faith and works of love are inseparable.'},
-      {type:'objection', quote:'"Ephesians 2:8-9 says we\'re saved by grace through faith, not works, so it must be faith alone."',
-        q:'What\'s the Catholic clarification?',
-        options:[
-          'The Catholic Church actually denies salvation is a gift of grace.',
-          'The Church fully agrees salvation is unearned grace received through faith — the "works" Paul excludes are works attempting to earn salvation on our own apart from grace, not the works of love that flowing faith naturally produces (Gal 5:6).',
-          'Ephesians 2:8-9 doesn\'t exist in the Catholic Bible.',
-          'Paul is only talking about Old Testament animal sacrifices.'],
-        correct:1,
-        explain:'Catholic teaching agrees salvation cannot be earned — but distinguishes "dead works" done to merit salvation apart from grace, from the good works that living, grace-filled faith produces.'},
-      {type:'objection', quote:'"Once saved, always saved — salvation can\'t be lost."',
-        q:'What does Catholic teaching hold, with Scripture support?',
-        options:[
-          'Salvation, once received, can never be forfeited under any circumstance.',
-          'A believer can fall from grace through serious (mortal) sin — St. Paul himself warns "I discipline my body... lest I myself should be disqualified" (1 Cor 9:27), and urges believers to "work out your salvation with fear and trembling" (Phil 2:12).',
-          'Salvation is guaranteed the moment someone is baptized as an infant, regardless of later choices.',
-          'The Bible never mentions the possibility of falling away.'],
-        correct:1,
-        explain:'Multiple NT passages (1 Cor 9:27, Phil 2:12, Hebrews 6:4-6, 10:26-29) warn believers of the real possibility of forfeiting salvation through unrepented serious sin.'},
-      {type:'recall', quote:null,
-        q:'Is faith necessary for salvation according to Catholic teaching?',
-        options:[
-          'No — works alone save.',
-          'Yes — faith is the foundation and beginning of salvation, but it must be a living faith expressed through love and good works, not mere intellectual belief.',
-          'Faith is optional for Catholics.',
-          'Only faith in the saints, not in Christ, is required.'],
-        correct:1,
-        explain:'Catholic teaching (echoing James and Paul together) holds faith as essential — but "faith working through love" (Gal 5:6), not faith as bare assent alone.'},
-      {type:'objection', quote:'"Romans 3:28 says we are justified by faith apart from works of the law, proving faith alone."',
-        q:'What do "works of the law" most directly refer to in context?',
-        options:[
-          'All good deeds and acts of love whatsoever.',
-          'Primarily the Mosaic ceremonial/legal works — circumcision, dietary laws, sabbath regulations — that distinguished Jew from Gentile, not good works or love in general.',
-          'Nothing — Paul is speaking figuratively with no real referent.',
-          'Only works done by priests in the Temple.'],
-        correct:1,
-        explain:'In Romans, "works of the law" is closely tied to the Mosaic Law/covenant boundary markers (circumcision especially), not a rejection of good works altogether.'},
-      {type:'objection', quote:'"Abraham was justified by faith alone (Romans 4)."',
-        q:'How does James 2 nuance this?',
-        options:[
-          'James 2 agrees Abraham had faith alone with no works at all.',
-          'James 2:21-22 says Abraham "was justified by works" when he offered Isaac, showing that his faith and his works operated together — "faith was completed by his works" — not against each other.',
-          'James never mentions Abraham.',
-          'James contradicts Paul with no possible harmony.'],
-        correct:1,
-        explain:'Paul (justification\'s beginning, by grace through faith, apart from earning it) and James (justification\'s living fruit, faith completed in action) are describing two sides of the same process.'}
-    ]
-  },
-  {
-    id:'papacy', title:'The Papacy', icon:'🔑',
-    questions:[
-      {type:'objection', quote:'"There\'s no biblical basis for the papacy — Peter was never a \'first pope.\'"',
-        q:'What key passage grounds papal authority?',
-        options:[
-          'Genesis 1:1',
-          'Matthew 16:18-19 — Jesus renames Simon "Peter" (Rock) and gives him "the keys of the kingdom," language echoing Isaiah 22:22, where keys symbolize a prime-ministerial office over the king\'s house.',
-          'Revelation 22:1',
-          'There is no such passage; the papacy is purely a later invention.'],
-        correct:1,
-        explain:'The keys imagery deliberately recalls Isaiah 22:15-22, an OT royal-steward office with authority to bind and loose — strong evidence Jesus is establishing a similar office for Peter.'},
-      {type:'objection', quote:'"\'Rock\' in Matthew 16:18 refers to Peter\'s faith or confession, not to Peter himself."',
-        q:'What\'s the strongest response?',
-        options:[
-          'This reading is impossible to dispute and settles the matter against Peter.',
-          'The most natural reading of the Greek wordplay — "You are Petros, and on this petra I will build..." — identifies Peter himself as the rock, a reading shared by the overwhelming majority of the early Church Fathers.',
-          'The word "rock" doesn\'t appear anywhere in that verse.',
-          'Peter denied Jesus, so the title couldn\'t apply to him at all.'],
-        correct:1,
-        explain:'While some later fathers offered alternate readings, the dominant patristic and grammatical reading takes Peter himself as the rock Christ names him.'},
-      {type:'objection', quote:'"The papacy is a medieval invention with no early evidence."',
-        q:'What early evidence counters this?',
-        options:[
-          'None exists before the year 1000.',
-          'Clement of Rome, writing around AD 96, already intervenes authoritatively in the Corinthian church\'s affairs from Rome; St. Irenaeus (c. 180) lists an unbroken succession of Roman bishops back to Peter.',
-          'The first pope was elected in the 1500s.',
-          'Early Christians had no bishops of Rome at all.'],
-        correct:1,
-        explain:'Clement\'s letter (1 Clement) and Irenaeus\'s Against Heresies both show Rome exercising and being recognized for a distinct authority within the first two centuries.'},
-      {type:'recall', quote:null,
-        q:'What does "apostolic succession" mean?',
-        options:[
-          'Choosing a favorite apostle to follow.',
-          'The unbroken transmission of teaching authority from the apostles to their successors (bishops) through ordination, generation after generation.',
-          'A modern committee that votes on doctrine.',
-          'The order in which the apostles died.'],
-        correct:1,
-        explain:'Apostolic succession is the historical and sacramental chain of ordination connecting today\'s bishops back to the apostles themselves.'},
-      {type:'objection', quote:'"Papal infallibility means the pope can never sin or be wrong about anything."',
-        q:'What does infallibility actually mean?',
-        options:[
-          'The pope is sinless and incapable of any error.',
-          'A narrow protection: when the pope formally defines a doctrine on faith or morals for the whole Church (ex cathedra), the Holy Spirit prevents that specific definition from being in error — it says nothing about personal holiness or opinions on other matters.',
-          'Everything a pope has ever said in an interview is infallible teaching.',
-          'Infallibility means popes can change any doctrine at will.'],
-        correct:1,
-        explain:'Ex cathedra definitions are rare (used only a handful of times in history) — infallibility is not a blanket claim about the pope\'s personal conduct or every statement.'},
-      {type:'objection', quote:'"All the apostles received binding/loosing authority (Matt 18:18), so Peter wasn\'t unique."',
-        q:'What distinguishes Peter\'s role?',
-        options:[
-          'Nothing distinguishes him; the objection is fully correct.',
-          'True, all the apostles share in binding and loosing — but only Peter individually receives "the keys," a singular steward\'s office (echoing Isaiah 22:22) that marks a unique headship among the Twelve.',
-          'Peter actually received less authority than the others.',
-          'The keys were symbolic only and given to no one in particular.'],
-        correct:1,
-        explain:'Shared apostolic authority and Peter\'s unique, individually-addressed office (the keys) are both present in the text — they aren\'t mutually exclusive.'}
-    ]
-  },
-  {
-    id:'mary', title:'Mary', icon:'🌹',
-    questions:[
-      {type:'objection', quote:'"Catholics worship Mary."',
-        q:'How does Catholic teaching actually distinguish this?',
-        options:[
-          'Catholics openly admit they worship Mary as divine.',
-          'Catholic theology distinguishes latria (worship due to God alone) from hyperdulia (special honor given uniquely to Mary) and dulia (honor given to other saints) — Mary is deeply honored, never worshipped as God.',
-          'There is no distinction; all honor given is identical to worship of God.',
-          'Mary is considered a fourth person of the Trinity.'],
-        correct:1,
-        explain:'This latria/dulia distinction, formalized since the early councils, is central to understanding Catholic devotion to Mary and the saints.'},
-      {type:'objection', quote:'"Calling Mary \'Mother of God\' makes her divine or greater than God."',
-        q:'What is the actual point of that title?',
-        options:[
-          'It means Mary existed before God and created Him.',
-          'The title (Theotokos, "God-bearer") is really a statement about Jesus — since Jesus is truly God, and Mary is truly his mother, she is rightly called Mother of God; it was defined at the Council of Ephesus (431) precisely to protect Christ\'s divinity.',
-          'It means Mary is a goddess.',
-          'Catholics invented the title in the last century.'],
-        correct:1,
-        explain:'The title was defined against Nestorius, who wanted to split Christ into two persons — "Mother of God" safeguards that Jesus, one Person, is fully God from the moment of his conception.'},
-      {type:'objection', quote:'"The Bible mentions Jesus\' brothers, so Mary couldn\'t have remained a virgin."',
-        q:'What\'s the linguistic/historical response?',
-        options:[
-          'The Bible clearly uses a unique word for "half-sibling" that rules out any other meaning.',
-          'The Greek word used, "adelphoi," was commonly applied in Scripture to wider kin — cousins and close relatives — since Hebrew and Aramaic had no separate word for "cousin"; the perpetual virginity of Mary was also the near-universal belief of the early Church, including many early Reformers.',
-          'Jesus definitely had full biological siblings and the Church has always taught this.',
-          'This issue was never discussed until modern times.'],
-        correct:1,
-        explain:'Even Martin Luther, Calvin, and Zwingli affirmed Mary\'s perpetual virginity — the "brothers" language reflects normal ancient Semitic usage for extended family.'},
-      {type:'objection', quote:'"The Immaculate Conception isn\'t in the Bible."',
-        q:'What text is often cited in its support?',
-        options:[
-          'Genesis 3:15 only, with no other support anywhere.',
-          'Luke 1:28, where the angel Gabriel greets Mary as "full of grace" (Greek: kecharitomene) — a unique perfect-tense form suggesting a completed, permanent state of grace, consistent with being preserved from sin from the moment of conception.',
-          'This doctrine has zero textual grounding of any kind.',
-          'Matthew 1:1, the genealogy of Jesus.'],
-        correct:1,
-        explain:'While not a proof-text in isolation, kecharitomene combined with the "New Eve" theology of the early Fathers forms the biblical/theological basis later formally defined in 1854.'},
-      {type:'recall', quote:null,
-        q:'What does the "Immaculate Conception" actually refer to?',
-        options:[
-          'The virgin birth of Jesus.',
-          'Mary herself being conceived without the stain of original sin — a common point of confusion, since it is NOT about Jesus\' conception or birth.',
-          'Mary\'s conception of Jesus without pain.',
-          'A yearly feast about Christmas.'],
-        correct:1,
-        explain:'A very common mix-up: the Immaculate Conception is about Mary\'s own conception (by her parents), not the virgin birth of Christ.'},
-      {type:'objection', quote:'"Praying to Mary replaces Jesus as the one mediator between God and man (1 Tim 2:5)."',
-        q:'How do Catholics reconcile this?',
-        options:[
-          'By admitting Mary functions as a second, competing mediator to Christ.',
-          'Asking Mary (or any saint) to pray for you is asking for intercession — the same as asking a living friend to pray for you — which relies on Christ\'s unique mediation rather than replacing it; Revelation depicts the saints in heaven actively presenting the prayers of believers to God (Rev 5:8).',
-          'By denying 1 Timothy 2:5 is part of the Bible.',
-          'By teaching that Mary is a co-equal mediator with Christ.'],
-        correct:1,
-        explain:'"Intercessory" prayer to Mary and the saints is asking them to pray *with and for* us to Christ — a participation in, not a replacement of, his unique mediation.'}
-    ]
-  },
-  {
-    id:'eucharist', title:'The Eucharist', icon:'🍞',
-    questions:[
-      {type:'objection', quote:'"The Eucharist is just a symbol — Jesus was speaking figuratively at the Last Supper."',
-        q:'What does John 6 suggest about how literally to take Jesus?',
-        options:[
-          'Jesus immediately clarified he was speaking only symbolically.',
-          'In John 6:53-58 Jesus repeats the "eat my flesh, drink my blood" language with escalating intensity — so much that many disciples left him over it (v.66) — and he lets them walk away rather than soften or explain it as merely symbolic.',
-          'John 6 never mentions eating flesh or drinking blood.',
-          'The crowd fully understood and accepted it as a metaphor with no confusion.'],
-        correct:1,
-        explain:'If Jesus meant it symbolically, the natural moment to clarify was when disciples were leaving over the literal reading — yet he doubles down instead (John 6:53-58).'},
-      {type:'objection', quote:'"Belief in the Real Presence amounts to cannibalism."',
-        q:'How does transubstantiation address this?',
-        options:[
-          'Catholics agree it is a form of cannibalism but accept it anyway.',
-          'The Church teaches the substance changes into Christ\'s Body and Blood while the appearances (taste, texture, look) remain bread and wine — this is a sacramental, non-biological change, nothing like ordinary eating of flesh.',
-          'There is no real change of any kind, so the objection is meaningless.',
-          'Catholics only believe this happens once a year.'],
-        correct:1,
-        explain:'Transubstantiation is a change at the level of substance, received sacramentally under the appearance of bread and wine — categorically different from consuming ordinary flesh.'},
-      {type:'recall', quote:null,
-        q:'What does "transubstantiation" mean?',
-        options:[
-          'A purely symbolic ceremony with no real change.',
-          'The change of the whole substance of bread and wine into the substance of Christ\'s Body and Blood at the consecration, while the outward appearances remain unchanged.',
-          'The transformation of the priest into Christ.',
-          'A blessing said only over water.'],
-        correct:1,
-        explain:'This is the technical Catholic term (formalized using Aristotelian philosophical language) for what happens to the bread and wine at Mass.'},
-      {type:'objection', quote:'"Paul still calls it \'bread\' after the blessing (1 Cor 11:26-28), proving it stays ordinary bread."',
-        q:'What tension does this create for a purely symbolic reading?',
-        options:[
-          'None — Paul clearly means it is only ordinary bread throughout.',
-          'Paul also warns that whoever eats "in an unworthy manner will be guilty concerning the body and blood of the Lord" (11:27) — an oddly serious warning if it were merely ordinary bread and wine.',
-          '1 Corinthians never discusses the Lord\'s Supper.',
-          'Paul says eating it unworthily has no consequences at all.'],
-        correct:1,
-        explain:'Retaining the word "bread" doesn\'t settle the question — Catholic theology also still calls it "bread" descriptively even while affirming a real substantial change (much as we might call a photo "you").'},
-      {type:'objection', quote:'"Belief in the Real Presence developed later — the early Church didn\'t hold it."',
-        q:'What early evidence counters this?',
-        options:[
-          'No Church writing before the year 1000 discusses the Eucharist at all.',
-          'St. Ignatius of Antioch, writing around AD 110 (a disciple of the apostle John), condemned those who denied the Eucharist is "the flesh of our Savior Jesus Christ" as heretics — showing the belief was present from the earliest post-apostolic generation.',
-          'The Real Presence was formally invented at Vatican II.',
-          'Early Christians uniformly rejected any idea of Christ\'s presence in the bread and wine.'],
-        correct:1,
-        explain:'Ignatius\'s letters (c. AD 107-110) are some of the earliest Christian writings outside the NT and already assume belief in a real, not merely symbolic, presence.'},
-      {type:'objection', quote:'"Calling the Mass a \'sacrifice\' contradicts Hebrews 9:26-28, which says Christ died once for all."',
-        q:'How is the Mass understood as a sacrifice without contradicting Hebrews?',
-        options:[
-          'The Mass literally re-crucifies Christ over and over.',
-          'The Mass doesn\'t repeat Calvary; it re-presents (makes sacramentally present) Christ\'s one, unrepeatable sacrifice in an unbloody manner, uniting the Church at every Mass to that single historical event rather than adding a new one.',
-          'Catholics agree the Mass is unrelated to Christ\'s death in any way.',
-          'Hebrews actually supports repeated crucifixions.'],
-        correct:1,
-        explain:'Catholic teaching is careful: Calvary happened once, historically and definitively — the Mass makes that one sacrifice sacramentally present, it does not multiply it.'}
-    ]
-  },
-  {
-    id:'purgatory', title:'Purgatory', icon:'🔥',
-    questions:[
-      {type:'objection', quote:'"Purgatory isn\'t in the Bible at all."',
-        q:'What passages are typically cited in support?',
-        options:[
-          'No biblical text is ever cited by Catholics on this topic.',
-          '2 Maccabees 12:46 speaks of prayer for the dead "that they might be freed from sin," and 1 Corinthians 3:15 describes someone "saved, but only as through fire" — both suggesting a purification process after death.',
-          'Genesis 1 describes purgatory directly.',
-          'The book of Revelation names purgatory explicitly by name.'],
-        correct:1,
-        explain:'Neither passage uses the word "purgatory," but both point toward some form of post-death purification, which the Church later articulated more fully as doctrine.'},
-      {type:'objection', quote:'"2 Maccabees isn\'t Scripture for Protestants, so that source doesn\'t count."',
-        q:'What New Testament-only argument still supports the idea?',
-        options:[
-          'There is no NT-only argument available.',
-          '1 Corinthians 3:12-15 (being "saved... as through fire") and Matthew 12:32 (sins "not forgiven... in this age or the age to come," implying some sins ARE addressed in the age to come) both independently point to purification after death, using only texts Protestants also accept.',
-          'The New Testament explicitly forbids the idea of purgatory.',
-          'Only the Book of Enoch supports this idea.'],
-        correct:1,
-        explain:'Even setting 2 Maccabees aside, 1 Cor 3:12-15 and Matt 12:32 give independent NT grounds for some kind of after-death purification.'},
-      {type:'recall', quote:null,
-        q:'What is purgatory according to Catholic teaching?',
-        options:[
-          'A second chance at salvation for those who died in serious sin.',
-          'A final purification for those who die in God\'s friendship but are not yet perfectly cleansed — preparing them for the full joy of heaven. It is not a second hell, nor an alternative path for the damned.',
-          'An eternal place of punishment identical to hell.',
-          'A myth with no relation to salvation at all.'],
-        correct:1,
-        explain:'Purgatory concerns only those already assured of heaven — it\'s about final purification, not a chance to change one\'s eternal destiny.'},
-      {type:'objection', quote:'"Purgatory implies Christ\'s sacrifice wasn\'t enough to fully save us."',
-        q:'How does Catholic teaching answer this?',
-        options:[
-          'By agreeing Christ\'s sacrifice needs to be supplemented by human merit.',
-          'Purgatory doesn\'t add anything to Christ\'s atoning work — it is the application and completion, by that same grace, of the purification a soul still needs, similar to how a believer is progressively sanctified during earthly life.',
-          'By denying that Christ\'s sacrifice matters for salvation.',
-          'By teaching Christ\'s sacrifice only applies to some believers.'],
-        correct:1,
-        explain:'Purgatory is understood as the completion of sanctification (already begun by grace in this life), not a separate means of earning salvation apart from Christ.'},
-      {type:'objection', quote:'"Revelation 21:27 says nothing unclean enters heaven — so there\'s no room for \'later\' purification."',
-        q:'How is this verse actually used by Catholic apologists?',
-        options:[
-          'It is generally avoided since it contradicts purgatory.',
-          'It\'s used as supporting evidence: since nothing unclean can enter heaven, yet few Christians die perfectly sanctified, some final cleansing after death is needed before entering God\'s presence — exactly what purgatory describes.',
-          'It proves everyone goes straight to hell.',
-          'It has nothing to do with the afterlife.'],
-        correct:1,
-        explain:'Rev 21:27 is often flipped into a supporting argument: the verse\'s high bar for entering heaven is precisely why some final purification seems necessary for most believers.'},
-      {type:'objection', quote:'"Praying for the dead is pointless and unbiblical."',
-        q:'What historical/textual evidence counters this?',
-        options:[
-          'No ancient Christian ever prayed for the dead.',
-          '2 Maccabees 12:46 explicitly commends prayer for the dead, and early Christian catacomb inscriptions and liturgies from the 2nd-3rd centuries show the practice was widespread from very early on.',
-          'Prayer for the dead was invented in the 1900s.',
-          'The Bible explicitly forbids all prayer for deceased persons.'],
-        correct:1,
-        explain:'Archaeological and textual evidence (catacomb inscriptions, early liturgical texts) shows prayer for the deceased was a normal, early, and widespread Christian practice.'}
-    ]
-  },
-  {
-    id:'saints', title:'Saints & Communion', icon:'✨',
-    questions:[
-      {type:'objection', quote:'"Praying to saints is necromancy — talking to the dead is forbidden (Deut 18:11)."',
-        q:'What\'s the key distinction?',
-        options:[
-          'There is no distinction; both practices are identical.',
-          'Necromancy involves conjuring spirits to extract hidden knowledge or power; asking a saint in heaven to intercede is fundamentally different — it\'s a request for prayer, and Scripture depicts saints in heaven aware of and presenting the prayers of the faithful (Revelation 5:8, 6:9-10).',
-          'Deuteronomy 18:11 actually endorses necromancy.',
-          'Catholics agree they are practicing necromancy but see nothing wrong with it.'],
-        correct:1,
-        explain:'Necromancy seeks secret knowledge/power from the dead through forbidden occult means; intercessory prayer simply asks a soul in Christ\'s presence to pray for you, as Revelation depicts happening.'},
-      {type:'objection', quote:'"Saints in heaven can\'t possibly hear millions of prayers at once — only God is omniscient."',
-        q:'How do Catholics explain this without claiming saints are divine?',
-        options:[
-          'By claiming saints possess independent, God-like omniscience.',
-          'The saints don\'t have independent omniscience — in the beatific vision, they see all things in and through God, who is present to every time and place; their awareness is a participation in God\'s knowledge, not a separate divine power of their own.',
-          'Saints actually can\'t hear any prayers at all.',
-          'Only Mary, not other saints, can hear prayers.'],
-        correct:1,
-        explain:'This distinction — participated knowledge "in God" rather than independent omniscience — keeps the practice from implying the saints are themselves divine.'},
-      {type:'objection', quote:'"Statues and relics are just idolatry."',
-        q:'How does Catholic teaching distinguish this from idol worship?',
-        options:[
-          'It doesn\'t — Catholics admit they worship statues.',
-          'The same latria/dulia distinction used with Mary applies here: a statue or relic is a physical reminder that aids devotion, not an object of worship itself; the honor given passes through the image to the person it represents — similar to kissing a photo of a deceased loved one.',
-          'Statues are worshipped as gods in Catholic teaching.',
-          'Relics are magical objects with power independent of God.'],
-        correct:1,
-        explain:'Catholic teaching consistently distinguishes the honor (dulia) given through an image from the worship (latria) reserved for God alone.'},
-      {type:'recall', quote:null,
-        q:'What is the "communion of saints"?',
-        options:[
-          'A club only for canonized saints.',
-          'The spiritual union of all the faithful — those on earth (Church Militant), those being purified (Church Suffering), and those in heaven (Church Triumphant) — bound together in Christ\'s one Body, interceding for one another.',
-          'A yearly Church holiday.',
-          'A term for the college of cardinals.'],
-        correct:1,
-        explain:'This doctrine (in the Apostles\' Creed) describes the ongoing spiritual bond and mutual intercession among believers across the boundary of death.'},
-      {type:'objection', quote:'"The Bible never shows anyone asking a deceased saint to pray for them."',
-        q:'What passage is often cited against this claim?',
-        options:[
-          'No passage is ever cited; the objection stands unanswered.',
-          'In Luke 16:19-31, even the rich man in Hades asks Abraham to act on behalf of his brothers, showing such requests across the divide were conceivable to a first-century audience; 2 Maccabees 15:14 depicts the deceased prophet Jeremiah interceding for the living.',
-          'The Bible explicitly condemns anyone who asks a saint to pray for them.',
-          'Only angels, never deceased humans, are ever shown interceding.'],
-        correct:1,
-        explain:'While not a perfect parallel, Luke 16 shows the concept of the dead being aware of and able to act toward the living was culturally intelligible in a biblical context.'},
-      {type:'objection', quote:'"Miracles tied to relics — like Paul\'s handkerchiefs healing people (Acts 19:11-12) — prove nothing about Catholic practice."',
-        q:'How is this passage actually used by Catholic apologists?',
-        options:[
-          'It is usually ignored since it undermines the point.',
-          'It\'s used as direct biblical precedent: God worked healing through physical objects (handkerchiefs, aprons) associated with a holy apostle — supporting the Catholic practice of venerating relics as channels of grace rather than magic objects with power of their own.',
-          'It proves relics have no biblical basis whatsoever.',
-          'It shows the early Church rejected physical objects entirely.'],
-        correct:1,
-        explain:'Acts 19:11-12 is a clear NT example of God using physical objects connected to a holy person as instruments of grace — the same logic underlying relic veneration.'}
-    ]
-  }
-];
+const PATHS = window.PATHS || [];
+let currentPathId = null;
+
+function currentPath(){ return PATHS.find(p=>p.id===currentPathId) || null; }
+function currentUnits(){ const p = currentPath(); return p ? (p.units||[]) : []; }
+
+/* Sparring topics key into TOPIC_REFS by unit title, and those
+   titles come from the Protestant path. */
+const TOPIC_UNITS = (PATHS.find(p=>p.id==='protestant') || {units:[]}).units;
 
 /* =========================================================
    STATE
@@ -781,8 +443,21 @@ function defaultState(){
     xp:0,
     streak:0,
     lastPlayed:null,
-    unitProgress:{} // id -> {complete:bool, stars:number}
+    lastPath:null,
+    // "pathId/unitId" -> {complete:bool, stars:number}
+    // Namespaced by path so the same unit id in two paths tracks separately.
+    unitProgress:{}
   };
+}
+
+function progKey(pathId, unitId){ return pathId + '/' + unitId; }
+function unitProg(pathId, unitId){ return state.unitProgress[progKey(pathId, unitId)]; }
+
+function pathStats(p){
+  const units = p.units || [];
+  let done = 0;
+  units.forEach(u=>{ if((unitProg(p.id,u.id)||{}).complete) done++; });
+  return {done:done, total:units.length};
 }
 function loadState(){
   try{
@@ -825,8 +500,9 @@ let session = null; // {unitIndex, questions[], idx, lives, correctCount, answer
 
 function isUnitUnlocked(i){
   if(i===0) return true;
-  const prev = UNITS[i-1];
-  return !!(state.unitProgress[prev.id] && state.unitProgress[prev.id].complete);
+  const units = currentUnits();
+  const prev = units[i-1];
+  return !!(prev && (unitProg(currentPathId, prev.id)||{}).complete);
 }
 
 function renderHome(){
@@ -834,9 +510,17 @@ function renderHome(){
   xpCountEl.textContent = state.xp;
   levelCountEl.textContent = 'Lvl ' + (Math.floor(state.xp/100)+1);
 
+  const p = currentPath();
+  if(p){
+    document.getElementById('path-name').textContent = p.icon + ' ' + p.name;
+    const st = pathStats(p);
+    document.getElementById('path-sub').textContent =
+      st.total ? (st.done + ' of ' + st.total + ' units complete') : 'No units yet';
+  }
+
   pathEl.innerHTML = '';
-  UNITS.forEach((unit,i)=>{
-    const progress = state.unitProgress[unit.id];
+  currentUnits().forEach((unit,i)=>{
+    const progress = unitProg(currentPathId, unit.id);
     const unlocked = isUnitUnlocked(i);
     const complete = progress && progress.complete;
 
@@ -865,19 +549,107 @@ function renderHome(){
   });
 }
 
-function startLesson(unitIndex){
-  const unit = UNITS[unitIndex];
+async function startLesson(unitIndex){
+  const unit = currentUnits()[unitIndex];
+  if(!unit) return;
   session = {
-    unitIndex,
-    questions: unit.questions.slice(),
+    unitIndex: unitIndex,
+    unit: unit,
+    phase: (unit.teach && unit.teach.length) ? 'teach' : 'quiz',
+    teachIdx: 0,
+    questions: (unit.questions||[]).slice(),
     idx:0,
     lives:3,
     correctCount:0,
     answered:false
   };
-  homeScreen.classList.add('hidden');
-  resultsScreen.classList.add('hidden');
-  lessonScreen.classList.remove('hidden');
+  showScreen(lessonScreen);
+
+  if(session.phase === 'teach'){
+    renderTeach();
+    // Verse text on teaching cards comes from the bundled Bible.
+    loadBibles().then(()=>{ if(session && session.phase==='teach') renderTeach(); }).catch(()=>{});
+  }else{
+    renderQuestion();
+  }
+}
+
+/* ---------- teaching phase ---------- */
+function renderTeach(){
+  const cards = session.unit.teach || [];
+  const card = cards[session.teachIdx];
+  if(!card){ beginQuiz(); return; }
+
+  progressFill.style.width = Math.round((session.teachIdx/cards.length)*100) + '%';
+  heartsMini.innerHTML = '<span style="font-size:12px;font-weight:800;color:var(--blue);">LEARN</span>';
+
+  questionWrap.innerHTML = '';
+
+  const kicker = document.createElement('div');
+  kicker.className = 'q-kicker teach';
+  kicker.textContent = session.unit.title + ' · ' + (session.teachIdx+1) + ' of ' + cards.length;
+  questionWrap.appendChild(kicker);
+
+  const h = document.createElement('div');
+  h.className = 'teach-h';
+  h.textContent = card.h;
+  questionWrap.appendChild(h);
+
+  const p = document.createElement('div');
+  p.className = 'teach-p';
+  p.textContent = card.p;
+  questionWrap.appendChild(p);
+
+  (card.refs||[]).forEach(r=>{
+    const box = document.createElement('div');
+    box.className = 'verse-box';
+    const got = BIBLES.DRC ? (getVerses('DRC', r[0], r[1], r[2], r[3]) ||
+                              getVerses('KJVA', r[0], r[1], r[2], r[3])) : null;
+    if(got){
+      const label = document.createElement('div');
+      label.className = 'verse-ref';
+      const span = got.verses.length > 1
+        ? got.ch + ':' + got.verses[0].v + '-' + got.verses[got.verses.length-1].v
+        : got.ch + ':' + got.verses[0].v;
+      label.textContent = got.book + ' ' + span;
+      box.appendChild(label);
+      got.verses.forEach(v=>{
+        const line = document.createElement('div');
+        line.className = 'verse-line';
+        line.innerHTML = '<sup>' + v.v + '</sup> ';
+        line.appendChild(document.createTextNode(v.text));
+        box.appendChild(line);
+      });
+    }else{
+      box.textContent = 'Loading ' + r[0] + ' ' + r[1] + '…';
+    }
+    questionWrap.appendChild(box);
+  });
+
+  const nav = document.createElement('div');
+  nav.className = 'teach-nav';
+  if(session.teachIdx > 0){
+    const back = document.createElement('button');
+    back.className = 'btn btn-secondary';
+    back.textContent = 'Back';
+    back.addEventListener('click', ()=>{ session.teachIdx--; renderTeach(); });
+    nav.appendChild(back);
+  }
+  const next = document.createElement('button');
+  next.className = 'btn btn-primary';
+  next.textContent = (session.teachIdx === cards.length-1) ? 'Start Drills' : 'Continue';
+  next.addEventListener('click', ()=>{
+    if(session.teachIdx === cards.length-1){ beginQuiz(); }
+    else { session.teachIdx++; renderTeach(); window.scrollTo(0,0); }
+  });
+  nav.appendChild(next);
+  questionWrap.appendChild(nav);
+}
+
+function beginQuiz(){
+  session.phase = 'quiz';
+  session.idx = 0;
+  window.scrollTo(0,0);
   renderQuestion();
 }
 
@@ -899,9 +671,16 @@ function renderQuestion(){
   const q = session.questions[session.idx];
   questionWrap.innerHTML = '';
 
+  const KICKER = {
+    objection:['objection','Objection Raised'],
+    recall:   ['recall','Know Your Faith'],
+    verse:    ['verse','Find the Passage'],
+    tf:       ['tf','True or False']
+  };
+  const k = KICKER[q.type] || KICKER.recall;
   const kicker = document.createElement('div');
-  kicker.className = 'q-kicker ' + (q.type==='objection'?'objection':'recall');
-  kicker.textContent = q.type==='objection' ? 'Objection Raised' : 'Know Your Faith';
+  kicker.className = 'q-kicker ' + k[0];
+  kicker.textContent = k[1];
   questionWrap.appendChild(kicker);
 
   if(q.quote){
@@ -916,9 +695,12 @@ function renderQuestion(){
   qText.textContent = q.q;
   questionWrap.appendChild(qText);
 
+  // true/false questions carry no options array — synthesise one
+  const opts = (q.type === 'tf') ? ['True','False'] : q.options;
+
   const optionsWrap = document.createElement('div');
   optionsWrap.className='options';
-  q.options.forEach((optText, oi)=>{
+  opts.forEach((optText, oi)=>{
     const btn = document.createElement('button');
     btn.className='option';
     btn.textContent = optText;
@@ -928,6 +710,10 @@ function renderQuestion(){
   questionWrap.appendChild(optionsWrap);
 }
 
+function correctIndexOf(q){
+  return (q.type === 'tf') ? (q.correct === true ? 0 : 1) : q.correct;
+}
+
 function selectAnswer(oi){
   if(session.answered) return;
   session.answered = true;
@@ -935,9 +721,10 @@ function selectAnswer(oi){
   const buttons = questionWrap.querySelectorAll('.option');
   buttons.forEach(b=>b.disabled=true);
 
-  const correct = oi === q.correct;
+  const right = correctIndexOf(q);
+  const correct = oi === right;
   buttons[oi].classList.add(correct ? 'correct':'wrong');
-  if(!correct) buttons[q.correct].classList.add('correct');
+  if(!correct && buttons[right]) buttons[right].classList.add('correct');
 
   if(correct){
     session.correctCount++;
@@ -977,15 +764,15 @@ function advance(){
 }
 
 function endLesson(passed){
-  lessonScreen.classList.add('hidden');
-  resultsScreen.classList.remove('hidden');
-  const unit = UNITS[session.unitIndex];
+  showScreen(resultsScreen);
+  const unit = session.unit;
 
   if(passed){
     bumpStreak();
     const stars = session.lives===3 ? 3 : (session.lives===2 ? 2 : 1);
-    const prev = state.unitProgress[unit.id];
-    state.unitProgress[unit.id] = {
+    const key = progKey(currentPathId, unit.id);
+    const prev = state.unitProgress[key];
+    state.unitProgress[key] = {
       complete:true,
       stars: prev ? Math.max(prev.stars, stars) : stars
     };
@@ -1019,15 +806,13 @@ function endLesson(passed){
   }
 
   document.getElementById('results-continue').addEventListener('click', ()=>{
-    resultsScreen.classList.add('hidden');
-    homeScreen.classList.remove('hidden');
+    showScreen(homeScreen);
     renderHome();
   });
 }
 
 closeLessonBtn.addEventListener('click', ()=>{
-  lessonScreen.classList.add('hidden');
-  homeScreen.classList.remove('hidden');
+  showScreen(homeScreen);
   renderHome();
 });
 
@@ -1296,10 +1081,56 @@ const sparSendBtn     = document.getElementById('spar-send');
 const sparTitle       = document.getElementById('spar-title');
 const connResult      = document.getElementById('conn-result');
 
+const pathSelectScreen = document.getElementById('path-select-screen');
+const pathListEl = document.getElementById('path-list');
+
 function showScreen(el){
-  [homeScreen,lessonScreen,resultsScreen,sparSetupScreen,sparScreen,settingsScreen]
+  [pathSelectScreen,homeScreen,lessonScreen,resultsScreen,sparSetupScreen,sparScreen,settingsScreen]
     .forEach(s=>s.classList.add('hidden'));
   el.classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+/* =========================================================
+   PATH SELECT
+   ========================================================= */
+function renderPathSelect(){
+  document.getElementById('ps-streak').textContent = state.streak;
+  document.getElementById('ps-xp').textContent = state.xp;
+  document.getElementById('ps-level').textContent = 'Lvl ' + (Math.floor(state.xp/100)+1);
+
+  pathListEl.innerHTML = '';
+  PATHS.forEach(p=>{
+    const st = pathStats(p);
+    const card = document.createElement('button');
+    card.className = 'path-card' + (p.ready ? '' : ' soon');
+    card.disabled = !p.ready;
+
+    let right = '';
+    if(!p.ready){
+      right = '<span class="path-badge">Soon</span>';
+    }else if(st.total){
+      const pct = Math.round((st.done/st.total)*100);
+      right = '<span class="path-count">' + st.done + '/' + st.total + '</span>';
+      card.style.setProperty('--pct', pct + '%');
+    }
+
+    card.innerHTML =
+      '<span class="path-ic">' + p.icon + '</span>' +
+      '<span class="path-txt"><span class="path-n">' + p.name + '</span>' +
+      '<span class="path-b">' + p.blurb + '</span></span>' + right;
+
+    if(p.ready) card.addEventListener('click', ()=>openPath(p.id));
+    pathListEl.appendChild(card);
+  });
+}
+
+function openPath(id){
+  currentPathId = id;
+  state.lastPath = id;
+  saveState();
+  showScreen(homeScreen);
+  renderHome();
 }
 
 /* =========================================================
@@ -1316,7 +1147,7 @@ function renderSparSetup(){
   });
 
   if(!sparTopicSel.options.length){
-    const topics = ['Open — any topic'].concat(UNITS.map(u=>u.title));
+    const topics = ['Open — any topic'].concat(TOPIC_UNITS.map(u=>u.title));
     topics.forEach(t=>{
       const opt = document.createElement('option');
       opt.value = t; opt.textContent = t;
@@ -1657,17 +1488,25 @@ document.getElementById('close-spar').addEventListener('click', ()=>{
   if(spar && spar.controller) spar.controller.abort();
   showScreen(homeScreen); renderHome();
 });
-document.getElementById('open-settings').addEventListener('click', ()=>{
-  renderSettings(); showScreen(settingsScreen);
+['open-settings','open-settings-2'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('click', ()=>{ renderSettings(); showScreen(settingsScreen); });
 });
 document.getElementById('close-settings').addEventListener('click', ()=>{
-  showScreen(homeScreen); renderHome();
+  if(currentPathId){ showScreen(homeScreen); renderHome(); }
+  else { showScreen(pathSelectScreen); renderPathSelect(); }
+});
+document.getElementById('back-to-paths').addEventListener('click', ()=>{
+  currentPathId = null;
+  showScreen(pathSelectScreen);
+  renderPathSelect();
 });
 
 /* =========================================================
    INIT
    ========================================================= */
-renderHome();
+renderPathSelect();
+showScreen(pathSelectScreen);
 </script>
 </body>
 </html>
