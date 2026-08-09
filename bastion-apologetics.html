@@ -603,15 +603,20 @@ function renderTeach(){
   (card.refs||[]).forEach(r=>{
     const box = document.createElement('div');
     box.className = 'verse-box';
-    const got = BIBLES.DRC ? (getVerses('DRC', r[0], r[1], r[2], r[3]) ||
-                              getVerses('KJVA', r[0], r[1], r[2], r[3])) : null;
+    /* KJV first: references here are written in standard versification,
+       and the Douay-Rheims numbers John 6 and 2 Thess 2 differently -
+       reading DRC first silently returned the WRONG verse. DRC is the
+       fallback because it alone carries the deuterocanon (2 Maccabees). */
+    let got = null, used = '';
+    if(BIBLES.KJVA){ got = getVerses('KJVA', r[0], r[1], r[2], r[3]); used = 'KJV'; }
+    if(!got && BIBLES.DRC){ got = getVerses('DRC', r[0], r[1], r[2], r[3]); used = 'Douay-Rheims'; }
     if(got){
       const label = document.createElement('div');
       label.className = 'verse-ref';
       const span = got.verses.length > 1
         ? got.ch + ':' + got.verses[0].v + '-' + got.verses[got.verses.length-1].v
         : got.ch + ':' + got.verses[0].v;
-      label.textContent = got.book + ' ' + span;
+      label.textContent = got.book + ' ' + span + '  ·  ' + used;
       box.appendChild(label);
       got.verses.forEach(v=>{
         const line = document.createElement('div');
