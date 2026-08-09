@@ -164,6 +164,87 @@
     padding:4px 8px;border-radius:8px;flex-shrink:0;
   }
 
+  /* ---------- section cards (all open) ---------- */
+  .path{padding:18px 20px 60px;display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+  .sec-card{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+    border:2px solid var(--gray-200);border-radius:16px;padding:15px 14px;
+    background:#fff;cursor:pointer;font-family:inherit;
+    box-shadow:0 4px 0 var(--gray-200);
+  }
+  .sec-card:active{transform:translateY(3px);box-shadow:0 1px 0 var(--gray-200);}
+  .sec-card::after{
+    content:'';position:absolute;left:0;bottom:0;height:4px;
+    width:var(--pct,0%);background:var(--green);transition:width .3s ease;
+  }
+  .sec-card.done{border-color:var(--gold);box-shadow:0 4px 0 #cf9f00;}
+  .sec-ic{font-size:28px;flex-shrink:0;}
+  .sec-txt{flex:1;}
+  .sec-n{display:block;font-weight:800;font-size:16px;color:var(--navy);}
+  .sec-b{display:block;font-size:12px;color:var(--gray-600);margin-top:2px;}
+  .sec-pct{font-weight:800;font-size:13px;color:var(--gray-600);flex-shrink:0;}
+
+  /* ---------- section trail ---------- */
+  .sec-bar{
+    display:flex;align-items:center;gap:12px;padding:12px 16px;
+    border-bottom:2px solid var(--gray-200);position:sticky;top:0;background:#fff;z-index:10;
+  }
+  .sec-bar-mid{flex:1;}
+  .sec-bar-title{font-weight:800;font-size:15px;color:var(--navy);margin-bottom:5px;}
+  .sec-bar-track{height:10px;background:var(--gray-200);border-radius:6px;overflow:hidden;}
+  .sec-bar-fill{height:100%;background:var(--green);border-radius:6px;transition:width .3s ease;}
+  .sec-bar-count{font-weight:800;font-size:13px;color:var(--gray-600);}
+
+  .sec-trail{padding:10px 0 70px;display:flex;flex-direction:column;align-items:center;}
+
+  .tier-band{
+    width:100%;text-align:center;margin:22px 0 14px;position:relative;
+  }
+  .tier-band::before{
+    content:'';position:absolute;left:22px;right:22px;top:50%;height:2px;background:var(--gray-200);
+  }
+  .tier-band span{
+    position:relative;background:#fff;padding:0 14px;
+    font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--gray-400);
+  }
+  .tier-band.tier-1 span{color:#58cc02;}
+  .tier-band.tier-2 span{color:#1cb0f6;}
+  .tier-band.tier-3 span{color:#ce82ff;}
+  .tier-band.tier-4 span{color:#ff9600;}
+  .tier-band.tier-5 span{color:#ff4b4b;}
+
+  .node-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:14px;position:relative;}
+  /* 4-step wave so the trail snakes like Duolingo's */
+  .node-wrap.pos-0{transform:translateX(0);}
+  .node-wrap.pos-1{transform:translateX(64px);}
+  .node-wrap.pos-2{transform:translateX(0);}
+  .node-wrap.pos-3{transform:translateX(-64px);}
+
+  .node{
+    width:66px;height:66px;border-radius:50%;border:none;cursor:pointer;
+    font-size:22px;font-weight:800;color:#fff;
+    background:var(--gray-200);color:var(--gray-600);
+    box-shadow:0 6px 0 var(--gray-400);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .08s ease;
+  }
+  .node:active{transform:translateY(4px);box-shadow:0 2px 0 var(--gray-400);}
+  .node.done{background:var(--gold);color:#fff;box-shadow:0 6px 0 #cf9f00;}
+  .node.next{background:var(--green);color:#fff;box-shadow:0 6px 0 var(--green-dark);}
+  .node-cap{
+    font-size:11px;font-weight:700;color:var(--gray-600);
+    max-width:130px;text-align:center;margin-top:6px;line-height:1.3;
+  }
+  .node-flag{
+    background:#fff;border:2px solid var(--green);color:var(--green-dark);
+    font-size:10px;font-weight:800;letter-spacing:.8px;
+    padding:4px 10px;border-radius:8px;margin-bottom:6px;
+  }
+  .trail-end{font-size:34px;margin-top:18px;color:var(--gray-400);
+    font-weight:800;display:flex;flex-direction:column;align-items:center;gap:6px;}
+
   /* ---------- teaching cards ---------- */
   .q-kicker.teach{color:var(--blue);}
   .q-kicker.verse{color:#8a6d00;}
@@ -324,6 +405,19 @@
     <div class="path" id="path"></div>
   </div>
 
+  <!-- ================= SECTION TRAIL ================= -->
+  <div id="section-screen" class="hidden">
+    <div class="sec-bar">
+      <button class="close-btn" id="back-to-sections">‹</button>
+      <div class="sec-bar-mid">
+        <div class="sec-bar-title" id="sec-title">Section</div>
+        <div class="sec-bar-track"><div class="sec-bar-fill" id="sec-progress-fill"></div></div>
+      </div>
+      <div class="sec-bar-count" id="sec-progress-txt">0 / 0</div>
+    </div>
+    <div class="sec-trail" id="sec-trail"></div>
+  </div>
+
   <!-- ================= LESSON SCREEN ================= -->
   <div id="lesson-screen" class="hidden">
     <div class="lesson-header">
@@ -416,7 +510,8 @@
 
 </div>
 
-<script src="content/paths.js"></script>
+<!-- bump ?v= whenever content/paths.js changes, or browsers serve a stale copy -->
+<script src="content/paths.js?v=2"></script>
 <script>
 /* =========================================================
    CONTENT ACCESS
@@ -453,11 +548,68 @@ function defaultState(){
 function progKey(pathId, unitId){ return pathId + '/' + unitId; }
 function unitProg(pathId, unitId){ return state.unitProgress[progKey(pathId, unitId)]; }
 
+function lessonKey(pathId, unitId, lessonId){ return pathId + '/' + unitId + '/' + lessonId; }
+function lessonProg(pathId, unitId, lessonId){
+  return state.unitProgress[lessonKey(pathId, unitId, lessonId)];
+}
+
+/* =========================================================
+   LESSON DERIVATION
+
+   A section is a long trail of lessons, easy -> advanced.
+   Units may declare `lessons` explicitly. Units that only carry
+   flat `teach`/`questions` are chunked into a trail automatically
+   so every section has a real path from day one.
+   ========================================================= */
+const TIER_NAMES = ['Novice','Apprentice','Scholar','Advocate','Doctor'];
+
+function deriveLessons(unit){
+  if(unit._lessons) return unit._lessons;
+
+  let lessons;
+  if(unit.lessons && unit.lessons.length){
+    lessons = unit.lessons.map((l,i)=>({
+      id: l.id || ('l'+(i+1)),
+      title: l.title || ('Lesson '+(i+1)),
+      tier: l.tier || 1,
+      teach: l.teach || [],
+      questions: l.questions || []
+    }));
+  }else{
+    // Chunk flat content: 2 teaching cards + 3 questions per lesson.
+    const teach = unit.teach || [];
+    const qs    = unit.questions || [];
+    const count = Math.max(Math.ceil(teach.length/2), Math.ceil(qs.length/3), 1);
+    lessons = [];
+    for(let i=0;i<count;i++){
+      const t = teach.slice(i*2, i*2+2);
+      const q = qs.slice(i*3, i*3+3);
+      if(!t.length && !q.length) continue;
+      lessons.push({
+        id: 'l'+(i+1),
+        title: (t[0] && t[0].h) ? t[0].h : (unit.title + ' ' + (i+1)),
+        tier: Math.min(5, Math.floor(i / Math.max(1, Math.ceil(count/5))) + 1),
+        teach: t,
+        questions: q
+      });
+    }
+  }
+  unit._lessons = lessons;
+  return lessons;
+}
+
+function unitStats(pathId, unit){
+  const ls = deriveLessons(unit);
+  let done = 0;
+  ls.forEach(l=>{ if((lessonProg(pathId, unit.id, l.id)||{}).complete) done++; });
+  return {done:done, total:ls.length};
+}
+
 function pathStats(p){
   const units = p.units || [];
-  let done = 0;
-  units.forEach(u=>{ if((unitProg(p.id,u.id)||{}).complete) done++; });
-  return {done:done, total:units.length};
+  let done = 0, total = 0;
+  units.forEach(u=>{ const s = unitStats(p.id, u); done += s.done; total += s.total; });
+  return {done:done, total:total, units:units.length};
 }
 function loadState(){
   try{
@@ -498,13 +650,7 @@ const closeLessonBtn = document.getElementById('close-lesson');
    ========================================================= */
 let session = null; // {unitIndex, questions[], idx, lives, correctCount, answered}
 
-function isUnitUnlocked(i){
-  if(i===0) return true;
-  const units = currentUnits();
-  const prev = units[i-1];
-  return !!(prev && (unitProg(currentPathId, prev.id)||{}).complete);
-}
-
+/* ---------- section list (all sections open) ---------- */
 function renderHome(){
   streakCountEl.textContent = state.streak;
   xpCountEl.textContent = state.xp;
@@ -515,49 +661,118 @@ function renderHome(){
     document.getElementById('path-name').textContent = p.icon + ' ' + p.name;
     const st = pathStats(p);
     document.getElementById('path-sub').textContent =
-      st.total ? (st.done + ' of ' + st.total + ' units complete') : 'No units yet';
+      st.total ? (st.done + ' of ' + st.total + ' lessons complete') : 'No sections yet';
   }
 
   pathEl.innerHTML = '';
   currentUnits().forEach((unit,i)=>{
-    const progress = unitProg(currentPathId, unit.id);
-    const unlocked = isUnitUnlocked(i);
-    const complete = progress && progress.complete;
+    const st = unitStats(currentPathId, unit);
+    const pct = st.total ? Math.round((st.done/st.total)*100) : 0;
+    const done = st.total && st.done === st.total;
 
-    const wrap = document.createElement('div');
-    wrap.className = 'unit-wrap';
-
-    const node = document.createElement('button');
-    node.className = 'unit-node ' + (complete ? 'complete' : (unlocked ? 'unlocked':'locked'));
-    node.textContent = complete ? '★' : (unlocked ? unit.icon : '🔒');
-    node.disabled = !unlocked;
-    node.addEventListener('click', ()=>{ if(unlocked) startLesson(i); });
-
-    const title = document.createElement('div');
-    title.className='unit-title';
-    title.textContent = unit.title;
-
-    wrap.appendChild(node);
-    wrap.appendChild(title);
-    if(complete){
-      const stars = document.createElement('div');
-      stars.className='unit-stars';
-      stars.textContent = '★'.repeat(progress.stars||3);
-      wrap.appendChild(stars);
-    }
-    pathEl.appendChild(wrap);
+    // Every section is open. No gating.
+    const card = document.createElement('button');
+    card.className = 'sec-card' + (done ? ' done' : '');
+    card.style.setProperty('--pct', pct + '%');
+    card.innerHTML =
+      '<span class="sec-ic">' + (done ? '⭐' : unit.icon) + '</span>' +
+      '<span class="sec-txt">' +
+        '<span class="sec-n">' + unit.title + '</span>' +
+        '<span class="sec-b">' + st.total + ' lessons · ' + TIER_NAMES[0] + ' → ' + TIER_NAMES[4] + '</span>' +
+      '</span>' +
+      '<span class="sec-pct">' + st.done + '/' + st.total + '</span>';
+    card.addEventListener('click', ()=>openSection(i));
+    pathEl.appendChild(card);
   });
 }
 
-async function startLesson(unitIndex){
+/* ---------- section trail (Duolingo-style winding path) ---------- */
+let currentUnitIndex = 0;
+
+function openSection(unitIndex){
+  currentUnitIndex = unitIndex;
+  showScreen(sectionScreen);
+  renderSection();
+}
+
+function renderSection(){
+  const unit = currentUnits()[currentUnitIndex];
+  if(!unit) return;
+  const lessons = deriveLessons(unit);
+  const st = unitStats(currentPathId, unit);
+
+  document.getElementById('sec-title').textContent = unit.icon + ' ' + unit.title;
+  document.getElementById('sec-progress-fill').style.width =
+    (st.total ? Math.round((st.done/st.total)*100) : 0) + '%';
+  document.getElementById('sec-progress-txt').textContent = st.done + ' / ' + st.total;
+
+  const trail = document.getElementById('sec-trail');
+  trail.innerHTML = '';
+
+  // index of the next unfinished lesson - the "current" node
+  let nextIdx = lessons.findIndex(l=>!(lessonProg(currentPathId, unit.id, l.id)||{}).complete);
+  if(nextIdx < 0) nextIdx = lessons.length;
+
+  let lastTier = 0;
+  lessons.forEach((l,i)=>{
+    if(l.tier !== lastTier){
+      lastTier = l.tier;
+      const band = document.createElement('div');
+      band.className = 'tier-band tier-' + l.tier;
+      band.innerHTML = '<span>' + TIER_NAMES[l.tier-1] + '</span>';
+      trail.appendChild(band);
+    }
+
+    const prog = lessonProg(currentPathId, unit.id, l.id) || {};
+    const complete = !!prog.complete;
+    const isNext = (i === nextIdx);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'node-wrap pos-' + (i % 4);   // 4-step wave, like Duolingo
+
+    if(isNext){
+      const flag = document.createElement('div');
+      flag.className = 'node-flag';
+      flag.textContent = st.done ? 'CONTINUE' : 'START';
+      wrap.appendChild(flag);
+    }
+
+    const btn = document.createElement('button');
+    btn.className = 'node' + (complete ? ' done' : (isNext ? ' next' : ''));
+    btn.innerHTML = complete ? '★' : (isNext ? '▶' : (i+1));
+    btn.title = l.title;
+    btn.addEventListener('click', ()=>startLesson(currentUnitIndex, i));
+    wrap.appendChild(btn);
+
+    const cap = document.createElement('div');
+    cap.className = 'node-cap';
+    cap.textContent = l.title;
+    wrap.appendChild(cap);
+
+    trail.appendChild(wrap);
+  });
+
+  const done = document.createElement('div');
+  done.className = 'trail-end';
+  done.textContent = (st.done === st.total && st.total) ? '🏰 Section complete' : '🏰';
+  trail.appendChild(done);
+}
+
+async function startLesson(unitIndex, lessonIndex){
   const unit = currentUnits()[unitIndex];
   if(!unit) return;
+  const lessons = deriveLessons(unit);
+  const lesson = lessons[lessonIndex];
+  if(!lesson) return;
+
   session = {
     unitIndex: unitIndex,
+    lessonIndex: lessonIndex,
     unit: unit,
-    phase: (unit.teach && unit.teach.length) ? 'teach' : 'quiz',
+    lesson: lesson,
+    phase: (lesson.teach && lesson.teach.length) ? 'teach' : 'quiz',
     teachIdx: 0,
-    questions: (unit.questions||[]).slice(),
+    questions: (lesson.questions||[]).slice(),
     idx:0,
     lives:3,
     correctCount:0,
@@ -576,7 +791,7 @@ async function startLesson(unitIndex){
 
 /* ---------- teaching phase ---------- */
 function renderTeach(){
-  const cards = session.unit.teach || [];
+  const cards = session.lesson.teach || [];
   const card = cards[session.teachIdx];
   if(!card){ beginQuiz(); return; }
 
@@ -587,7 +802,7 @@ function renderTeach(){
 
   const kicker = document.createElement('div');
   kicker.className = 'q-kicker teach';
-  kicker.textContent = session.unit.title + ' · ' + (session.teachIdx+1) + ' of ' + cards.length;
+  kicker.textContent = session.lesson.title + ' · ' + (session.teachIdx+1) + ' of ' + cards.length;
   questionWrap.appendChild(kicker);
 
   const h = document.createElement('div');
@@ -771,11 +986,12 @@ function advance(){
 function endLesson(passed){
   showScreen(resultsScreen);
   const unit = session.unit;
+  const lesson = session.lesson;
 
   if(passed){
     bumpStreak();
     const stars = session.lives===3 ? 3 : (session.lives===2 ? 2 : 1);
-    const key = progKey(currentPathId, unit.id);
+    const key = lessonKey(currentPathId, unit.id, lesson.id);
     const prev = state.unitProgress[key];
     state.unitProgress[key] = {
       complete:true,
@@ -783,17 +999,20 @@ function endLesson(passed){
     };
     saveState();
 
+    const st = unitStats(currentPathId, unit);
+    const sectionDone = st.total && st.done === st.total;
     resultsScreen.innerHTML = `
       <div class="results">
-        <div class="big-emoji">🎉</div>
-        <h2>Unit Complete!</h2>
-        <p>${unit.title} — you're ready to defend it.</p>
+        <div class="big-emoji">${sectionDone ? '🏰' : '🎉'}</div>
+        <h2>${sectionDone ? 'Section Complete!' : 'Lesson Complete!'}</h2>
+        <p>${sectionDone ? unit.title + ' — every lesson cleared.' : lesson.title}</p>
         <div class="results-stats">
           <div class="results-stat"><div class="val">${'★'.repeat(stars)}</div><div class="lbl">Stars</div></div>
           <div class="results-stat"><div class="val">+${session.correctCount*10}</div><div class="lbl">XP</div></div>
-          <div class="results-stat"><div class="val">${state.streak}🔥</div><div class="lbl">Streak</div></div>
+          <div class="results-stat"><div class="val">${st.done}/${st.total}</div><div class="lbl">Section</div></div>
         </div>
         <button class="btn btn-primary" id="results-continue">Continue</button>
+        ${sectionDone ? '' : '<button class="btn btn-secondary" id="results-next" style="margin-top:10px;">Next Lesson</button>'}
       </div>
     `;
   } else {
@@ -811,14 +1030,21 @@ function endLesson(passed){
   }
 
   document.getElementById('results-continue').addEventListener('click', ()=>{
-    showScreen(homeScreen);
-    renderHome();
+    showScreen(sectionScreen);
+    renderSection();
+  });
+  const nextBtn = document.getElementById('results-next');
+  if(nextBtn) nextBtn.addEventListener('click', ()=>{
+    const lessons = deriveLessons(unit);
+    let ni = lessons.findIndex(l=>!(lessonProg(currentPathId, unit.id, l.id)||{}).complete);
+    if(ni < 0) ni = Math.min(session.lessonIndex+1, lessons.length-1);
+    startLesson(session.unitIndex, ni);
   });
 }
 
 closeLessonBtn.addEventListener('click', ()=>{
-  showScreen(homeScreen);
-  renderHome();
+  showScreen(sectionScreen);
+  renderSection();
 });
 
 /* =========================================================
@@ -1088,9 +1314,10 @@ const connResult      = document.getElementById('conn-result');
 
 const pathSelectScreen = document.getElementById('path-select-screen');
 const pathListEl = document.getElementById('path-list');
+const sectionScreen = document.getElementById('section-screen');
 
 function showScreen(el){
-  [pathSelectScreen,homeScreen,lessonScreen,resultsScreen,sparSetupScreen,sparScreen,settingsScreen]
+  [pathSelectScreen,homeScreen,sectionScreen,lessonScreen,resultsScreen,sparSetupScreen,sparScreen,settingsScreen]
     .forEach(s=>s.classList.add('hidden'));
   el.classList.remove('hidden');
   window.scrollTo(0,0);
@@ -1505,6 +1732,10 @@ document.getElementById('back-to-paths').addEventListener('click', ()=>{
   currentPathId = null;
   showScreen(pathSelectScreen);
   renderPathSelect();
+});
+document.getElementById('back-to-sections').addEventListener('click', ()=>{
+  showScreen(homeScreen);
+  renderHome();
 });
 
 /* =========================================================

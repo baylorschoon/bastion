@@ -32,121 +32,406 @@ window.PATHS = [
   /* ---------------- UNIT 1 ---------------- */
   {
     id:'scripture', title:'Scripture & Tradition', icon:'📖',
-    teach:[
-      {h:'The question underneath', p:'Nearly every Catholic-Protestant argument eventually lands here. Not "is the Bible true" - both sides say yes - but "is the Bible ALONE the rule of faith, and who decides what it means?" Settle this and most other disputes follow.'},
-      {h:'What sola scriptura claims', p:'Sola scriptura holds that Scripture is the only infallible rule of faith. Tradition and Church authority may be useful, but they are fallible and always answerable to the Bible. It is one of the five solas of the Reformation.'},
-      {h:'The first problem: it is self-refuting', p:'If every doctrine must be proven from Scripture alone, then sola scriptura itself must be proven from Scripture alone. But no verse teaches it. This is the single most important move in this unit - do not let it pass quickly.'},
-      {h:'The verse they will cite', p:'2 Timothy 3:16-17 is the usual proof-text. Read it carefully: Paul says Scripture is inspired and profitable, and equips the man of God. But "profitable" and "equipping" are not "sufficient by itself." Note also that when Paul wrote this, the New Testament did not yet exist as a collection - the "scripture" Timothy knew from childhood was the Old Testament.', refs:[['II Timothy',3,14,17]]},
-      {h:'Scripture points beyond itself', p:'Paul explicitly tells the Thessalonians to hold to what was delivered both by letter AND by word of mouth, treating them as equally binding. This is the clearest single verse against sola scriptura.', refs:[['II Thessalonians',2,15,15]]},
-      {h:'The Church is called the pillar of truth', p:'Paul gives that title not to Scripture but to the Church. This does not diminish Scripture - it locates the authority that safeguards and interprets it.', refs:[['I Timothy',3,15,15]]},
-      {h:'The canon problem', p:'The Bible contains no inspired table of contents. Nothing inside Scripture tells you which books belong in Scripture. Someone had to discern that - and it was the Church, over centuries, settling the canon in councils at the end of the fourth century. If the Church could get that judgement right, it had real authority. If it could not, you cannot trust your own table of contents.'},
-      {h:'Big-T and small-t tradition', p:'Catholics distinguish Sacred Tradition - the apostolic deposit handed on, whether written or oral - from mere customs and disciplines, which can and do change. Protestants often attack the second while Catholics are defending the first. Insist on the distinction early or you will talk past each other.'},
-      {h:'Where Jesus rejects tradition', p:'Mark 7 is the strongest counter-text: Jesus condemns traditions that nullify God\'s commandment. Notice what he condemns - human traditions that override God\'s word, not apostolic teaching handed on. The Catholic position agrees with him.', refs:[['Mark',7,6,9]]},
-      {h:'Three legs, not two', p:'The Catholic claim is that Scripture, Sacred Tradition, and the Magisterium hold together and none stands alone. Scripture is the written form of the apostolic preaching; Tradition is its living transmission; the Magisterium is the office that guards both. Remove any leg and the stool falls.'},
-      {h:'How to argue this', p:'Do not start by defending Tradition. Start by asking them to prove sola scriptura from Scripture. The burden is theirs - it is their formal principle. Only once that is on the table should you present 2 Thessalonians 2:15, 1 Timothy 3:15, and the canon problem.'}
-    ],
-    questions:[
-      {type:'objection', quote:'"The Bible alone is the only authority a Christian needs - sola scriptura."',
-        q:'What is the strongest Catholic response?',
-        options:[
-          'Agree - Scripture alone is sufficient and interprets itself.',
-          '2 Thessalonians 2:15 tells believers to hold to traditions taught "either by word of mouth or by letter" - Scripture itself points to an authoritative oral Tradition alongside it.',
-          'Tradition is just human opinion and should be ignored.',
-          'The Church added books to the Bible, so none of it can be trusted.'],
-        correct:1,
-        explain:'Sola scriptura is nowhere taught in Scripture itself. St. Paul explicitly commends both written and orally-delivered tradition (2 Thess 2:15).'},
-      {type:'tf', q:'Sola scriptura is explicitly taught somewhere in the Bible.', correct:false,
-        explain:'No verse states it. This is the self-refutation problem: a doctrine demanding that all doctrine come from Scripture alone cannot itself be found in Scripture alone.'},
-      {type:'verse', q:'Which passage calls the Church "the pillar and ground of the truth"?',
-        options:['2 Timothy 3:16','1 Timothy 3:15','John 17:17','2 Peter 1:20'],
-        correct:1,
-        explain:'1 Timothy 3:15. Paul gives this title to the Church, not to Scripture - which does not lower Scripture, but identifies who safeguards it.'},
-      {type:'objection', quote:'"2 Timothy 3:16-17 says Scripture makes the man of God complete - that proves sufficiency."',
-        q:'What is the best response?',
-        options:[
-          'Concede the point; the verse does teach sola scriptura.',
-          'The verse says Scripture is inspired and profitable for equipping - not that it is the only rule of faith. And the "scripture" Timothy knew from infancy was the Old Testament, since the New Testament was not yet collected.',
-          'Deny that 2 Timothy is inspired.',
-          'Argue that Paul was mistaken on this point.'],
-        correct:1,
-        explain:'"Profitable" and "equipping" are not "sufficient alone." Pressed consistently, the verse would prove the Old Testament alone is sufficient - which no Protestant holds.'},
-      {type:'recall', q:'What does "Sacred Tradition" mean in Catholic teaching?',
-        options:[
-          'Any old custom passed down in a parish.',
-          'The teaching of Christ and the apostles, handed down (not necessarily in writing) and faithfully preserved and interpreted by the Church across the centuries.',
-          'Whatever the pope personally prefers.',
-          'Local folk devotions with no doctrinal content.'],
-        correct:1,
-        explain:'Sacred Tradition is the living transmission of the apostolic deposit of faith - distinct from small "t" traditions like customs or disciplines, which can and do change.'},
-      {type:'objection', quote:'"Jesus condemned tradition in Mark 7 - he called it nullifying the word of God."',
-        q:'How do you answer?',
-        options:[
-          'He did, so Catholics should abandon Tradition.',
-          'He condemned specific HUMAN traditions that override God\'s commandment - the Corban rule being his example. Catholic teaching condemns exactly the same thing; Sacred Tradition is apostolic, not a human workaround.',
-          'Mark 7 is not part of the true Gospel.',
-          'Jesus was only speaking to Pharisees, so it has no application today.'],
-        correct:1,
-        explain:'Read the passage and the target is clear: traditions that void God\'s command. That is not what Sacred Tradition claims to be.'},
-      {type:'objection', quote:'"The Bible is the only infallible rule of faith - the Church can and does err."',
-        q:'How should a Catholic respond?',
-        options:[
-          'By admitting the Church has no real authority.',
-          'The Bible never lists its own table of contents - it was the Church\'s authority that discerned the canon; 1 Timothy 3:15 calls the Church, not Scripture alone, "the pillar and foundation of truth."',
-          'By saying the Old Testament doesn\'t matter.',
-          'By avoiding the question entirely.'],
-        correct:1,
-        explain:'Someone had to authoritatively determine which books belong in the Bible - that was the Church, guided by the Spirit, not a self-evident list within Scripture.'},
-      {type:'tf', q:'The Bible contains a list stating which books belong in the Bible.', correct:false,
-        explain:'No book of Scripture supplies the canon. It was discerned by the Church, with the list we now use appearing in councils at the end of the fourth century.'},
-      {type:'objection', quote:'"Catholics don\'t really read the Bible."',
-        q:'What\'s a fair response?',
-        options:[
-          'That\'s basically true, so there\'s nothing to say.',
-          'The Mass itself is saturated with Scripture - readings cycle through most of the Bible over a 3-year Sunday and 2-year weekday lectionary, and Vatican II strongly urged Catholics toward personal Scripture reading.',
-          'Catholics only need the Catechism, not the Bible.',
-          'Bible reading is a Protestant invention Catholics should avoid.'],
-        correct:1,
-        explain:'The claim is a common stereotype, but the liturgy and official Church teaching place heavy emphasis on regular exposure to and study of Scripture.'},
-      {type:'objection', quote:'"Faith alone" and "Scripture alone" are core biblical phrases.',
-        q:'What is true about these exact phrases in the Bible?',
-        options:[
-          'Both phrases appear word-for-word multiple times.',
-          'Neither phrase appears anywhere in Scripture - in fact James 2:24 explicitly states "a person is justified by works and not by faith alone."',
-          'Only "faith alone" appears, not "scripture alone."',
-          'They appear only in the Old Testament.'],
-        correct:1,
-        explain:'James 2:24 is the only verse in the Bible that uses the phrase "faith alone" - and it explicitly denies it as sufficient by itself.'},
-      {type:'verse', q:'Which passage tells believers to hold traditions delivered "by word of mouth, or our epistle"?',
-        options:['Romans 8:28','2 Thessalonians 2:15','1 Corinthians 13:4','Philippians 4:6'],
-        correct:1,
-        explain:'2 Thessalonians 2:15 - the clearest single verse placing oral apostolic teaching alongside written.'},
-      {type:'recall', q:'What are the three elements Catholic teaching holds together as the rule of faith?',
-        options:[
-          'Scripture, reason, and personal experience.',
-          'Sacred Scripture, Sacred Tradition, and the Magisterium - none of which stands alone.',
-          'The pope, the cardinals, and the bishops.',
-          'The Bible, the Catechism, and canon law.'],
-        correct:1,
-        explain:'Scripture is the written apostolic preaching, Tradition its living transmission, the Magisterium the office guarding both. Remove one and the structure fails.'},
-      {type:'tf', q:'In a debate over sola scriptura, the burden of proof is on the Protestant.', correct:true,
-        explain:'It is their formal principle. Asking them to establish it from Scripture alone is the strongest opening move - and it is a fair demand on their own terms.'},
-      {type:'objection', quote:'"Church councils just invented the canon centuries later to suit themselves."',
-        q:'What is the measured response?',
-        options:[
-          'Agree that the canon is arbitrary.',
-          'The councils recognised rather than invented - they ratified books already in widespread liturgical use. But the point stands that a judgement was required, and the Church made it. If that judgement was reliable, the Church had genuine authority.',
-          'The canon was fixed by the apostles in writing.',
-          'The canon question is unimportant.'],
-        correct:1,
-        explain:'"Recognised, not invented" is the accurate framing - and it still leaves the Protestant needing to explain why they trust that judgement while denying the authority behind it.'},
-      {type:'recall', q:'Why is the canon argument effective against sola scriptura?',
-        options:[
-          'Because it proves the Bible is unreliable.',
-          'Because accepting the canon means trusting a judgement Scripture itself does not supply - so the Protestant already relies on Church authority while denying it.',
-          'Because it shows the deuterocanon is inspired.',
-          'Because councils are infallible in all matters.'],
-        correct:1,
-        explain:'The argument is not that Scripture is untrustworthy. It is that the Protestant is standing on an authority he refuses to acknowledge.'}
+    lessons:[
+
+    /* ======== TIER 1 - NOVICE ======== */
+    {
+      id:'l1', tier:1, title:'The real question',
+      teach:[
+        {h:'Where every argument ends up', p:'Nearly every Catholic-Protestant disagreement eventually lands here. Not "is the Bible true" - both sides say yes - but "is the Bible ALONE the rule of faith, and who decides what it means?" Settle this and most other disputes follow from it.'},
+        {h:'You are not arguing about the Bible', p:'This matters emotionally as well as logically. Your opponent likely believes you are attacking Scripture. You are not. You are arguing about what ELSE carries authority alongside it. Say that out loud early and the temperature drops.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the actual point of dispute in the Scripture and Tradition debate?',
+          options:['Whether the Bible is true.','Whether Scripture ALONE is the rule of faith, and who has authority to interpret it.','Whether Catholics are allowed to own Bibles.','Whether the Old Testament still applies.'],
+          correct:1,
+          explain:'Both sides affirm Scripture is inspired and true. The dispute is over sufficiency and interpretive authority.'},
+        {type:'tf', q:'Catholics deny that Scripture is inspired and true.', correct:false,
+          explain:'The Church affirms the full inspiration and inerrancy of Scripture. Clearing this up early prevents most of the heat in the conversation.'},
+        {type:'objection', quote:'"You Catholics do not really believe the Bible."',
+          q:'What is the best first move?',
+          options:['Argue that Tradition matters more than Scripture.','State plainly that you affirm Scripture is inspired and true, and that the disagreement is about what else carries authority alongside it.','Change the subject to the papacy.','Concede that Catholics treat the Bible as secondary.'],
+          correct:1,
+          explain:'Naming the real disagreement stops you defending a position you do not hold.'},
+        {type:'recall', q:'Why is it strategically useful to settle this topic before others?',
+          options:['Because it is the easiest to win.','Because the authority question determines how every other dispute gets settled - if only Scripture counts, arguments from councils and Fathers are inadmissible from the start.','Because Protestants find it boring.','Because it avoids talking about Mary.'],
+          correct:1,
+          explain:'Authority is the meta-question. Arguing purgatory with someone who rejects all non-biblical authority means you are playing by rules that decide the game in advance.'}
+      ]
+    },
+    {
+      id:'l2', tier:1, title:'What sola scriptura claims',
+      teach:[
+        {h:'The claim itself', p:'Sola scriptura holds that Scripture is the only INFALLIBLE rule of faith. Most careful Protestants do not say tradition is worthless - they say it is fallible and always answerable to the Bible. Attack the careful version, not the sloppy one.'},
+        {h:'Two versions you will meet', p:'Sola scriptura is the formal Reformation doctrine above. Solo scriptura is the popular distortion - "just me and my Bible", no creeds, no history. Many people defending the second think they are defending the first. Ask which one they hold before you argue.'}
+      ],
+      questions:[
+        {type:'recall', q:'What does sola scriptura actually claim?',
+          options:['That tradition has no value at all.','That Scripture is the only infallible rule of faith, with tradition being fallible and answerable to it.','That only the Gospels are authoritative.','That every Christian must read Greek.'],
+          correct:1,
+          explain:'The careful formulation concerns infallibility, not usefulness. Arguing against a cruder version wastes the exchange.'},
+        {type:'recall', q:'What is the difference between sola scriptura and solo scriptura?',
+          options:['They are identical.','Sola scriptura is the formal doctrine making Scripture the only infallible authority; solo scriptura is the popular "just me and my Bible" version that rejects creeds and history entirely.','Solo scriptura is the Catholic position.','Sola scriptura applies only to the Old Testament.'],
+          correct:1,
+          explain:'Confusing these two is the single most common source of people talking past each other on this topic.'},
+        {type:'tf', q:'Before arguing, it is worth asking which version of sola scriptura your opponent actually holds.', correct:true,
+          explain:'The two versions need completely different responses. Assuming the wrong one means your best arguments land on nothing.'},
+        {type:'objection', quote:'"Creeds and councils are just human traditions with no authority."',
+          q:'Which position is this?',
+          options:['Formal sola scriptura.','Solo scriptura - the popular distortion, which most confessional Protestants also reject.','The Catholic position.','The Orthodox position.'],
+          correct:1,
+          explain:'Point this out: their own tradition, Lutheran or Reformed, affirms the ecumenical creeds. They may be arguing against their own confession.'}
+      ]
+    },
+    {
+      id:'l3', tier:1, title:'The phrase is not in the Bible',
+      teach:[
+        {h:'Ask them to prove it', p:'If every doctrine must be proven from Scripture alone, then sola scriptura itself must be proven from Scripture alone. No verse teaches it. This is the strongest opening move in the entire topic, and the burden is genuinely theirs.'},
+        {h:'The only "alone" verse', p:'The phrase "faith alone" appears exactly once in Scripture - and it is a denial. "Scripture alone" appears nowhere at all. Neither slogan is biblical language.', refs:[['James',2,24,24]]}
+      ],
+      questions:[
+        {type:'tf', q:'Sola scriptura is explicitly taught somewhere in the Bible.', correct:false,
+          explain:'No verse states it. A doctrine demanding that all doctrine come from Scripture alone cannot itself be found in Scripture alone.'},
+        {type:'objection', quote:'"Every doctrine must be proven from Scripture."',
+          q:'What is the sharpest reply?',
+          options:['Agree and try to prove Tradition from Scripture.','Ask them to prove that rule from Scripture. It is their formal principle, so the burden is theirs, and no verse states it.','Argue that Scripture is unreliable.','Point out that Catholics have more books.'],
+          correct:1,
+          explain:'This is not a debating trick. A rule about which authorities count must itself be justified by some authority.'},
+        {type:'verse', q:'Which verse contains the only appearance of the phrase "faith alone" in Scripture?',
+          options:['Romans 3:28','James 2:24','Galatians 2:16','Ephesians 2:8'],
+          correct:1,
+          explain:'James 2:24 - and it uses the phrase to deny it: justified by works, and not by faith only.'},
+        {type:'recall', q:'What do Protestants usually reply when told sola scriptura is not in the Bible?',
+          options:['They concede immediately.','They argue it is implied by passages describing Scripture as sufficient, or that it follows necessarily from Scripture being God-breathed - which shifts the argument onto those texts.','They deny the Bible exists.','They change to a different topic.'],
+          correct:1,
+          explain:'Expect the move to 2 Timothy 3:16. Knowing it is coming means you can take that text on directly rather than being surprised.'}
+      ]
+    },
+
+    /* ======== TIER 2 - APPRENTICE ======== */
+    {
+      id:'l4', tier:2, title:'Their main text: 2 Timothy 3',
+      teach:[
+        {h:'Read it slowly', p:'This is the proof-text you will meet most often. Paul says Scripture is inspired and profitable, and that it equips the man of God for every good work. Notice what it does say and what it does not.', refs:[['II Timothy',3,14,17]]},
+        {h:'Two problems for their reading', p:'First, "profitable" and "equipping" are not "sufficient by itself" - a tool can equip you fully for a job without being the only tool. Second, the Scripture Timothy knew from infancy was the Old Testament; the New Testament did not yet exist as a collection. Pressed consistently, this verse would prove the Old Testament alone suffices, which no Protestant believes.'}
+      ],
+      questions:[
+        {type:'objection', quote:'"2 Timothy 3:16-17 says Scripture makes the man of God complete - that proves sufficiency."',
+          q:'What is the best response?',
+          options:['Concede the point; the verse does teach sola scriptura.','The verse says Scripture is inspired and profitable for equipping - not that it is the only rule of faith. And the "scripture" Timothy knew from infancy was the Old Testament, since the New Testament was not yet collected.','Deny that 2 Timothy is inspired.','Argue that Paul was mistaken on this point.'],
+          correct:1,
+          explain:'Pressed consistently, the verse would prove the Old Testament alone is sufficient - a conclusion no Protestant accepts.'},
+        {type:'recall', q:'Which Scriptures had Timothy known "from a child"?',
+          options:['The four Gospels.','The Old Testament, since the New Testament was not yet gathered as a collection.','The entire Bible as we have it now.','The letters of Paul.'],
+          correct:1,
+          explain:'This is the decisive contextual point, and it is not a Catholic invention - it is simple chronology.'},
+        {type:'tf', q:'Saying Scripture is "profitable" for teaching is the same as saying it is the only rule of faith.', correct:false,
+          explain:'Profitable and sufficient are different claims. The verse asserts the first; sola scriptura needs the second.'},
+        {type:'objection', quote:'"Complete and equipped for every good work leaves nothing missing."',
+          q:'How do you answer?',
+          options:['Agree that nothing else is needed.','Ask what the same logic does to James 1:4, which says patience makes you perfect and entire, wanting nothing - nobody concludes patience is the sole rule of faith.','Say the translation is wrong.','Argue the verse is a later addition.'],
+          correct:1,
+          explain:'Parallel constructions elsewhere show this phrasing does not carry the exclusive weight the argument needs.'}
+      ]
+    },
+    {
+      id:'l5', tier:2, title:'Your main text: 2 Thessalonians 2',
+      teach:[
+        {h:'The clearest verse you have', p:'Paul tells the Thessalonians to hold the traditions they were taught, whether by word of mouth or by his letter - treating both as binding. Written and oral apostolic teaching stand side by side.', refs:[['II Thessalonians',2,15,15]]},
+        {h:'The reply you will get', p:'They will say the oral teaching was later written down, so nothing is lost. Ask how they know that - the claim appears nowhere in Scripture. It is an assumption required to save the theory, not something the text says.'}
+      ],
+      questions:[
+        {type:'objection', quote:'"The Bible alone is the only authority a Christian needs - sola scriptura."',
+          q:'What is the strongest Catholic response?',
+          options:['Agree - Scripture alone is sufficient and interprets itself.','2 Thessalonians 2:15 tells believers to hold to traditions taught "either by word of mouth or by letter" - Scripture itself points to an authoritative oral Tradition alongside it.','Tradition is just human opinion and should be ignored.','The Church added books to the Bible, so none of it can be trusted.'],
+          correct:1,
+          explain:'St. Paul explicitly commends both written and orally-delivered tradition, placing them on the same footing.'},
+        {type:'verse', q:'Which passage tells believers to hold traditions delivered "by word, or our epistle"?',
+          options:['Romans 8:28','2 Thessalonians 2:15','1 Corinthians 13:4','Philippians 4:6'],
+          correct:1,
+          explain:'2 Thessalonians 2:15 - the single clearest verse placing oral apostolic teaching alongside written.'},
+        {type:'objection', quote:'"Whatever Paul taught orally was later written down in the New Testament."',
+          q:'What is the problem with this reply?',
+          options:['Nothing - it is well established.','Scripture never says this anywhere. It is an assumption needed to rescue the theory, not a claim the text makes - which is awkward for a position that demands biblical proof for doctrines.','It contradicts the Council of Trent.','It proves too much about the Gospels.'],
+          correct:1,
+          explain:'Turn their own standard on the claim: where is that written? The answer is nowhere.'},
+        {type:'tf', q:'2 Thessalonians 2:15 treats oral and written apostolic teaching as equally binding.', correct:true,
+          explain:'Paul makes no distinction in authority between the two modes of delivery in that verse.'}
+      ]
+    },
+    {
+      id:'l6', tier:2, title:'The pillar of the truth',
+      teach:[
+        {h:'A title given to the Church', p:'Paul calls the Church - not Scripture - the pillar and ground of the truth. This does not lower Scripture. It identifies who is charged with safeguarding and proclaiming it.', refs:[['I Timothy',3,15,15]]},
+        {h:'Why this matters practically', p:'Every text needs an interpreter. The question is never "Scripture or an interpreter" but "which interpreter". Sola scriptura does not remove the interpreter; it relocates authority to the individual reader.'}
+      ],
+      questions:[
+        {type:'verse', q:'Which passage calls the Church "the pillar and ground of the truth"?',
+          options:['2 Timothy 3:16','1 Timothy 3:15','John 17:17','2 Peter 1:20'],
+          correct:1,
+          explain:'1 Timothy 3:15. Paul gives this title to the Church, not to Scripture.'},
+        {type:'objection', quote:'"The Bible is the only infallible rule of faith - the Church can and does err."',
+          q:'How should a Catholic respond?',
+          options:['By admitting the Church has no real authority.','The Bible never lists its own table of contents - it was the Church that discerned the canon; and 1 Timothy 3:15 calls the Church, not Scripture alone, the pillar and foundation of truth.','By saying the Old Testament does not matter.','By avoiding the question entirely.'],
+          correct:1,
+          explain:'Someone had to authoritatively determine which books belong in the Bible - that was the Church, not a self-evident list within Scripture.'},
+        {type:'recall', q:'Why is "Scripture versus an interpreter" a false choice?',
+          options:['Because Scripture cannot be read.','Because every text requires interpretation - so the real question is which interpreter carries authority, not whether there is one.','Because only priests may read Scripture.','Because translations always differ.'],
+          correct:1,
+          explain:'Sola scriptura does not eliminate the interpreter. It makes the individual reader the final court.'},
+        {type:'tf', q:'Calling the Church the pillar of truth means Scripture is unreliable.', correct:false,
+          explain:'It concerns who safeguards and proclaims the truth, not whether Scripture is trustworthy. The two claims are not in competition.'}
+      ]
+    },
+
+    /* ======== TIER 3 - SCHOLAR ======== */
+    {
+      id:'l7', tier:3, title:'Where did the canon come from',
+      teach:[
+        {h:'No inspired table of contents', p:'Nothing inside Scripture tells you which books belong in Scripture. There is no verse listing the sixty-six or seventy-three. The canon is a judgement made about Scripture, from outside it.'},
+        {h:'Why this is the hardest question', p:'If the Church could reliably discern which books are inspired, it exercised real and reliable authority. If it could not, you have no grounds for trusting your own table of contents. There is no third option, and this is why the canon argument is the strongest in the topic.'}
+      ],
+      questions:[
+        {type:'tf', q:'The Bible contains a list stating which books belong in the Bible.', correct:false,
+          explain:'No book of Scripture supplies the canon. It was discerned by the Church, with the familiar list appearing in councils at the end of the fourth century.'},
+        {type:'recall', q:'Why is the canon argument effective against sola scriptura?',
+          options:['Because it proves the Bible is unreliable.','Because accepting the canon means trusting a judgement Scripture itself does not supply - so the Protestant already relies on Church authority while denying it.','Because it shows the deuterocanon is inspired.','Because councils are infallible in all matters.'],
+          correct:1,
+          explain:'The argument is not that Scripture is untrustworthy. It is that the Protestant stands on an authority he refuses to acknowledge.'},
+        {type:'objection', quote:'"The books of the Bible are self-authenticating - believers simply recognise God\'s voice in them."',
+          q:'What is the difficulty with this?',
+          options:['None; it settles the question.','Sincere believers disagreed for centuries over Hebrews, James, Revelation and 2 Peter. If recognition were self-evident, that dispute should not have happened - and something had to settle it.','It contradicts Romans.','It is a Catholic doctrine.'],
+          correct:1,
+          explain:'The historical record of genuine disagreement is the problem. Self-authentication does not explain how the dispute was resolved.'},
+        {type:'recall', q:'When did the familiar canon lists appear?',
+          options:['In the first century, written by the apostles.','At councils toward the end of the fourth century, ratifying books already in widespread use.','At the Council of Trent in the 1500s.','At Vatican II.'],
+          correct:1,
+          explain:'Late fourth century. Trent later reaffirmed it dogmatically in response to the Reformation, but did not invent it.'}
+      ]
+    },
+    {
+      id:'l8', tier:3, title:'Recognised, not invented',
+      teach:[
+        {h:'Be precise here', p:'The councils did not conjure a canon out of nothing. They ratified books already in widespread liturgical use and settled the disputed cases. "Recognised, not invented" is the accurate phrase - and it is more defensible than a stronger claim.'},
+        {h:'The point still stands', p:'Even on the modest framing, a judgement was required, disputes existed, and the Church settled them. That is an exercise of authority. Conceding the modest version costs you nothing and makes your argument harder to dismiss.'}
+      ],
+      questions:[
+        {type:'objection', quote:'"Church councils just invented the canon centuries later to suit themselves."',
+          q:'What is the measured response?',
+          options:['Agree that the canon is arbitrary.','The councils recognised rather than invented - they ratified books already in widespread liturgical use. But a judgement was still required, and the Church made it.','The canon was fixed by the apostles in writing.','The canon question is unimportant.'],
+          correct:1,
+          explain:'Recognised, not invented, is the accurate framing - and it still leaves the Protestant needing to explain why he trusts that judgement.'},
+        {type:'recall', q:'Which New Testament books were genuinely disputed in the early centuries?',
+          options:['None were ever disputed.','Hebrews, James, 2 Peter, Jude and Revelation were among those debated before being settled.','Only the four Gospels.','The letters of Paul.'],
+          correct:1,
+          explain:'Real, documented disagreement among orthodox Christians - which is precisely why a decision was needed.'},
+        {type:'tf', q:'Conceding that councils "recognised" rather than "invented" the canon weakens the Catholic argument.', correct:false,
+          explain:'It strengthens it. The modest claim is historically defensible and still requires an authority capable of settling disputes.'},
+        {type:'objection', quote:'"Trent invented the Catholic canon in the 1500s."',
+          q:'How do you answer?',
+          options:['Concede the point.','Trent dogmatically reaffirmed a canon already in use since the late fourth century, in response to the Reformation removing books - it did not create it.','Trent was not a real council.','The canon was different before Trent.'],
+          correct:1,
+          explain:'The sequence matters: the list long predates Trent, which defined it formally only when it came under challenge.'}
+      ]
+    },
+    {
+      id:'l9', tier:3, title:'The deuterocanon',
+      teach:[
+        {h:'What the dispute is', p:'Catholic Bibles contain seven books Protestant Bibles omit - Tobit, Judith, Wisdom, Sirach, Baruch, and 1-2 Maccabees, plus additions to Esther and Daniel. These were in the Greek Septuagint used widely by the early Church, and in Christian Bibles for centuries.'},
+        {h:'Do not stake an argument on them', p:'Practically: when arguing purgatory or prayer for the dead, know the New Testament arguments too. If your whole case rests on 2 Maccabees, your opponent escapes on canon grounds without engaging the substance.'}
+      ],
+      questions:[
+        {type:'recall', q:'How many books do Catholic Bibles contain that Protestant Bibles omit?',
+          options:['Three.','Seven, plus additions to Esther and Daniel.','Twelve.','None; the difference is only in ordering.'],
+          correct:1,
+          explain:'Tobit, Judith, Wisdom, Sirach, Baruch, 1 and 2 Maccabees, plus the Greek portions of Esther and Daniel.'},
+        {type:'recall', q:'What is the practical lesson when arguing from 2 Maccabees?',
+          options:['Always lead with it.','Have the New Testament arguments ready too, or your opponent dismisses the whole case on canon grounds without engaging the substance.','Never mention it.','Insist they accept the Catholic canon first.'],
+          correct:1,
+          explain:'Leading with a contested book lets the argument be waved away. Lead with shared ground and bring 2 Maccabees as reinforcement.'},
+        {type:'tf', q:'The deuterocanonical books were included in Christian Bibles for centuries before the Reformation.', correct:true,
+          explain:'They appear in the Septuagint and in Christian usage long before the sixteenth century removed them from Protestant editions.'},
+        {type:'objection', quote:'"The Jews rejected those books, so Christians should too."',
+          q:'What is worth noting in reply?',
+          options:['Nothing; the point is decisive.','The Jewish canon was itself not finally settled in the first century, the early Church largely used the Greek Septuagint which included them, and the New Testament writers quote the Septuagint frequently.','That Jews have no canon.','That the books were written in Latin.'],
+          correct:1,
+          explain:'The appeal to a fixed first-century Jewish canon assumes something that was not yet settled at the time.'}
+      ]
+    },
+    {
+      id:'l10', tier:3, title:'The self-refutation, formally',
+      teach:[
+        {h:'State it as an argument', p:'Premise one: sola scriptura says every doctrine binding on Christians must be established from Scripture alone. Premise two: sola scriptura is a doctrine binding on Christians. Premise three: sola scriptura cannot be established from Scripture alone. Conclusion: by its own standard, sola scriptura fails.'},
+        {h:'The escape routes', p:'They can deny premise two - saying it is not itself a doctrine but a methodological rule. Then ask what authority establishes the rule. Or they can deny premise three and produce a verse - which returns you to 2 Timothy 3, where you are ready.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the formal structure of the self-refutation argument?',
+          options:['That Scripture contradicts itself.','That sola scriptura requires all binding doctrine be proven from Scripture, is itself binding doctrine, and cannot be proven from Scripture - so it fails its own test.','That Protestants cannot read.','That councils outrank Scripture.'],
+          correct:1,
+          explain:'Stating it formally makes the escape routes visible, so you can anticipate whichever one they take.'},
+        {type:'objection', quote:'"Sola scriptura is not a doctrine, it is a methodological principle about authority."',
+          q:'How do you press this?',
+          options:['Accept it and move on.','Ask what authority establishes that principle. If Scripture does not, then some extra-biblical authority does - which is the very thing the principle denies.','Say methodology is irrelevant.','Argue that principles cannot be discussed.'],
+          correct:1,
+          explain:'The move relocates the problem rather than solving it. A rule about authority still needs authorisation.'},
+        {type:'tf', q:'In a debate over sola scriptura, the burden of proof is on the Protestant.', correct:true,
+          explain:'It is their formal principle. Asking them to establish it is a fair demand on their own terms.'},
+        {type:'recall', q:'If an opponent responds by quoting 2 Timothy 3:16, what has happened?',
+          options:['You have lost the argument.','They have denied the third premise, which moves the debate onto a text you have already prepared - a good outcome.','The argument is unresolvable.','You should change topics.'],
+          correct:1,
+          explain:'Anticipating the move is the point. It lands you exactly where your preparation is strongest.'}
+      ]
+    },
+
+    /* ======== TIER 4 - ADVOCATE ======== */
+    {
+      id:'l11', tier:4, title:'Mark 7: Jesus against tradition',
+      teach:[
+        {h:'Their strongest counter-text', p:'Jesus condemns those who make void the word of God by their tradition, using the Corban rule as his example. This is a serious passage and deserves a serious answer.', refs:[['Mark',7,6,13]]},
+        {h:'Read the target carefully', p:'What he condemns is human traditions that OVERRIDE God\'s commandment. Catholic teaching condemns exactly the same thing. Sacred Tradition claims to be apostolic in origin, not a human workaround - so the passage does not touch it unless that claim is separately refuted.'}
+      ],
+      questions:[
+        {type:'objection', quote:'"Jesus condemned tradition in Mark 7 - he called it nullifying the word of God."',
+          q:'How do you answer?',
+          options:['He did, so Catholics should abandon Tradition.','He condemned specific HUMAN traditions that override God\'s commandment - the Corban rule being his example. Catholic teaching condemns the same thing; Sacred Tradition claims apostolic origin, not human invention.','Mark 7 is not part of the true Gospel.','Jesus was only speaking to Pharisees, so it has no application today.'],
+          correct:1,
+          explain:'Read the passage and the target is clear: traditions that void God\'s command. That is not what Sacred Tradition claims to be.'},
+        {type:'recall', q:'What specific practice does Jesus use as his example in Mark 7?',
+          options:['Ritual handwashing only.','The Corban rule, by which property pledged to the Temple could be used to avoid supporting one\'s parents - overriding the commandment to honour father and mother.','Sabbath observance.','Dietary laws.'],
+          correct:1,
+          explain:'Knowing the concrete example lets you show precisely what kind of tradition is condemned: one that cancels a divine command.'},
+        {type:'tf', q:'Mark 7 condemns all tradition of every kind.', correct:false,
+          explain:'It condemns human traditions that nullify God\'s word. Paul commends apostolic tradition in the same New Testament, so a blanket reading makes Scripture contradict itself.'},
+        {type:'objection', quote:'"Any tradition not found in Scripture is a tradition of men."',
+          q:'What is the flaw?',
+          options:['There is no flaw.','It assumes the conclusion - that only Scripture can convey apostolic teaching - which is the very point in dispute, and 2 Thessalonians 2:15 denies it.','It misquotes Mark.','It ignores the Old Testament.'],
+          correct:1,
+          explain:'This is question-begging. The premise smuggles in sola scriptura in order to prove it.'}
+      ]
+    },
+    {
+      id:'l12', tier:4, title:'Big-T and small-t',
+      teach:[
+        {h:'Two different things', p:'Sacred Tradition is the apostolic deposit handed on, whether written or oral. Ecclesiastical traditions are customs and disciplines - clerical celibacy, fast rules, liturgical languages - which can and do change. Protestants frequently attack the second while Catholics defend the first.'},
+        {h:'Insist on the distinction early', p:'If you let them treat abstinence rules and the Trinity as the same category, the conversation becomes unwinnable and unfair. Naming the distinction is not evasion; it is precision.'}
+      ],
+      questions:[
+        {type:'recall', q:'What does "Sacred Tradition" mean in Catholic teaching?',
+          options:['Any old custom passed down in a parish.','The teaching of Christ and the apostles, handed down and faithfully preserved and interpreted by the Church across the centuries.','Whatever the pope personally prefers.','Local folk devotions with no doctrinal content.'],
+          correct:1,
+          explain:'Sacred Tradition is the living transmission of the apostolic deposit - distinct from small-t traditions like customs, which can change.'},
+        {type:'objection', quote:'"The Church changed the rule on eating meat on Fridays, so Tradition clearly changes."',
+          q:'What is the response?',
+          options:['Concede that doctrine changes.','That is a discipline, not Sacred Tradition. Disciplines are Church regulations that can be adjusted; the apostolic deposit is not.','The rule never changed.','Fasting rules are infallible.'],
+          correct:1,
+          explain:'Conflating discipline with doctrine is extremely common. Separating them removes most apparent examples of "changing teaching".'},
+        {type:'tf', q:'Clerical celibacy is a doctrine that can never change.', correct:false,
+          explain:'It is a discipline of the Latin Church, and Eastern Catholic Churches already ordain married men. Knowing this prevents you defending the wrong thing.'},
+        {type:'recall', q:'What are the three elements Catholic teaching holds together as the rule of faith?',
+          options:['Scripture, reason, and personal experience.','Sacred Scripture, Sacred Tradition, and the Magisterium - none of which stands alone.','The pope, the cardinals, and the bishops.','The Bible, the Catechism, and canon law.'],
+          correct:1,
+          explain:'Scripture is the written apostolic preaching, Tradition its living transmission, the Magisterium the office guarding both.'}
+      ]
+    },
+    {
+      id:'l13', tier:4, title:'Is Scripture clear on its own?',
+      teach:[
+        {h:'The perspicuity claim', p:'Sola scriptura relies on Scripture being clear enough in essentials for the ordinary reader. Without that, the doctrine is unworkable in practice - an infallible book nobody can reliably interpret settles nothing.'},
+        {h:'Scripture on its own difficulty', p:'2 Peter says Paul writes things hard to understand, which the unstable twist to their destruction - and the Ethiopian eunuch, asked whether he understood what he was reading, answers that he cannot unless someone guides him.', refs:[['II Peter',3,15,16]]}
+      ],
+      questions:[
+        {type:'recall', q:'What is perspicuity, and why does sola scriptura need it?',
+          options:['The claim that Scripture is inspired.','The claim that Scripture is clear enough in essentials for ordinary readers - without which an infallible text still settles no disputes.','The claim that only scholars may interpret.','The claim that Scripture is complete.'],
+          correct:1,
+          explain:'Infallibility without clarity is useless in practice. This is the pressure point in the whole system.'},
+        {type:'verse', q:'Which passage says some of Paul\'s writings are "hard to be understood"?',
+          options:['2 Peter 3:16','1 Corinthians 2:14','Romans 16:25','Hebrews 5:12'],
+          correct:0,
+          explain:'2 Peter 3:16 - and it adds that the unlearned and unstable wrest them to their own destruction.'},
+        {type:'objection', quote:'"Scripture is clear on everything essential to salvation."',
+          q:'What is the strongest probe?',
+          options:['Agree with them.','Ask who decides which doctrines are essential - that judgement is not supplied by Scripture either, so the same problem reappears one level up.','Say Scripture is unclear everywhere.','Quote the Catechism.'],
+          correct:1,
+          explain:'The essentials list is itself an extra-biblical judgement. The problem does not go away; it moves.'},
+        {type:'tf', q:'The Ethiopian eunuch in Acts said he could not understand the passage without a guide.', correct:true,
+          explain:'Acts 8 - and Philip is sent precisely to interpret it for him. A useful and vivid illustration.'}
+      ]
+    },
+
+    /* ======== TIER 5 - DOCTOR ======== */
+    {
+      id:'l14', tier:5, title:'The fruit of private judgement',
+      teach:[
+        {h:'Use the argument carefully', p:'Protestant division is often cited as disproving sola scriptura. Handle it honestly: the frequently-quoted figure of tens of thousands of denominations is inflated and counts independent congregations. Using a bad statistic hands your opponent an easy win.'},
+        {h:'The sound version', p:'Drop the numbers and make the structural point. Sincere, intelligent, prayerful readers of the same clear text reached contradictory conclusions on baptism, the Eucharist, church government and salvation itself - within a generation of the Reformation. If Scripture alone were sufficient to settle doctrine, that should not happen.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is wrong with citing "33,000 Protestant denominations"?',
+          options:['Nothing; it is well documented.','The figure is inflated and counts independent congregations and national bodies rather than distinct theologies - using it invites an easy rebuttal.','It is too small.','It comes from a Protestant source.'],
+          correct:1,
+          explain:'Weak statistics discredit a sound argument. Make the structural point instead.'},
+        {type:'recall', q:'What is the sound form of the division argument?',
+          options:['That Protestants are insincere.','That sincere, capable readers of the same text reached contradictory conclusions on central doctrines almost immediately - which is hard to reconcile with Scripture alone being sufficient to settle them.','That there are too many denominations to count.','That division proves Scripture is false.'],
+          correct:1,
+          explain:'The argument is about the sufficiency of the method, not the sincerity of the people.'},
+        {type:'tf', q:'Luther and Zwingli agreed on the Eucharist.', correct:false,
+          explain:'They divided sharply over it at Marburg in 1529, within a decade of the Reformation beginning - both appealing to the same Scripture.'},
+        {type:'objection', quote:'"Catholics disagree among themselves too."',
+          q:'What is the fair reply?',
+          options:['Deny that Catholics disagree.','Concede that Catholics argue plenty - but note there is a principled way to settle a dispute definitively, which is what is at issue. The question is whether the system has a resolution mechanism, not whether people argue.','Say those Catholics are not real Catholics.','Change the subject.'],
+          correct:1,
+          explain:'Conceding the obvious and reframing to the real question is far stronger than denying something visibly true.'}
+      ]
+    },
+    {
+      id:'l15', tier:5, title:'Development of doctrine',
+      teach:[
+        {h:'The charge', p:'Sophisticated opponents will not just say "that is not in the Bible" - they will say Catholic doctrine EVOLVED, and that development is a euphemism for invention. This is the strongest version of the objection and deserves the strongest answer.'},
+        {h:'Development versus corruption', p:'Newman argued that living ideas unfold over time while remaining the same idea, and offered tests to distinguish genuine development from corruption: preservation of type, continuity of principles, and the power to assimilate. The test is not whether a doctrine was stated in AD 100, but whether what emerged is the same seed grown, or a different plant.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the difference between development and corruption of doctrine?',
+          options:['There is none.','Development unfolds what was implicitly present while preserving type and principles; corruption reverses or contradicts what came before. Newman proposed tests to distinguish them.','Development means changing doctrine freely.','Corruption is simply any change at all.'],
+          correct:1,
+          explain:'Without this distinction every doctrine either must be fully articulated in AD 100 or is illegitimate - a standard the Trinity itself would fail.'},
+        {type:'objection', quote:'"Development of doctrine is just a licence to invent whatever you like."',
+          q:'What is the sharpest reply?',
+          options:['Concede the point.','Apply the standard evenly: the words Trinity, homoousios and hypostatic union are not in Scripture either, and were hammered out over centuries. If development is illegitimate, the Trinity goes too.','Say Newman was wrong.','Argue that nothing ever develops.'],
+          correct:1,
+          explain:'This is the decisive move at this level. Almost no opponent will abandon Nicaea to win the point.'},
+        {type:'tf', q:'The word "Trinity" appears in the Bible.', correct:false,
+          explain:'It does not, nor does homoousios. Both were formulated later to protect what Scripture teaches - the same pattern Catholics claim for other doctrines.'},
+        {type:'recall', q:'Why is the Trinity the best example to use here?',
+          options:['Because it is easy to explain.','Because it is a doctrine your opponent certainly holds, is not stated in Scripture in its developed form, and took centuries of controversy to define - so it shows the principle they must already accept.','Because Protestants reject it.','Because it appears in 1 John 5:7.'],
+          correct:1,
+          explain:'Arguing from a premise they already accept is far stronger than asking them to grant a new one.'}
+      ]
+    },
+    {
+      id:'l16', tier:5, title:'Putting it together',
+      teach:[
+        {h:'The order of battle', p:'One: refuse the caricature - you affirm Scripture is inspired and true. Two: ask them to establish sola scriptura from Scripture alone, since the burden is theirs. Three: when 2 Timothy 3:16 arrives, answer it. Four: present 2 Thessalonians 2:15 and 1 Timothy 3:15. Five: close with the canon.'},
+        {h:'What winning looks like', p:'Not that they convert on the spot. It is that they see the position requires an authority it cannot account for - that they already trust the Church\'s judgement every time they open to the table of contents. Leave them with a question they cannot answer rather than a victory you announce.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the correct opening move in this debate?',
+          options:['Quoting the Catechism.','Affirming that Scripture is inspired and true, then asking them to establish sola scriptura from Scripture alone.','Arguing for the deuterocanon.','Attacking Luther.'],
+          correct:1,
+          explain:'Refuse the caricature, then place the burden where it belongs. Everything else follows more easily.'},
+        {type:'recall', q:'Why is the canon argument saved for last?',
+          options:['Because it is weakest.','Because it is the strongest and hardest to escape - it lands best once they have already tried and failed to establish sola scriptura from Scripture.','Because it takes longest to explain.','Because it requires the deuterocanon.'],
+          correct:1,
+          explain:'Sequence matters. The canon question bites hardest after the earlier ground has been cleared.'},
+        {type:'tf', q:'The aim of this argument is to get an immediate concession.', correct:false,
+          explain:'The aim is that they see the position depends on an authority it cannot account for. Conversion is not a debating outcome.'},
+        {type:'objection', quote:'"Fine - but I still trust my Bible more than your Church."',
+          q:'What is the best closing?',
+          options:['Declare victory.','Ask gently where the table of contents came from - because trusting that list is already trusting the judgement of the Church, whether or not one calls it that.','Insist they submit to Rome.','Repeat the earlier arguments louder.'],
+          correct:1,
+          explain:'Ending on a question they carry away is more effective than a conclusion you assert.'}
+      ]
+    }
+
     ]
   },
 
