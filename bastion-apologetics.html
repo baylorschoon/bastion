@@ -511,7 +511,7 @@
 </div>
 
 <!-- bump ?v= whenever content/paths.js changes, or browsers serve a stale copy -->
-<script src="content/paths.js?v=2"></script>
+<script src="content/paths.js?v=3"></script>
 <script>
 /* =========================================================
    CONTENT ACCESS
@@ -563,6 +563,23 @@ function lessonProg(pathId, unitId, lessonId){
    ========================================================= */
 const TIER_NAMES = ['Novice','Apprentice','Scholar','Advocate','Doctor'];
 
+/* A lesson may declare `keyVerses` - references only. They are appended
+   as a closing "armoury" card whose text renders from the bundled Bible,
+   so a lesson can carry a lot of Scripture without any of it being
+   hand-typed. */
+function buildTeachCards(lesson){
+  const cards = (lesson.teach || []).slice();
+  if(lesson.keyVerses && lesson.keyVerses.length){
+    cards.push({
+      h:'Your armoury',
+      p:'The passages this lesson turns on, in full. Know where they are and roughly what they say — being able to find them quickly matters more than quoting them perfectly.',
+      refs: lesson.keyVerses,
+      armoury: true
+    });
+  }
+  return cards;
+}
+
 function deriveLessons(unit){
   if(unit._lessons) return unit._lessons;
 
@@ -572,7 +589,7 @@ function deriveLessons(unit){
       id: l.id || ('l'+(i+1)),
       title: l.title || ('Lesson '+(i+1)),
       tier: l.tier || 1,
-      teach: l.teach || [],
+      teach: buildTeachCards(l),
       questions: l.questions || []
     }));
   }else{

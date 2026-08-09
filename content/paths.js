@@ -37,6 +37,7 @@ window.PATHS = [
     /* ======== TIER 1 - NOVICE ======== */
     {
       id:'l1', tier:1, title:'The real question',
+      keyVerses:[['II Timothy',3,16,17],['II Thessalonians',2,15,15],['I Timothy',3,15,15],['John',21,25,25]],
       teach:[
         {h:'Where every argument ends up', p:'Nearly every Catholic-Protestant disagreement eventually lands here. Not "is the Bible true" - both sides say yes - but "is the Bible ALONE the rule of faith, and who decides what it means?" Settle this and most other disputes follow from it.'},
         {h:'You are not arguing about the Bible', p:'This matters emotionally as well as logically. Your opponent likely believes you are attacking Scripture. You are not. You are arguing about what ELSE carries authority alongside it. Say that out loud early and the temperature drops.'}
@@ -61,6 +62,7 @@ window.PATHS = [
     },
     {
       id:'l2', tier:1, title:'What sola scriptura claims',
+      keyVerses:[['II Thessalonians',3,6,6],['I Corinthians',11,2,2],['II Timothy',2,2,2],['I Corinthians',15,1,3]],
       teach:[
         {h:'The claim itself', p:'Sola scriptura holds that Scripture is the only INFALLIBLE rule of faith. Most careful Protestants do not say tradition is worthless - they say it is fallible and always answerable to the Bible. Attack the careful version, not the sloppy one.'},
         {h:'Two versions you will meet', p:'Sola scriptura is the formal Reformation doctrine above. Solo scriptura is the popular distortion - "just me and my Bible", no creeds, no history. Many people defending the second think they are defending the first. Ask which one they hold before you argue.'}
@@ -85,6 +87,7 @@ window.PATHS = [
     },
     {
       id:'l3', tier:1, title:'The phrase is not in the Bible',
+      keyVerses:[['James',2,24,26],['II Thessalonians',2,15,15],['John',21,25,25],['John',20,30,31]],
       teach:[
         {h:'Ask them to prove it', p:'If every doctrine must be proven from Scripture alone, then sola scriptura itself must be proven from Scripture alone. No verse teaches it. This is the strongest opening move in the entire topic, and the burden is genuinely theirs.'},
         {h:'The only "alone" verse', p:'The phrase "faith alone" appears exactly once in Scripture - and it is a denial. "Scripture alone" appears nowhere at all. Neither slogan is biblical language.', refs:[['James',2,24,24]]}
@@ -111,6 +114,7 @@ window.PATHS = [
     /* ======== TIER 2 - APPRENTICE ======== */
     {
       id:'l4', tier:2, title:'Their main text: 2 Timothy 3',
+      keyVerses:[['II Timothy',3,14,17],['James',1,4,4],['II Timothy',2,2,2],['II Timothy',1,13,14]],
       teach:[
         {h:'Read it slowly', p:'This is the proof-text you will meet most often. Paul says Scripture is inspired and profitable, and that it equips the man of God for every good work. Notice what it does say and what it does not.', refs:[['II Timothy',3,14,17]]},
         {h:'Two problems for their reading', p:'First, "profitable" and "equipping" are not "sufficient by itself" - a tool can equip you fully for a job without being the only tool. Second, the Scripture Timothy knew from infancy was the Old Testament; the New Testament did not yet exist as a collection. Pressed consistently, this verse would prove the Old Testament alone suffices, which no Protestant believes.'}
@@ -136,6 +140,7 @@ window.PATHS = [
     },
     {
       id:'l5', tier:2, title:'Your main text: 2 Thessalonians 2',
+      keyVerses:[['II Thessalonians',2,13,15],['II Thessalonians',3,6,6],['I Corinthians',11,2,2],['I Corinthians',15,1,3],['II Timothy',2,2,2],['Philippians',4,9,9]],
       teach:[
         {h:'The clearest verse you have', p:'Paul tells the Thessalonians to hold the traditions they were taught, whether by word of mouth or by his letter - treating both as binding. Written and oral apostolic teaching stand side by side.', refs:[['II Thessalonians',2,15,15]]},
         {h:'The reply you will get', p:'They will say the oral teaching was later written down, so nothing is lost. Ask how they know that - the claim appears nowhere in Scripture. It is an assumption required to save the theory, not something the text says.'}
@@ -161,6 +166,7 @@ window.PATHS = [
     },
     {
       id:'l6', tier:2, title:'The pillar of the truth',
+      keyVerses:[['I Timothy',3,15,15],['Matthew',18,17,18],['Luke',10,16,16],['Acts',15,28,29],['John',16,13,13]],
       teach:[
         {h:'A title given to the Church', p:'Paul calls the Church - not Scripture - the pillar and ground of the truth. This does not lower Scripture. It identifies who is charged with safeguarding and proclaiming it.', refs:[['I Timothy',3,15,15]]},
         {h:'Why this matters practically', p:'Every text needs an interpreter. The question is never "Scripture or an interpreter" but "which interpreter". Sola scriptura does not remove the interpreter; it relocates authority to the individual reader.'}
@@ -187,6 +193,7 @@ window.PATHS = [
     /* ======== TIER 3 - SCHOLAR ======== */
     {
       id:'l7', tier:3, title:'Where did the canon come from',
+      keyVerses:[['II Peter',3,15,16],['John',21,25,25],['Luke',1,1,4],['II Peter',1,20,21]],
       teach:[
         {h:'No inspired table of contents', p:'Nothing inside Scripture tells you which books belong in Scripture. There is no verse listing the sixty-six or seventy-three. The canon is a judgement made about Scripture, from outside it.'},
         {h:'Why this is the hardest question', p:'If the Church could reliably discern which books are inspired, it exercised real and reliable authority. If it could not, you have no grounds for trusting your own table of contents. There is no third option, and this is why the canon argument is the strongest in the topic.'}
@@ -211,6 +218,7 @@ window.PATHS = [
     },
     {
       id:'l8', tier:3, title:'Recognised, not invented',
+      keyVerses:[['II Peter',1,20,21],['Acts',15,28,29],['I Timothy',3,15,15]],
       teach:[
         {h:'Be precise here', p:'The councils did not conjure a canon out of nothing. They ratified books already in widespread liturgical use and settled the disputed cases. "Recognised, not invented" is the accurate phrase - and it is more defensible than a stronger claim.'},
         {h:'The point still stands', p:'Even on the modest framing, a judgement was required, disputes existed, and the Church settled them. That is an exercise of authority. Conceding the modest version costs you nothing and makes your argument harder to dismiss.'}
@@ -236,6 +244,7 @@ window.PATHS = [
     },
     {
       id:'l9', tier:3, title:'The deuterocanon',
+      keyVerses:[['II Maccabees',12,43,46],['II Maccabees',15,12,14],['Hebrews',11,35,35],['Matthew',27,42,43]],
       teach:[
         {h:'What the dispute is', p:'Catholic Bibles contain seven books Protestant Bibles omit - Tobit, Judith, Wisdom, Sirach, Baruch, and 1-2 Maccabees, plus additions to Esther and Daniel. These were in the Greek Septuagint used widely by the early Church, and in Christian Bibles for centuries.'},
         {h:'Do not stake an argument on them', p:'Practically: when arguing purgatory or prayer for the dead, know the New Testament arguments too. If your whole case rests on 2 Maccabees, your opponent escapes on canon grounds without engaging the substance.'}
@@ -260,6 +269,7 @@ window.PATHS = [
     },
     {
       id:'l10', tier:3, title:'The self-refutation, formally',
+      keyVerses:[['II Thessalonians',2,15,15],['I Timothy',3,15,15],['II Timothy',3,16,17],['Acts',15,28,29]],
       teach:[
         {h:'State it as an argument', p:'Premise one: sola scriptura says every doctrine binding on Christians must be established from Scripture alone. Premise two: sola scriptura is a doctrine binding on Christians. Premise three: sola scriptura cannot be established from Scripture alone. Conclusion: by its own standard, sola scriptura fails.'},
         {h:'The escape routes', p:'They can deny premise two - saying it is not itself a doctrine but a methodological rule. Then ask what authority establishes the rule. Or they can deny premise three and produce a verse - which returns you to 2 Timothy 3, where you are ready.'}
@@ -286,6 +296,7 @@ window.PATHS = [
     /* ======== TIER 4 - ADVOCATE ======== */
     {
       id:'l11', tier:4, title:'Mark 7: Jesus against tradition',
+      keyVerses:[['Mark',7,6,13],['Colossians',2,8,8],['II Thessalonians',2,15,15],['I Corinthians',11,2,2],['Matthew',23,2,3]],
       teach:[
         {h:'Their strongest counter-text', p:'Jesus condemns those who make void the word of God by their tradition, using the Corban rule as his example. This is a serious passage and deserves a serious answer.', refs:[['Mark',7,6,13]]},
         {h:'Read the target carefully', p:'What he condemns is human traditions that OVERRIDE God\'s commandment. Catholic teaching condemns exactly the same thing. Sacred Tradition claims to be apostolic in origin, not a human workaround - so the passage does not touch it unless that claim is separately refuted.'}
@@ -311,6 +322,7 @@ window.PATHS = [
     },
     {
       id:'l12', tier:4, title:'Big-T and small-t',
+      keyVerses:[['II Thessalonians',2,15,15],['I Corinthians',11,2,2],['Acts',15,28,29],['I Corinthians',7,12,12]],
       teach:[
         {h:'Two different things', p:'Sacred Tradition is the apostolic deposit handed on, whether written or oral. Ecclesiastical traditions are customs and disciplines - clerical celibacy, fast rules, liturgical languages - which can and do change. Protestants frequently attack the second while Catholics defend the first.'},
         {h:'Insist on the distinction early', p:'If you let them treat abstinence rules and the Trinity as the same category, the conversation becomes unwinnable and unfair. Naming the distinction is not evasion; it is precision.'}
@@ -335,6 +347,7 @@ window.PATHS = [
     },
     {
       id:'l13', tier:4, title:'Is Scripture clear on its own?',
+      keyVerses:[['II Peter',3,15,16],['Acts',8,30,31],['I Corinthians',2,14,14],['Luke',24,25,27],['Nehemiah',8,7,8]],
       teach:[
         {h:'The perspicuity claim', p:'Sola scriptura relies on Scripture being clear enough in essentials for the ordinary reader. Without that, the doctrine is unworkable in practice - an infallible book nobody can reliably interpret settles nothing.'},
         {h:'Scripture on its own difficulty', p:'2 Peter says Paul writes things hard to understand, which the unstable twist to their destruction - and the Ethiopian eunuch, asked whether he understood what he was reading, answers that he cannot unless someone guides him.', refs:[['II Peter',3,15,16]]}
@@ -361,6 +374,7 @@ window.PATHS = [
     /* ======== TIER 5 - DOCTOR ======== */
     {
       id:'l14', tier:5, title:'The fruit of private judgement',
+      keyVerses:[['I Corinthians',1,10,13],['Ephesians',4,3,6],['John',17,20,23],['Romans',16,17,17]],
       teach:[
         {h:'Use the argument carefully', p:'Protestant division is often cited as disproving sola scriptura. Handle it honestly: the frequently-quoted figure of tens of thousands of denominations is inflated and counts independent congregations. Using a bad statistic hands your opponent an easy win.'},
         {h:'The sound version', p:'Drop the numbers and make the structural point. Sincere, intelligent, prayerful readers of the same clear text reached contradictory conclusions on baptism, the Eucharist, church government and salvation itself - within a generation of the Reformation. If Scripture alone were sufficient to settle doctrine, that should not happen.'}
@@ -385,6 +399,7 @@ window.PATHS = [
     },
     {
       id:'l15', tier:5, title:'Development of doctrine',
+      keyVerses:[['John',16,12,13],['John',14,26,26],['Acts',15,28,29],['Matthew',13,31,32]],
       teach:[
         {h:'The charge', p:'Sophisticated opponents will not just say "that is not in the Bible" - they will say Catholic doctrine EVOLVED, and that development is a euphemism for invention. This is the strongest version of the objection and deserves the strongest answer.'},
         {h:'Development versus corruption', p:'Newman argued that living ideas unfold over time while remaining the same idea, and offered tests to distinguish genuine development from corruption: preservation of type, continuity of principles, and the power to assimilate. The test is not whether a doctrine was stated in AD 100, but whether what emerged is the same seed grown, or a different plant.'}
@@ -409,6 +424,7 @@ window.PATHS = [
     },
     {
       id:'l16', tier:5, title:'Putting it together',
+      keyVerses:[['II Thessalonians',2,15,15],['I Timothy',3,15,15],['II Timothy',3,16,17],['Matthew',16,18,19],['John',16,13,13],['Acts',15,28,29],['II Peter',3,15,16]],
       teach:[
         {h:'The order of battle', p:'One: refuse the caricature - you affirm Scripture is inspired and true. Two: ask them to establish sola scriptura from Scripture alone, since the burden is theirs. Three: when 2 Timothy 3:16 arrives, answer it. Four: present 2 Thessalonians 2:15 and 1 Timothy 3:15. Five: close with the canon.'},
         {h:'What winning looks like', p:'Not that they convert on the spot. It is that they see the position requires an authority it cannot account for - that they already trust the Church\'s judgement every time they open to the table of contents. Leave them with a question they cannot answer rather than a victory you announce.'}
