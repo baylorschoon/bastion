@@ -136,6 +136,104 @@
   .results-stat .lbl{font-size:12px;color:var(--gray-600);font-weight:700;text-transform:uppercase;}
 
   .fail .big-emoji{}
+
+  /* ---------- sparring: entry card ---------- */
+  .spar-cta{
+    display:flex;align-items:center;gap:14px;text-align:left;
+    width:calc(100% - 40px);margin:18px 20px 0;padding:16px;
+    border:none;border-radius:16px;cursor:pointer;
+    background:linear-gradient(135deg,#1cb0f6,#0b78ad);color:#fff;
+    box-shadow:0 4px 0 #0a6690;
+  }
+  .spar-cta:active{transform:translateY(3px);box-shadow:0 1px 0 #0a6690;}
+  .spar-cta .big{font-size:30px;}
+  .spar-cta .t{font-weight:800;font-size:16px;}
+  .spar-cta .s{font-size:13px;opacity:.9;}
+
+  /* ---------- sparring: setup ---------- */
+  .setup{padding:22px 20px 40px;}
+  .setup h2{margin:0 0 4px;font-size:20px;color:var(--navy);}
+  .setup .sub{margin:0 0 18px;color:var(--gray-600);font-size:14px;}
+  .setup .group{margin-bottom:22px;}
+  .setup .label{font-size:12px;font-weight:800;color:var(--gray-600);
+    text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+  .opp-grid{display:flex;flex-direction:column;gap:10px;}
+  .opp{
+    display:flex;align-items:center;gap:12px;text-align:left;
+    border:2px solid var(--gray-200);border-radius:14px;padding:12px 14px;
+    background:#fff;cursor:pointer;font-family:inherit;
+  }
+  .opp .ic{font-size:24px;}
+  .opp .n{font-weight:800;font-size:15px;color:var(--gray-900);}
+  .opp .b{font-size:12px;color:var(--gray-600);}
+  .opp.sel{border-color:var(--blue);background:#e6f7ff;}
+  .field{
+    width:100%;padding:12px;border:2px solid var(--gray-200);border-radius:12px;
+    font-family:inherit;font-size:15px;background:#fff;color:var(--gray-900);
+  }
+  .tiers{display:flex;gap:6px;}
+  .tier{
+    flex:1;border:2px solid var(--gray-200);border-radius:10px;background:#fff;
+    padding:8px 2px;font-family:inherit;font-size:11px;font-weight:800;
+    color:var(--gray-600);cursor:pointer;
+  }
+  .tier.sel{border-color:var(--gold);background:#fff6d6;color:#8a6d00;}
+
+  /* ---------- sparring: chat ---------- */
+  .spar-log{padding:16px 14px 150px;display:flex;flex-direction:column;gap:12px;}
+  .msg{
+    max-width:86%;padding:12px 14px;border-radius:16px;
+    font-size:15px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word;
+  }
+  .msg.them{
+    background:var(--gray-100);border:2px solid var(--gray-200);
+    align-self:flex-start;border-bottom-left-radius:4px;color:var(--gray-900);
+  }
+  .msg.me{
+    background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;
+  }
+  .msg.sys{
+    align-self:center;text-align:center;max-width:100%;
+    background:#fff8dc;border:2px solid #ffe08a;color:#7a5c00;font-size:13px;
+  }
+  .msg.err{background:#ffdfe0;border:2px solid #ffb3b5;color:var(--red-dark);
+    align-self:center;text-align:left;max-width:100%;font-size:13px;}
+  .msg .who{
+    display:block;font-size:11px;font-weight:800;text-transform:uppercase;
+    letter-spacing:.5px;opacity:.65;margin-bottom:4px;
+  }
+  .typing{display:inline-block;color:var(--gray-400);font-style:italic;font-size:14px;}
+  .spar-bar{
+    position:fixed;left:0;right:0;bottom:0;max-width:480px;margin:0 auto;
+    background:#fff;border-top:2px solid var(--gray-200);
+    padding:10px 12px 14px;display:flex;gap:8px;align-items:flex-end;
+  }
+  .spar-bar textarea{
+    flex:1;resize:none;border:2px solid var(--gray-200);border-radius:14px;
+    padding:10px 12px;font-family:inherit;font-size:15px;line-height:1.35;
+    max-height:110px;min-height:44px;color:var(--gray-900);
+  }
+  .spar-bar textarea:focus{outline:none;border-color:var(--blue);}
+  .icon-btn{
+    border:none;border-radius:14px;height:44px;padding:0 16px;
+    font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;
+    background:var(--green);color:#fff;box-shadow:0 3px 0 var(--green-dark);
+  }
+  .icon-btn:disabled{background:var(--gray-200);color:var(--gray-400);
+    box-shadow:0 3px 0 var(--gray-400);cursor:not-allowed;}
+  .icon-btn.stop{background:var(--red);box-shadow:0 3px 0 var(--red-dark);}
+
+  /* ---------- settings ---------- */
+  .settings{padding:22px 20px 40px;}
+  .settings h2{margin:0 0 18px;font-size:20px;color:var(--navy);}
+  .settings .group{margin-bottom:18px;}
+  .settings .hint{font-size:12px;color:var(--gray-600);margin-top:6px;line-height:1.45;}
+  .conn{margin-top:14px;padding:12px;border-radius:12px;font-size:13px;line-height:1.5;}
+  .conn.ok{background:#d7ffb8;border:2px solid #b6f28a;color:var(--green-dark);}
+  .conn.no{background:#ffdfe0;border:2px solid #ffb3b5;color:var(--red-dark);}
+  .conn.wait{background:var(--gray-100);border:2px solid var(--gray-200);color:var(--gray-600);}
+  .gear{background:none;border:none;font-size:18px;cursor:pointer;padding:0;line-height:1;}
+
   .hidden{display:none !important;}
 </style>
 </head>
@@ -148,11 +246,19 @@
       <div class="stat streak"><span class="icon">🔥</span><span id="streak-count">0</span></div>
       <div class="stat xp"><span class="icon">⭐</span><span id="xp-count">0</span> XP</div>
       <div class="stat hearts"><span class="icon">❤️</span><span id="level-count">Lvl 1</span></div>
+      <button class="gear" id="open-settings" title="AI settings">⚙️</button>
     </div>
     <div class="hero">
       <h1>🏰 BASTION</h1>
       <p>Train to defend the Catholic faith, one objection at a time.</p>
     </div>
+    <button class="spar-cta" id="open-spar">
+      <span class="big">⚔️</span>
+      <span>
+        <span class="t">Live Sparring</span><br>
+        <span class="s">Debate a live opponent. Defend your position in real time.</span>
+      </span>
+    </button>
     <div class="path" id="path"></div>
   </div>
 
@@ -168,6 +274,83 @@
 
   <!-- ================= RESULTS SCREEN ================= -->
   <div id="results-screen" class="hidden"></div>
+
+  <!-- ================= SPARRING SETUP ================= -->
+  <div id="spar-setup-screen" class="hidden">
+    <div class="lesson-header">
+      <button class="close-btn" id="close-spar-setup">✕</button>
+      <div style="flex:1;font-weight:800;color:var(--navy);">Live Sparring</div>
+    </div>
+    <div class="setup">
+      <h2>Choose your opponent</h2>
+      <p class="sub">They'll argue their position in good faith. Your job is to answer them.</p>
+
+      <div class="group">
+        <div class="label">Opponent</div>
+        <div class="opp-grid" id="opp-grid"></div>
+      </div>
+
+      <div class="group">
+        <div class="label">Topic</div>
+        <select class="field" id="spar-topic"></select>
+      </div>
+
+      <div class="group">
+        <div class="label">Difficulty</div>
+        <div class="tiers" id="tier-row"></div>
+        <div class="hint" id="tier-hint" style="font-size:12px;color:var(--gray-600);margin-top:8px;"></div>
+      </div>
+
+      <button class="btn btn-primary" id="start-spar">Begin Sparring</button>
+    </div>
+  </div>
+
+  <!-- ================= SPARRING CHAT ================= -->
+  <div id="spar-screen" class="hidden">
+    <div class="lesson-header">
+      <button class="close-btn" id="close-spar">✕</button>
+      <div style="flex:1;font-weight:800;color:var(--navy);font-size:14px;" id="spar-title">Sparring</div>
+    </div>
+    <div class="spar-log" id="spar-log"></div>
+    <div class="spar-bar">
+      <textarea id="spar-input" rows="1" placeholder="Type your response…"></textarea>
+      <button class="icon-btn" id="spar-send">Send</button>
+    </div>
+  </div>
+
+  <!-- ================= SETTINGS ================= -->
+  <div id="settings-screen" class="hidden">
+    <div class="lesson-header">
+      <button class="close-btn" id="close-settings">✕</button>
+      <div style="flex:1;font-weight:800;color:var(--navy);">AI Settings</div>
+    </div>
+    <div class="settings">
+      <h2>Sparring engine</h2>
+      <div class="group">
+        <div class="label">Endpoint</div>
+        <input class="field" id="cfg-endpoint" placeholder="https://your-pc.ts.net">
+        <div class="hint">Must be <strong>https</strong> — this page is served over https, and browsers block calls to plain http.</div>
+      </div>
+      <div class="group">
+        <div class="label">Model</div>
+        <input class="field" id="cfg-model" placeholder="gpt-oss:20b">
+      </div>
+
+      <h2 style="margin-top:26px;">Grading engine</h2>
+      <div class="group">
+        <div class="label">Endpoint <span style="font-weight:600;text-transform:none;">(blank = same as sparring)</span></div>
+        <input class="field" id="cfg-grade-endpoint" placeholder="https://pc2.ts.net">
+      </div>
+      <div class="group">
+        <div class="label">Model <span style="font-weight:600;text-transform:none;">(blank = same as sparring)</span></div>
+        <input class="field" id="cfg-grade-model" placeholder="qwen3.6:27b">
+      </div>
+
+      <button class="btn btn-secondary" id="test-conn" style="margin-bottom:10px;">Test Connection</button>
+      <div id="conn-result"></div>
+      <button class="btn btn-primary" id="save-settings" style="margin-top:14px;">Save</button>
+    </div>
+  </div>
 
 </div>
 
@@ -846,6 +1029,413 @@ closeLessonBtn.addEventListener('click', ()=>{
   lessonScreen.classList.add('hidden');
   homeScreen.classList.remove('hidden');
   renderHome();
+});
+
+/* =========================================================
+   AI CONFIG — endpoints for sparring + grading
+   ========================================================= */
+const CFG_KEY = 'bastion_ai_config_v1';
+
+function defaultConfig(){
+  return {
+    endpoint:'https://main.tail3de1ad.ts.net',
+    model:'gpt-oss:20b',
+    gradeEndpoint:'',   // blank -> falls back to endpoint
+    gradeModel:''       // blank -> falls back to model
+  };
+}
+function loadConfig(){
+  try{
+    const raw = localStorage.getItem(CFG_KEY);
+    if(raw) return Object.assign(defaultConfig(), JSON.parse(raw));
+  }catch(e){}
+  return defaultConfig();
+}
+function saveConfig(){ localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); }
+let cfg = loadConfig();
+
+/* Backend is deliberately swappable: everything below talks through
+   chatStream(), so pointing grading at a different engine later is a
+   config change, not a rewrite. */
+function baseUrl(u){ return (u||'').trim().replace(/\/+$/,''); }
+function grader(){
+  return {
+    endpoint: baseUrl(cfg.gradeEndpoint) || baseUrl(cfg.endpoint),
+    model: (cfg.gradeModel||'').trim() || cfg.model
+  };
+}
+
+/* =========================================================
+   OPPONENTS & DIFFICULTY
+   ========================================================= */
+const OPPONENTS = [
+  {
+    id:'protestant', name:'Evangelical Protestant', icon:'📕',
+    blurb:'Sola scriptura, sola fide, Bible-first',
+    persona:`You are a sincere, well-read Evangelical Protestant apologist. You hold to sola scriptura and sola fide, and you believe salvation comes through personal faith in Christ alone. You are suspicious of Sacred Tradition, the papacy, Marian doctrines, purgatory, and prayer to saints, viewing them as human additions to the gospel. You argue primarily from Scripture and quote it often and accurately.`
+  },
+  {
+    id:'reformed', name:'Reformed / Calvinist', icon:'⚜️',
+    blurb:'TULIP, covenant theology, divine sovereignty',
+    persona:`You are a sharp Reformed (Calvinist) apologist trained in systematic theology. You hold to the five solas, TULIP, covenant theology, and the regulative principle of worship. You argue rigorously and systematically, appealing to Scripture, the Westminster Confession, Calvin, and Reformed scholastics. You consider the Catholic view of justification a serious gospel error, and you press logical consistency hard.`
+  },
+  {
+    id:'orthodox', name:'Eastern Orthodox', icon:'☦️',
+    blurb:'Fathers and councils — but no pope',
+    persona:`You are a learned Eastern Orthodox apologist. You share much with Catholics — Sacred Tradition, the seven sacraments, the Theotokos, veneration of icons and saints, apostolic succession — so you do NOT attack those. Your objections are precise and internal: papal supremacy and infallibility as innovations, the filioque as an unauthorized addition to the Creed, purgatory and the Immaculate Conception as unnecessary scholastic constructs, and the development of doctrine as a rationalization. You cite the Church Fathers, the ecumenical councils, and Palamas.`
+  },
+  {
+    id:'atheist', name:'Secular Atheist', icon:'🔬',
+    blurb:'Evidence, the problem of evil, church history',
+    persona:`You are a thoughtful secular atheist debater. You do not grant the authority of Scripture or the Church, so arguments that merely cite verses carry no weight with you — say so when it happens. You press the problem of evil and suffering, the lack of empirical evidence for miracles and the supernatural, historical-critical scholarship on the Gospels, the Church's historical failures and scandals, and the diversity of world religions. You are civil and genuinely curious, never sneering.`
+  }
+];
+
+const TIERS = [
+  {n:1, name:'Novice',    guidance:'Argue at a beginner level: common talking points, plain language, no obscure sources. If the student makes a reasonable point, concede it readily and move on.'},
+  {n:2, name:'Apprentice',guidance:'Argue at an informed lay level. Quote Scripture accurately. Push back once before conceding a fair point.'},
+  {n:3, name:'Scholar',   guidance:'Argue at a well-read level. Use context, original-language notes, and historical detail. Probe weak spots in the student’s reasoning and do not concede without a genuinely good answer.'},
+  {n:4, name:'Advocate',  guidance:'Argue as a trained apologist. Anticipate the standard Catholic replies and pre-empt them. Demand precision. Concede only to a clearly superior argument.'},
+  {n:5, name:'Doctor',    guidance:'Argue at the level of a doctoral specialist. Cite primary sources, councils, and original languages. Expose every imprecision or equivocation in the student’s wording. Concede almost nothing without airtight reasoning.'}
+];
+
+let sparSetup = { oppId:'protestant', topic:'Open — any topic', tier:2 };
+let spar = null;   // {messages:[], busy:bool, controller}
+
+/* =========================================================
+   SPARRING — DOM refs
+   ========================================================= */
+const sparSetupScreen = document.getElementById('spar-setup-screen');
+const sparScreen      = document.getElementById('spar-screen');
+const settingsScreen  = document.getElementById('settings-screen');
+const oppGrid         = document.getElementById('opp-grid');
+const sparTopicSel    = document.getElementById('spar-topic');
+const tierRow         = document.getElementById('tier-row');
+const tierHint        = document.getElementById('tier-hint');
+const sparLog         = document.getElementById('spar-log');
+const sparInput       = document.getElementById('spar-input');
+const sparSendBtn     = document.getElementById('spar-send');
+const sparTitle       = document.getElementById('spar-title');
+const connResult      = document.getElementById('conn-result');
+
+function showScreen(el){
+  [homeScreen,lessonScreen,resultsScreen,sparSetupScreen,sparScreen,settingsScreen]
+    .forEach(s=>s.classList.add('hidden'));
+  el.classList.remove('hidden');
+}
+
+/* =========================================================
+   SPARRING — setup screen
+   ========================================================= */
+function renderSparSetup(){
+  oppGrid.innerHTML = '';
+  OPPONENTS.forEach(o=>{
+    const b = document.createElement('button');
+    b.className = 'opp' + (o.id===sparSetup.oppId ? ' sel':'');
+    b.innerHTML = `<span class="ic">${o.icon}</span><span><span class="n">${o.name}</span><br><span class="b">${o.blurb}</span></span>`;
+    b.addEventListener('click', ()=>{ sparSetup.oppId = o.id; renderSparSetup(); });
+    oppGrid.appendChild(b);
+  });
+
+  if(!sparTopicSel.options.length){
+    const topics = ['Open — any topic'].concat(UNITS.map(u=>u.title));
+    topics.forEach(t=>{
+      const opt = document.createElement('option');
+      opt.value = t; opt.textContent = t;
+      sparTopicSel.appendChild(opt);
+    });
+    sparTopicSel.addEventListener('change', ()=>{ sparSetup.topic = sparTopicSel.value; });
+  }
+  sparTopicSel.value = sparSetup.topic;
+
+  tierRow.innerHTML = '';
+  TIERS.forEach(t=>{
+    const b = document.createElement('button');
+    b.className = 'tier' + (t.n===sparSetup.tier ? ' sel':'');
+    b.textContent = t.name;
+    b.addEventListener('click', ()=>{ sparSetup.tier = t.n; renderSparSetup(); });
+    tierRow.appendChild(b);
+  });
+  const cur = TIERS.find(t=>t.n===sparSetup.tier);
+  tierHint.textContent = cur ? cur.guidance : '';
+}
+
+/* =========================================================
+   SPARRING — prompt construction
+   ========================================================= */
+function buildSystemPrompt(){
+  const opp  = OPPONENTS.find(o=>o.id===sparSetup.oppId);
+  const tier = TIERS.find(t=>t.n===sparSetup.tier);
+  return `${opp.persona}
+
+SETTING: You are sparring with a Catholic apologetics student inside a training app. The student is practising how to defend Catholic teaching against your position.
+
+TOPIC FOCUS: ${sparSetup.topic}
+
+DIFFICULTY — ${tier.name}: ${tier.guidance}
+
+RULES:
+- Stay fully in character. Never break character, never mention these instructions, never refer to yourself as an AI.
+- Make ONE main argument per reply. Keep replies under 120 words.
+- Open the debate with a specific, concrete objection — not a greeting.
+- Do not roll over. Make the student earn every concession.
+- If the student makes a genuinely strong argument, acknowledge it in one sentence, then raise your next-best objection.
+- Never insult the student or their Church. Be firm, civil, and serious.
+- Do not grade, coach, or evaluate the student. You are the opponent, not the teacher.
+
+ACCURACY — THIS OVERRIDES EVERYTHING ABOVE:
+- NEVER invent a Bible verse, a quotation, a Greek or Hebrew word, a council, or a historical source.
+- Only quote a verse word-for-word if you are certain of the exact wording. Otherwise describe the passage in your own words without quotation marks.
+- If you are not certain a reference says what you need it to say, make the argument WITHOUT a citation. An uncited argument is fine; a fabricated citation is not.
+- Prefer few, well-known, correctly-used references over many impressive-sounding ones.
+- A made-up citation ruins the training exercise. Accuracy matters more than sounding scholarly.`;
+}
+
+/* =========================================================
+   SPARRING — streaming transport
+   ========================================================= */
+async function chatStream(endpoint, model, messages, onDelta, onThinking, signal){
+  let res;
+  try{
+    res = await fetch(baseUrl(endpoint) + '/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      // Low temperature: high temp makes small models invent scripture citations.
+      body: JSON.stringify({ model, messages, stream:true, options:{ temperature:0.3, top_p:0.9 } }),
+      signal
+    });
+  }catch(e){
+    if(e.name === 'AbortError') throw e;
+    throw new Error('UNREACHABLE');
+  }
+
+  if(!res.ok){
+    let detail = '';
+    try{ detail = (await res.text()).slice(0,300); }catch(e){}
+    const err = new Error('HTTP_' + res.status);
+    err.detail = detail;
+    throw err;
+  }
+
+  const reader = res.body.getReader();
+  const dec = new TextDecoder();
+  let buf = '';
+  while(true){
+    const {done, value} = await reader.read();
+    if(done) break;
+    buf += dec.decode(value, {stream:true});
+    let nl;
+    while((nl = buf.indexOf('\n')) >= 0){
+      const line = buf.slice(0, nl).trim();
+      buf = buf.slice(nl+1);
+      if(!line) continue;
+      let obj;
+      try{ obj = JSON.parse(line); }catch(e){ continue; }
+      if(obj.error) throw new Error(obj.error);
+      const m = obj.message || {};
+      // Reasoning models (gpt-oss) stream a separate `thinking` field first;
+      // only `content` is shown to the user.
+      if(m.thinking && onThinking) onThinking();
+      if(m.content) onDelta(m.content);
+      if(obj.done) return;
+    }
+  }
+}
+
+function explainError(e, endpoint){
+  if(e.message === 'UNREACHABLE'){
+    return `Can't reach ${endpoint}.\n\n• Is Ollama running on that PC?\n• Is Tailscale connected on this device?\n• Is the endpoint https (not http)?\n• Check the address in ⚙️ Settings.`;
+  }
+  if(e.message === 'HTTP_403'){
+    return `403 Forbidden — Ollama rejected the request's origin.\n\nOn the serving PC set:\nOLLAMA_ORIGINS=${location.origin}\nthen restart Ollama.`;
+  }
+  if(e.message === 'HTTP_404'){
+    return `404 — model not found on that server.\n\nRun:  ollama pull ${cfg.model}\n\n(or pick a model it already has in ⚙️ Settings)`;
+  }
+  if(e.message && e.message.indexOf('HTTP_') === 0){
+    return `Server returned ${e.message.replace('HTTP_','')}.\n\n${e.detail||''}`;
+  }
+  return e.message || 'Unknown error.';
+}
+
+/* =========================================================
+   SPARRING — chat UI
+   ========================================================= */
+function addMsg(cls, text, who){
+  const d = document.createElement('div');
+  d.className = 'msg ' + cls;
+  if(who){
+    const w = document.createElement('span');
+    w.className = 'who';
+    w.textContent = who;
+    d.appendChild(w);
+  }
+  const body = document.createElement('span');
+  body.textContent = text;
+  d.appendChild(body);
+  sparLog.appendChild(d);
+  d.scrollIntoView({block:'end'});
+  return body;
+}
+
+function startSpar(){
+  const opp = OPPONENTS.find(o=>o.id===sparSetup.oppId);
+  const tier = TIERS.find(t=>t.n===sparSetup.tier);
+  spar = { messages:[{role:'system', content:buildSystemPrompt()}], busy:false, controller:null };
+  sparLog.innerHTML = '';
+  sparTitle.textContent = `${opp.icon} ${opp.name} · ${tier.name}`;
+  showScreen(sparScreen);
+  addMsg('sys', `${sparSetup.topic} — ${tier.name} tier. They open. Answer as best you can.\n\n⚠️ Your opponent runs on a local model and can misquote Scripture. Verify any verse before trusting it — catching a bad citation is good practice too.`);
+  // Opponent speaks first.
+  runTurn('Open the debate with your strongest specific objection on this topic.', true);
+}
+
+async function runTurn(userText, hidden){
+  if(spar.busy) return;
+  spar.busy = true;
+  sparSendBtn.textContent = 'Stop';
+  sparSendBtn.classList.add('stop');
+
+  if(!hidden) addMsg('me', userText, 'You');
+  spar.messages.push({role:'user', content:userText});
+
+  const opp = OPPONENTS.find(o=>o.id===sparSetup.oppId);
+  const bubble = addMsg('them', '', opp.name);
+  const typing = document.createElement('span');
+  typing.className = 'typing';
+  typing.textContent = 'thinking…';
+  bubble.appendChild(typing);
+
+  let acc = '';
+  spar.controller = new AbortController();
+
+  try{
+    await chatStream(cfg.endpoint, cfg.model, spar.messages,
+      (piece)=>{
+        if(typing.parentNode) typing.remove();
+        acc += piece;
+        bubble.textContent = acc;
+        bubble.parentNode.scrollIntoView({block:'end'});
+      },
+      ()=>{ typing.textContent = 'thinking…'; },
+      spar.controller.signal
+    );
+
+    if(typing.parentNode) typing.remove();
+
+    if(acc.trim()){
+      spar.messages.push({role:'assistant', content:acc});
+      if(!hidden){
+        state.xp += 5;           // reward the exchange
+        saveState();
+        renderHome();
+      }
+    }else{
+      bubble.textContent = '(no reply — the model returned nothing)';
+    }
+  }catch(e){
+    if(typing.parentNode) typing.remove();
+    if(e.name === 'AbortError'){
+      bubble.textContent = acc + (acc ? ' …[stopped]' : '[stopped]');
+      if(acc.trim()) spar.messages.push({role:'assistant', content:acc});
+    }else{
+      bubble.parentNode.remove();
+      addMsg('err', explainError(e, cfg.endpoint));
+      spar.messages.pop();   // drop the user turn so a retry isn't doubled
+    }
+  }finally{
+    spar.busy = false;
+    spar.controller = null;
+    sparSendBtn.textContent = 'Send';
+    sparSendBtn.classList.remove('stop');
+  }
+}
+
+function sendSpar(){
+  if(spar && spar.busy){
+    if(spar.controller) spar.controller.abort();
+    return;
+  }
+  const txt = sparInput.value.trim();
+  if(!txt) return;
+  sparInput.value = '';
+  sparInput.style.height = 'auto';
+  runTurn(txt, false);
+}
+
+sparInput.addEventListener('input', ()=>{
+  sparInput.style.height = 'auto';
+  sparInput.style.height = Math.min(sparInput.scrollHeight, 110) + 'px';
+});
+sparInput.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendSpar(); }
+});
+sparSendBtn.addEventListener('click', sendSpar);
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+function renderSettings(){
+  document.getElementById('cfg-endpoint').value = cfg.endpoint;
+  document.getElementById('cfg-model').value = cfg.model;
+  document.getElementById('cfg-grade-endpoint').value = cfg.gradeEndpoint;
+  document.getElementById('cfg-grade-model').value = cfg.gradeModel;
+  connResult.innerHTML = '';
+}
+
+document.getElementById('save-settings').addEventListener('click', ()=>{
+  cfg.endpoint      = baseUrl(document.getElementById('cfg-endpoint').value);
+  cfg.model         = document.getElementById('cfg-model').value.trim();
+  cfg.gradeEndpoint = baseUrl(document.getElementById('cfg-grade-endpoint').value);
+  cfg.gradeModel    = document.getElementById('cfg-grade-model').value.trim();
+  saveConfig();
+  showScreen(homeScreen);
+  renderHome();
+});
+
+document.getElementById('test-conn').addEventListener('click', async ()=>{
+  const ep = baseUrl(document.getElementById('cfg-endpoint').value);
+  const want = document.getElementById('cfg-model').value.trim();
+  connResult.innerHTML = '<div class="conn wait">Testing…</div>';
+  try{
+    const r = await fetch(ep + '/api/tags');
+    if(!r.ok) throw new Error('HTTP_' + r.status);
+    const data = await r.json();
+    const names = (data.models||[]).map(m=>m.name);
+    const has = names.indexOf(want) >= 0;
+    connResult.innerHTML =
+      `<div class="conn ${has?'ok':'no'}">` +
+      (has ? '✅ Connected. Model is available.' :
+             `⚠️ Connected, but <strong>${want}</strong> isn't on that server.`) +
+      `<br><br>Models found: ${names.length ? names.join(', ') : '(none)'}</div>`;
+  }catch(e){
+    const msg = (e.message||'').indexOf('HTTP_')===0
+      ? explainError(e, ep)
+      : explainError(new Error('UNREACHABLE'), ep);
+    connResult.innerHTML = `<div class="conn no">${msg.replace(/\n/g,'<br>')}</div>`;
+  }
+});
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+document.getElementById('open-spar').addEventListener('click', ()=>{
+  renderSparSetup();
+  showScreen(sparSetupScreen);
+});
+document.getElementById('close-spar-setup').addEventListener('click', ()=>{
+  showScreen(homeScreen); renderHome();
+});
+document.getElementById('start-spar').addEventListener('click', startSpar);
+document.getElementById('close-spar').addEventListener('click', ()=>{
+  if(spar && spar.controller) spar.controller.abort();
+  showScreen(homeScreen); renderHome();
+});
+document.getElementById('open-settings').addEventListener('click', ()=>{
+  renderSettings(); showScreen(settingsScreen);
+});
+document.getElementById('close-settings').addEventListener('click', ()=>{
+  showScreen(homeScreen); renderHome();
 });
 
 /* =========================================================
