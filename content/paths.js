@@ -454,109 +454,433 @@ window.PATHS = [
   /* ---------------- UNIT 2 ---------------- */
   {
     id:'faith-works', title:'Faith & Works', icon:'⚖️',
-    teach:[
-      {h:'What is actually disputed', p:'Not whether we are saved by grace - Catholics and Protestants both say yes. The dispute is over what justification IS, and whether works have any part in it. Getting this framing right prevents most of the heat.'},
-      {h:'What the Church actually teaches', p:'Salvation is a free gift of grace that cannot be earned. Nobody can merit the beginning of salvation. Trent said this explicitly. If your opponent thinks Catholics believe they buy heaven with good deeds, correct that before anything else - you are not defending what they are attacking.'},
-      {h:'The one verse with the phrase', p:'James 2:24 is the only place in Scripture where "faith alone" appears - and it denies it. This is not a proof-text trick; it is the plain sense of an extended argument running from verse 14 to 26.', refs:[['James',2,14,26]]},
-      {h:'The Protestant answer to James', p:'They will say James means justification before MEN, while Paul means before God. Have your reply ready: James uses Abraham offering Isaac as his example, and says faith was "made perfect" by works. That is not a demonstration to onlookers - Genesis 22 had no audience.'},
-      {h:'Reading Ephesians 2 to the end', p:'Ephesians 2:8-9 is their strongest text and Catholics should quote it happily - salvation is grace, not earned. But do not stop at verse 9. Verse 10 says we are created for good works, prepared beforehand. Paul excludes works as a CAUSE of salvation, not as its fruit.', refs:[['Ephesians',2,8,10]]},
-      {h:'What "works of the law" means', p:'When Paul excludes "works of the law" in Romans, the context is the Mosaic covenant markers - circumcision especially - that divided Jew from Gentile. He is not condemning love of neighbour. Romans 2 says the doers of the law will be justified, which no reading of Paul can simply delete.', refs:[['Romans',3,27,28]]},
-      {h:'Faith working through love', p:'Galatians 5:6 is the synthesis: what counts is faith working through love. Not faith alone, not works alone - living faith that acts. This single verse holds Paul and James together.', refs:[['Galatians',5,6,6]]},
-      {h:'Can salvation be lost', p:'Catholic teaching says yes, through unrepented grave sin. Paul feared being disqualified himself, and told the Philippians to work out their salvation with fear and trembling. Neither statement makes sense under absolute eternal security.', refs:[['I Corinthians',9,27,27],['Philippians',2,12,13]]},
-      {h:'Imputed versus infused', p:'The technical heart of the dispute. Protestants generally hold that Christ\'s righteousness is imputed - credited to your account while you remain inwardly unchanged. Catholics hold it is infused - actually poured into the soul, really making you righteous. Knowing this distinction lets you name what is being argued instead of trading verses.'},
-      {h:'How to argue this', p:'Open by agreeing loudly that salvation is unearned grace. That disarms the caricature and forces the real question: does grace merely cover us, or actually transform us? Then take them to James 2 and Galatians 5:6, and ask what "faith working through love" can mean if works are irrelevant.'}
-    ],
-    questions:[
-      {type:'objection', quote:'"We are saved by faith alone, not works - sola fide."',
-        q:'What does James 2:24 say directly on this?',
-        options:[
-          '"Faith alone saves, apart from any works."',
-          '"You see that a person is justified by works and not by faith alone."',
-          'James never discusses justification.',
-          '"Works alone save, faith is optional."'],
-        correct:1,
-        explain:'James 2:24 is the most direct biblical rebuttal of "faith alone" as a formula, teaching that living faith and works of love are inseparable.'},
-      {type:'tf', q:'The Catholic Church teaches that salvation can be earned by good works.', correct:false,
-        explain:'It teaches the opposite. Nobody can merit the beginning of salvation; it is a free gift of grace. Correct this caricature before defending anything else.'},
-      {type:'objection', quote:'"Ephesians 2:8-9 says we\'re saved by grace through faith, not works, so it must be faith alone."',
-        q:'What\'s the Catholic clarification?',
-        options:[
-          'The Catholic Church actually denies salvation is a gift of grace.',
-          'The Church fully agrees salvation is unearned grace received through faith - the "works" Paul excludes are works attempting to earn salvation on our own apart from grace, not the works of love that flowing faith naturally produces (Gal 5:6).',
-          'Ephesians 2:8-9 doesn\'t exist in the Catholic Bible.',
-          'Paul is only talking about Old Testament animal sacrifices.'],
-        correct:1,
-        explain:'Catholic teaching agrees salvation cannot be earned - but distinguishes "dead works" done to merit salvation apart from grace, from the good works that living, grace-filled faith produces.'},
-      {type:'verse', q:'Which verse immediately follows Ephesians 2:8-9 and says we are created for good works?',
-        options:['Ephesians 2:10','Ephesians 3:1','Galatians 2:16','Romans 6:23'],
-        correct:0,
-        explain:'Ephesians 2:10. Stopping at verse 9 is the most common misuse of this passage - verse 10 supplies Paul\'s own balance.'},
-      {type:'objection', quote:'"James means justification before men - being shown to be righteous, not becoming righteous."',
-        q:'What is the strongest counter?',
-        options:[
-          'Concede; that reading is correct.',
-          'James\' example is Abraham offering Isaac - an act with no human audience at all. And he says faith was "made perfect" by works, which is language of completion, not display.',
-          'James contradicts Paul and should be ignored.',
-          'James was not an apostle.'],
-        correct:1,
-        explain:'Genesis 22 had no onlookers to be justified before. The "before men" reading cannot carry James\' own chosen example.'},
-      {type:'objection', quote:'"Once saved, always saved - salvation can\'t be lost."',
-        q:'What does Catholic teaching hold, with Scripture support?',
-        options:[
-          'Salvation, once received, can never be forfeited under any circumstance.',
-          'A believer can fall from grace through serious (mortal) sin - St. Paul himself warns "I discipline my body... lest I myself should be disqualified" (1 Cor 9:27), and urges believers to "work out your salvation with fear and trembling" (Phil 2:12).',
-          'Salvation is guaranteed the moment someone is baptized as an infant, regardless of later choices.',
-          'The Bible never mentions the possibility of falling away.'],
-        correct:1,
-        explain:'Multiple NT passages (1 Cor 9:27, Phil 2:12, Hebrews 6:4-6, 10:26-29) warn believers of the real possibility of forfeiting salvation through unrepented serious sin.'},
-      {type:'recall', q:'What is the difference between imputed and infused righteousness?',
-        options:[
-          'They are two words for the same thing.',
-          'Imputed means Christ\'s righteousness is credited to your account while you remain inwardly unchanged; infused means grace actually transforms the soul, really making you righteous.',
-          'Imputed is Catholic, infused is Protestant.',
-          'Infused righteousness means you save yourself.'],
-        correct:1,
-        explain:'This is the technical core of the whole dispute. Naming it moves the argument from trading verses to the actual question.'},
-      {type:'recall', q:'Is faith necessary for salvation according to Catholic teaching?',
-        options:[
-          'No - works alone save.',
-          'Yes - faith is the foundation and beginning of salvation, but it must be a living faith expressed through love and good works, not mere intellectual belief.',
-          'Faith is optional for Catholics.',
-          'Only faith in the saints, not in Christ, is required.'],
-        correct:1,
-        explain:'Catholic teaching (echoing James and Paul together) holds faith as essential - but "faith working through love" (Gal 5:6), not faith as bare assent alone.'},
-      {type:'objection', quote:'"Romans 3:28 says we are justified by faith apart from works of the law, proving faith alone."',
-        q:'What do "works of the law" most directly refer to in context?',
-        options:[
-          'All good deeds and acts of love whatsoever.',
-          'Primarily the Mosaic ceremonial/legal works - circumcision, dietary laws, sabbath regulations - that distinguished Jew from Gentile, not good works or love in general.',
-          'Nothing - Paul is speaking figuratively with no real referent.',
-          'Only works done by priests in the Temple.'],
-        correct:1,
-        explain:'In Romans, "works of the law" is closely tied to the Mosaic Law/covenant boundary markers (circumcision especially), not a rejection of good works altogether.'},
-      {type:'verse', q:'Which verse says that what counts is "faith that worketh by charity"?',
-        options:['Galatians 5:6','Romans 1:17','James 1:22','Hebrews 11:1'],
-        correct:0,
-        explain:'Galatians 5:6 - the single clearest synthesis of Paul and James, and the verse to reach for when accused of works-righteousness.'},
-      {type:'objection', quote:'"Abraham was justified by faith alone (Romans 4)."',
-        q:'How does James 2 nuance this?',
-        options:[
-          'James 2 agrees Abraham had faith alone with no works at all.',
-          'James 2:21-22 says Abraham "was justified by works" when he offered Isaac, showing that his faith and his works operated together - "faith was completed by his works" - not against each other.',
-          'James never mentions Abraham.',
-          'James contradicts Paul with no possible harmony.'],
-        correct:1,
-        explain:'Paul (justification\'s beginning, by grace through faith, apart from earning it) and James (justification\'s living fruit, faith completed in action) are describing two sides of the same process.'},
-      {type:'tf', q:'Catholics and Protestants both affirm that salvation begins with unearned grace.', correct:true,
-        explain:'True, and saying so early defuses the caricature. The real dispute is whether grace merely covers the sinner or actually transforms him.'},
-      {type:'recall', q:'What is the best opening move when accused of believing in works-righteousness?',
-        options:[
-          'Defend the merit of good works immediately.',
-          'Agree emphatically that salvation is unearned grace - which removes the caricature and forces the real question about whether grace transforms.',
-          'Quote the Council of Trent at length.',
-          'Change the subject to the papacy.'],
-        correct:1,
-        explain:'You cannot defend a position they are not actually attacking. Clear the misunderstanding first, then argue the real point.'}
+    lessons:[
+
+    /* ======== TIER 1 - NOVICE ======== */
+    {
+      id:'l1', tier:1, title:'What is actually disputed',
+      keyVerses:[['Ephesians',2,8,10],['James',2,24,24],['Galatians',5,6,6]],
+      teach:[
+        {h:'Not what you think', p:'The dispute is NOT whether we are saved by grace. Catholics and Protestants both say yes. The dispute is over what justification IS - whether God declares us righteous while we remain inwardly unchanged, or actually makes us righteous - and whether works have any part in it.'},
+        {h:'Why the framing matters', p:'Most arguments on this topic are lost before they begin because each side attacks a position the other does not hold. Get the framing right and half the disagreement evaporates. Get it wrong and you will spend an hour defending works-righteousness, which the Church condemns.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the actual dispute in the faith and works debate?',
+          options:['Whether grace is necessary.','What justification IS - a declaration leaving us inwardly unchanged, or a real transformation - and whether works play any part.','Whether Christians should do good deeds.','Whether James belongs in the Bible.'],
+          correct:1,
+          explain:'Both sides affirm grace. The disagreement is about the nature of justification itself.'},
+        {type:'tf', q:'Catholics and Protestants disagree about whether salvation begins with grace.', correct:false,
+          explain:'Both affirm that it does. Saying so early removes the caricature and gets you to the real question.'},
+        {type:'objection', quote:'"You Catholics think you earn your way into heaven."',
+          q:'What is the correct first move?',
+          options:['Defend the merit of good works.','State plainly that the Church teaches nobody can earn the grace of salvation, then ask whether grace merely covers us or actually transforms us.','Quote the Council of Trent.','Change the subject.'],
+          correct:1,
+          explain:'You cannot defend a position you do not hold. Clear the misunderstanding, then argue the real point.'},
+        {type:'recall', q:'Why do most faith-and-works arguments go badly?',
+          options:['Because the topic is unclear in Scripture.','Because each side attacks a caricature - Catholics accused of earning salvation, Protestants accused of not caring about sin.','Because Catholics avoid the Bible.','Because the Greek is difficult.'],
+          correct:1,
+          explain:'Naming both caricatures early is worth more than any proof-text.'}
+      ]
+    },
+    {
+      id:'l2', tier:1, title:'What the Church actually teaches',
+      keyVerses:[['Ephesians',2,8,10],['Titus',3,4,7],['Romans',11,6,6],['II Timothy',1,9,9]],
+      teach:[
+        {h:'Grace first, always', p:'Salvation is a free gift that cannot be earned. Nobody can merit the beginning of salvation - not by works, not by desire, not by anything. The Council of Trent said this explicitly, and it is not a modern softening.'},
+        {h:'What Trent actually condemned', p:'Trent anathematised the idea that a man can be justified by his own works apart from divine grace through Christ. If your opponent thinks Trent taught works-righteousness, they have it backwards.'},
+        {h:'So where is the disagreement?', p:'Not at the beginning. It is about what happens next - whether grace transforms the soul so that the good works it produces genuinely count, or whether those works are irrelevant to justification.'}
+      ],
+      questions:[
+        {type:'tf', q:'The Catholic Church teaches that salvation can be earned by good works.', correct:false,
+          explain:'It teaches the opposite. Nobody can merit the beginning of salvation; it is a free gift of grace.'},
+        {type:'verse', q:'Which passage says salvation is "not by works of righteousness which we have done, but according to his mercy"?',
+          options:['Titus 3:5','Romans 8:1','James 2:17','1 Peter 1:3'],
+          correct:0,
+          explain:'Titus 3:5 - a text Catholics can quote as gladly as any Protestant.'},
+        {type:'recall', q:'What did the Council of Trent condemn regarding justification?',
+          options:['The idea that grace is necessary.','The idea that a man can be justified by his own works apart from divine grace through Christ.','The reading of Scripture by laypeople.','The doctrine of the Trinity.'],
+          correct:1,
+          explain:'Trent condemned works-righteousness. Opponents frequently attribute to it the very thing it anathematised.'},
+        {type:'objection', quote:'"Romans 11:6 says if it is by grace, it is no more of works."',
+          q:'Can a Catholic affirm this verse?',
+          options:['No, it contradicts Catholic teaching.','Yes, entirely - the Church denies that works earn the grace of justification. The verse excludes works as a cause of grace, which Catholics also deny.','Only in the Douay-Rheims translation.','The verse is disputed.'],
+          correct:1,
+          explain:'Affirming their proof-texts wholeheartedly is disarming and honest, and it forces the argument to the real point.'}
+      ]
+    },
+    {
+      id:'l3', tier:1, title:'The two caricatures',
+      keyVerses:[['James',2,17,20],['Galatians',5,6,6],['I Corinthians',13,2,2]],
+      teach:[
+        {h:'What they think you believe', p:'That Catholics tally up good deeds hoping to outweigh sins, treating heaven as wages. Deny this clearly and early.'},
+        {h:'What you might wrongly think they believe', p:'That Protestants think behaviour is irrelevant - "believe and do as you like". Almost no serious Protestant holds that. They say works necessarily FOLLOW genuine faith, but contribute nothing to justification. Attack that, not the strawman.'}
+      ],
+      questions:[
+        {type:'recall', q:'What do most serious Protestants say about good works?',
+          options:['That they are irrelevant to the Christian life.','That they necessarily follow genuine faith as its fruit, but contribute nothing to justification itself.','That they are sinful.','That only clergy need perform them.'],
+          correct:1,
+          explain:'Getting their real position right is essential. "Faith alone justifies, but the faith that justifies is never alone" is their standard formula.'},
+        {type:'tf', q:'"Faith alone justifies, but the faith that justifies is never alone" is a Protestant formula.', correct:true,
+          explain:'It is the standard Reformed way of affirming works without granting them a role in justification. Knowing it prevents you attacking a strawman.'},
+        {type:'objection', quote:'"If works matter, then Christ\'s sacrifice was not enough."',
+          q:'What is the answer?',
+          options:['Concede the point.','The works in question are themselves produced by grace won at the Cross - they are the fruit of Christ\'s work, not a supplement to it.','Works do not matter after all.','Christ\'s sacrifice was indeed incomplete.'],
+          correct:1,
+          explain:'Catholic teaching never places human works alongside the Cross as a second source. Grace produces the works.'},
+        {type:'recall', q:'Where does the real disagreement lie once both caricatures are cleared?',
+          options:['Whether God exists.','Whether the works produced by grace have any part in justification, or are merely evidence of it.','Whether the Bible is inspired.','Whether Christians should be baptised.'],
+          correct:1,
+          explain:'This is the genuine question, and it is worth reaching quickly.'}
+      ]
+    },
+
+    /* ======== TIER 2 - APPRENTICE ======== */
+    {
+      id:'l4', tier:2, title:'James 2: the only "faith alone" verse',
+      keyVerses:[['James',2,14,26]],
+      teach:[
+        {h:'Read the whole argument', p:'James 2:14-26 is a sustained argument, not a stray remark. Faith without works is dead, useless, and cannot save. He compares it to telling a hungry man to be warmed and filled while giving him nothing.', refs:[['James',2,14,17]]},
+        {h:'The one appearance of the phrase', p:'Verse 24 contains the only occurrence of "faith alone" in all of Scripture - and it denies it. This is not a proof-text trick; it is the conclusion of his argument.', refs:[['James',2,24,26]]}
+      ],
+      questions:[
+        {type:'objection', quote:'"We are saved by faith alone, not works - sola fide."',
+          q:'What does James 2:24 say directly on this?',
+          options:['"Faith alone saves, apart from any works."','"You see then how that by works a man is justified, and not by faith only."','James never discusses justification.','"Works alone save, faith is optional."'],
+          correct:1,
+          explain:'James 2:24 is the most direct biblical rebuttal of "faith alone" as a formula.'},
+        {type:'verse', q:'Which verse contains the only appearance of "faith alone" in Scripture?',
+          options:['Romans 3:28','James 2:24','Galatians 2:16','Ephesians 2:8'],
+          correct:1,
+          explain:'James 2:24 - and it uses the phrase only to deny it.'},
+        {type:'recall', q:'What illustration does James use for faith without works?',
+          options:['A tree without fruit.','Telling a hungry, naked person to be warmed and filled while giving them nothing - words with no substance.','A house built on sand.','A lamp without oil.'],
+          correct:1,
+          explain:'The illustration shows his point is about faith that does nothing being empty, not about outward display.'},
+        {type:'tf', q:'James says faith without works is merely weak.', correct:false,
+          explain:'He says it is dead - three times - and asks whether such faith can save. The language is far stronger than weakness.'},
+        {type:'recall', q:'Why does it matter that James 2 is a sustained argument rather than one verse?',
+          options:['It does not matter.','Because a single verse can be explained away as an aside; a thirteen-verse argument with illustrations and examples cannot.','Because James is not canonical.','Because Paul wrote it.'],
+          correct:1,
+          explain:'Always take opponents to the whole passage. The cumulative structure is the strength.'}
+      ]
+    },
+    {
+      id:'l5', tier:2, title:'Ephesians 2: read to the end',
+      keyVerses:[['Ephesians',2,8,10]],
+      teach:[
+        {h:'Quote it happily', p:'Ephesians 2:8-9 is their strongest text and you should affirm it without hesitation. Salvation is grace, through faith, not of works, lest any man should boast. Catholic teaching agrees completely.'},
+        {h:'Then read verse 10', p:'The sentence does not end at verse 9. Verse 10 says we are his workmanship, created in Christ Jesus unto good works, which God prepared beforehand that we should walk in them. Paul excludes works as a CAUSE and immediately restores them as the PURPOSE.', refs:[['Ephesians',2,8,10]]}
+      ],
+      questions:[
+        {type:'objection', quote:'"Ephesians 2:8-9 says we are saved by grace through faith, not works, so it must be faith alone."',
+          q:'What is the Catholic clarification?',
+          options:['The Church denies salvation is a gift of grace.','The Church fully agrees - the works Paul excludes are works attempting to earn salvation apart from grace. Verse 10 then says we were created FOR good works, which God prepared beforehand.','Ephesians is not in the Catholic Bible.','Paul means only Old Testament sacrifices.'],
+          correct:1,
+          explain:'Stopping at verse 9 is the most common misuse of this passage. Verse 10 supplies Paul\'s own balance.'},
+        {type:'verse', q:'Which verse says we are "created in Christ Jesus unto good works"?',
+          options:['Ephesians 2:10','Ephesians 3:1','Galatians 2:16','Romans 6:23'],
+          correct:0,
+          explain:'Ephesians 2:10 - the verse immediately after the classic proof-text.'},
+        {type:'tf', q:'Catholics should avoid quoting Ephesians 2:8-9.', correct:false,
+          explain:'Quote it gladly. Affirming it wholeheartedly removes the caricature and makes verse 10 land harder.'},
+        {type:'recall', q:'What is the relationship between works and salvation in Ephesians 2:8-10?',
+          options:['Works cause salvation.','Works are excluded as a cause of salvation and immediately named as its purpose - we are created FOR them.','Works are irrelevant.','Paul contradicts himself.'],
+          correct:1,
+          explain:'Cause and purpose are different roles. Paul denies the first and asserts the second in consecutive verses.'}
+      ]
+    },
+    {
+      id:'l6', tier:2, title:'Faith working through love',
+      keyVerses:[['Galatians',5,6,6],['I Corinthians',13,1,3],['I John',3,17,18]],
+      teach:[
+        {h:'The synthesis verse', p:'Galatians 5:6: in Christ Jesus neither circumcision nor uncircumcision avails anything, but faith which works by love. Not faith alone. Not works alone. Faith that acts.', refs:[['Galatians',5,6,6]]},
+        {h:'Paul agrees with James', p:'This is Paul, in a letter written largely against relying on the works of the Law, saying what counts is faith working through love. Any reading of Paul that makes works irrelevant has to explain this verse.'},
+        {h:'Love as the measure', p:'Paul says elsewhere that faith able to move mountains, without love, is nothing. Faith is necessary but is not presented as sufficient in isolation.', refs:[['I Corinthians',13,2,2]]}
+      ],
+      questions:[
+        {type:'verse', q:'Which verse says what counts is "faith which worketh by love"?',
+          options:['Galatians 5:6','Romans 1:17','James 1:22','Hebrews 11:1'],
+          correct:0,
+          explain:'Galatians 5:6 - the clearest single synthesis of Paul and James.'},
+        {type:'recall', q:'Why is Galatians 5:6 especially powerful against sola fide?',
+          options:['Because James wrote it.','Because it is Paul, in a letter arguing against reliance on works of the Law, saying what counts is faith working through love.','Because it mentions circumcision.','Because it is in the Old Testament.'],
+          correct:1,
+          explain:'It cannot be dismissed as "that is just James". It is Paul, in the letter most used to support their position.'},
+        {type:'tf', q:'1 Corinthians 13 says faith without love is nothing.', correct:true,
+          explain:'Paul says faith that could move mountains, without charity, profits nothing. Faith is necessary but not presented as sufficient alone.'},
+        {type:'objection', quote:'"Faith working through love just describes what real faith looks like - the love adds nothing."',
+          q:'How do you press this?',
+          options:['Concede it.','Ask what "worketh by" means if the working contributes nothing. Paul chose a verb of operation, not a verb of evidence.','Say Paul was mistaken.','Quote James instead.'],
+          correct:1,
+          explain:'The grammar carries weight here. Paul says faith operates through love, not that love merely displays faith.'}
+      ]
+    },
+
+    /* ======== TIER 3 - SCHOLAR ======== */
+    {
+      id:'l7', tier:3, title:'What "works of the law" means',
+      keyVerses:[['Romans',3,27,31],['Galatians',2,15,16],['Romans',4,9,12]],
+      teach:[
+        {h:'Read the context', p:'When Paul excludes "works of the law" in Romans and Galatians, the surrounding discussion is dominated by circumcision, food laws and Sabbath - the Mosaic covenant markers dividing Jew from Gentile.', refs:[['Romans',3,27,31]]},
+        {h:'The tell', p:'Notice what Paul says immediately after excluding works of the law in Romans 3: is God the God of the Jews only? The context is Jew and Gentile, not deeds versus belief.'},
+        {h:'What he is not saying', p:'He is not condemning love of neighbour or obedience to Christ. Romans is the same letter that says the doers of the law shall be justified.', refs:[['Romans',2,13,13]]}
+      ],
+      questions:[
+        {type:'objection', quote:'"Romans 3:28 says we are justified by faith apart from works of the law, proving faith alone."',
+          q:'What do "works of the law" most directly refer to in context?',
+          options:['All good deeds whatsoever.','Primarily the Mosaic covenant markers - circumcision, dietary laws, Sabbath - that distinguished Jew from Gentile, not good works in general.','Nothing; Paul speaks figuratively.','Only priestly Temple works.'],
+          correct:1,
+          explain:'The surrounding argument is about Jew and Gentile, and Paul turns immediately to whether God is the God of Jews only.'},
+        {type:'verse', q:'Which verse says "the doers of the law shall be justified"?',
+          options:['Romans 2:13','Romans 5:1','Galatians 3:11','Hebrews 11:6'],
+          correct:0,
+          explain:'Romans 2:13 - in the same letter used to argue justification apart from works. Any reading must account for it.'},
+        {type:'tf', q:'Paul adds the word "alone" to "justified by faith" in Romans 3:28.', correct:false,
+          explain:'He does not. Luther famously inserted "allein" into his German translation, acknowledging the word is not in the Greek.'},
+        {type:'recall', q:'What question does Paul ask immediately after Romans 3:28?',
+          options:['Shall we sin that grace may abound?','Is he the God of the Jews only? Is he not also of the Gentiles?','What shall we say then?','Who shall separate us from the love of Christ?'],
+          correct:1,
+          explain:'The very next verse confirms the context is Jew and Gentile, not deeds versus belief.'}
+      ]
+    },
+    {
+      id:'l8', tier:3, title:'Judged according to works',
+      keyVerses:[['Romans',2,6,13],['Matthew',25,31,46],['II Corinthians',5,10,10],['Revelation',20,12,13]],
+      teach:[
+        {h:'The pattern is everywhere', p:'Scripture describes final judgement according to works with striking consistency. Paul says God will render to every man according to his deeds. Christ separates sheep from goats by what was done and left undone. Revelation says the dead were judged according to their works.', refs:[['Romans',2,6,8]]},
+        {h:'The sheep and the goats', p:'Matthew 25 is the most uncomfortable passage for a works-are-irrelevant position. The criterion given is entirely what was done - fed, clothed, visited - or not done.', refs:[['Matthew',25,34,40]]},
+        {h:'How they answer', p:'They will say works are the EVIDENCE examined at judgement, not the basis. Fair enough as a reading - but ask why Scripture consistently describes the criterion in terms of deeds if deeds are strictly evidential.'}
+      ],
+      questions:[
+        {type:'verse', q:'Which passage separates sheep from goats on the basis of feeding, clothing and visiting?',
+          options:['Matthew 25:31-46','Luke 16:19-31','John 5:28-29','Romans 14:10'],
+          correct:0,
+          explain:'Matthew 25 - the criterion stated is entirely what was done or left undone.'},
+        {type:'recall', q:'What does Romans 2:6 say God will render to every man?',
+          options:['According to his faith.','According to his deeds.','According to his knowledge.','According to his lineage.'],
+          correct:1,
+          explain:'According to his deeds - in the letter most used to argue justification apart from works.'},
+        {type:'objection', quote:'"Works at judgement are evidence of faith, not the basis of salvation."',
+          q:'What is the fair probe?',
+          options:['Accept it fully.','Ask why Scripture so consistently states the criterion in terms of deeds if deeds are strictly evidential - the evidential reading is possible, but it is a reading imposed on the texts, not drawn from them.','Say the passages are not canonical.','Argue that faith is irrelevant.'],
+          correct:1,
+          explain:'The evidential reading is coherent, but it is not what the texts say on their face. Make them own that.'},
+        {type:'tf', q:'Revelation describes the dead being judged according to their works.', correct:true,
+          explain:'Revelation 20:12-13 states it twice. The pattern runs from the Gospels to the final book of Scripture.'}
+      ]
+    },
+    {
+      id:'l9', tier:3, title:'Abraham: Paul and James together',
+      keyVerses:[['Romans',4,1,5],['James',2,21,24],['Genesis',15,6,6],['Hebrews',11,17,19]],
+      teach:[
+        {h:'Same man, same verse, different point', p:'Both Paul and James cite Abraham and both quote Genesis 15:6. Paul uses him to show justification is not earned. James uses him to show that faith is completed in action.'},
+        {h:'The decisive detail', p:'James points to Abraham offering Isaac - which happens in Genesis 22, seven chapters AFTER he was reckoned righteous in Genesis 15. So the offering is not the start of his justification; it is its completion. James says faith was made perfect by works.', refs:[['James',2,21,23]]},
+        {h:'This kills the "before men" reading', p:'Protestants often say James means justification before men. But Genesis 22 had no human audience - only Abraham, Isaac and God. There was nobody to be justified before.'}
+      ],
+      questions:[
+        {type:'objection', quote:'"Abraham was justified by faith alone (Romans 4)."',
+          q:'How does James 2 nuance this?',
+          options:['James agrees Abraham had faith with no works.','James says Abraham was justified by works when he offered Isaac, and that faith was made perfect by his works - the two operating together.','James never mentions Abraham.','James simply contradicts Paul.'],
+          correct:1,
+          explain:'Paul describes justification\'s beginning; James describes its completion in action. Two aspects of one process.'},
+        {type:'objection', quote:'"James means justification before men - being shown righteous, not becoming righteous."',
+          q:'What is the strongest counter?',
+          options:['Concede; that reading is correct.','James\' example is Abraham offering Isaac - an act with no human audience at all. And he says faith was "made perfect" by works, which is completion language, not display.','James was not an apostle.','Ignore James entirely.'],
+          correct:1,
+          explain:'Genesis 22 had no onlookers. The "before men" reading cannot carry James\' own chosen example.'},
+        {type:'recall', q:'Why does the chapter gap between Genesis 15 and Genesis 22 matter?',
+          options:['It does not matter.','Because Abraham was reckoned righteous in chapter 15, long before offering Isaac in chapter 22 - so the offering completes rather than initiates his justification.','Because Genesis 22 came first.','Because Paul misquoted Genesis.'],
+          correct:1,
+          explain:'The sequence is what allows Paul and James to be harmonised rather than pitted against each other.'},
+        {type:'tf', q:'Paul and James quote the same Old Testament verse about Abraham.', correct:true,
+          explain:'Both quote Genesis 15:6. They are not using different evidence - they are drawing different conclusions from the same text.'}
+      ]
+    },
+    {
+      id:'l10', tier:3, title:'Imputed or infused',
+      keyVerses:[['II Corinthians',5,17,17],['Titus',3,5,7],['Romans',5,5,5],['II Peter',1,4,4]],
+      teach:[
+        {h:'The technical heart', p:'Protestants generally hold that Christ\'s righteousness is IMPUTED - credited to your account, a legal declaration, while you remain inwardly what you were. Catholics hold it is INFUSED - really poured into the soul, genuinely making you righteous.'},
+        {h:'Luther\'s image', p:'The classic Protestant image is snow covering a dunghill: the filth remains, hidden. The Catholic claim is that grace actually changes what is underneath - a new creation, not a covering.', refs:[['II Corinthians',5,17,17]]},
+        {h:'Why this is the real argument', p:'Almost every proof-text exchange on this topic is downstream of this question. Name it and you stop trading verses and start arguing about what grace actually does.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the difference between imputed and infused righteousness?',
+          options:['They are the same.','Imputed means Christ\'s righteousness is credited to your account while you remain inwardly unchanged; infused means grace actually transforms the soul, really making you righteous.','Imputed is Catholic, infused is Protestant.','Infused means you save yourself.'],
+          correct:1,
+          explain:'This is the technical core of the whole dispute. Naming it moves the argument past proof-texts.'},
+        {type:'verse', q:'Which verse says that if any man be in Christ he is "a new creature"?',
+          options:['2 Corinthians 5:17','Romans 6:4','Galatians 6:15','Colossians 3:10'],
+          correct:0,
+          explain:'2 Corinthians 5:17 - language of real change, not merely of covering.'},
+        {type:'tf', q:'The "snow covering a dunghill" image expresses the Catholic view of justification.', correct:false,
+          explain:'It is a classic image of imputed righteousness. Catholics hold grace changes what is underneath rather than concealing it.'},
+        {type:'recall', q:'Why should you name the imputed-versus-infused distinction early?',
+          options:['To sound learned.','Because nearly every proof-text exchange is downstream of it - naming it moves the argument to the actual question.','To avoid discussing James.','Because Trent requires it.'],
+          correct:1,
+          explain:'Arguments that stay at the proof-text level go in circles. This is the level where the disagreement actually lives.'}
+      ]
+    },
+
+    /* ======== TIER 4 - ADVOCATE ======== */
+    {
+      id:'l11', tier:4, title:'Can salvation be lost?',
+      keyVerses:[['I Corinthians',9,24,27],['Philippians',2,12,13],['Galatians',5,4,4],['II Peter',2,20,22]],
+      teach:[
+        {h:'The Catholic position', p:'A believer can fall from grace through unrepented grave sin. This is not a claim that God is fickle - it is a claim that human freedom remains real after justification.'},
+        {h:'Paul feared it for himself', p:'Paul disciplines his body lest, having preached to others, he himself should be a castaway. If eternal security were absolute, the apostle\'s own anxiety is hard to explain.', refs:[['I Corinthians',9,26,27]]},
+        {h:'Work out your salvation', p:'Philippians tells believers to work out their salvation with fear and trembling - and immediately adds that it is God who works in them. Both halves matter: real human effort, entirely enabled by grace.', refs:[['Philippians',2,12,13]]}
+      ],
+      questions:[
+        {type:'objection', quote:'"Once saved, always saved - salvation cannot be lost."',
+          q:'What does Catholic teaching hold, with Scripture support?',
+          options:['Salvation once received can never be forfeited.','A believer can fall from grace through grave sin - Paul warns he might himself be disqualified, and tells believers to work out their salvation with fear and trembling.','Salvation is guaranteed by infant baptism regardless of later choices.','Scripture never mentions falling away.'],
+          correct:1,
+          explain:'1 Corinthians 9:27, Philippians 2:12, Hebrews 6 and 10, and 2 Peter 2 all warn of real forfeiture.'},
+        {type:'verse', q:'Which verse has Paul fearing he might himself become "a castaway"?',
+          options:['1 Corinthians 9:27','Romans 8:38','2 Timothy 4:7','Philippians 3:14'],
+          correct:0,
+          explain:'1 Corinthians 9:27 - the apostle applying the warning to himself.'},
+        {type:'recall', q:'What does Philippians 2:13 add immediately after "work out your salvation"?',
+          options:['Nothing.','That it is God who works in you both to will and to do of his good pleasure - grounding the effort entirely in grace.','That works are unnecessary.','That only apostles must do this.'],
+          correct:1,
+          explain:'Quoting both verses together pre-empts the accusation of Pelagianism.'},
+        {type:'tf', q:'Galatians says some have "fallen from grace".', correct:true,
+          explain:'Galatians 5:4 uses exactly that phrase. It is difficult to reconcile with absolute eternal security.'}
+      ]
+    },
+    {
+      id:'l12', tier:4, title:'The warning passages',
+      keyVerses:[['Hebrews',6,4,6],['Hebrews',10,26,31],['Matthew',7,21,23],['I Corinthians',6,9,10]],
+      teach:[
+        {h:'Hebrews 6 and 10', p:'Hebrews describes people once enlightened, who tasted the heavenly gift and were partakers of the Holy Ghost, and then fell away. Chapter 10 warns of wilful sin after receiving knowledge of the truth, with no remaining sacrifice.', refs:[['Hebrews',6,4,6]]},
+        {h:'The standard reply', p:'They will say these people were never truly saved - they only appeared to be. Ask what "partakers of the Holy Ghost" and "tasted the heavenly gift" can mean under that reading, and whether the warning has any force if its addressees could not actually fall.'},
+        {h:'Not everyone who says Lord, Lord', p:'Christ says not everyone calling him Lord enters the kingdom, but he that DOES the will of his Father - and the rejected are those who worked iniquity.', refs:[['Matthew',7,21,23]]}
+      ],
+      questions:[
+        {type:'recall', q:'How does Hebrews 6 describe those who fall away?',
+          options:['As people who never believed.','As once enlightened, having tasted the heavenly gift, and made partakers of the Holy Ghost.','As unbelievers from outside the Church.','As angels.'],
+          correct:1,
+          explain:'The description is of genuine participation, which is precisely what makes the passage hard for eternal security.'},
+        {type:'objection', quote:'"Those in Hebrews 6 were never truly saved in the first place."',
+          q:'What is the strongest probe?',
+          options:['Accept the reading.','Ask what "partakers of the Holy Ghost" could mean for someone never saved, and whether a warning has any force if those addressed were incapable of falling.','Say Hebrews is not canonical.','Argue the passage is about angels.'],
+          correct:1,
+          explain:'A warning against an impossible outcome is not a warning. Press the practical force of the text.'},
+        {type:'verse', q:'Which passage says not everyone who says "Lord, Lord" shall enter the kingdom?',
+          options:['Matthew 7:21','John 14:6','Luke 13:3','Mark 10:25'],
+          correct:0,
+          explain:'Matthew 7:21-23 - and the criterion given is doing the will of the Father.'},
+        {type:'tf', q:'The warning passages are found only in Hebrews.', correct:false,
+          explain:'They run through Matthew 7, 1 Corinthians 6, Galatians 5, 2 Peter 2 and elsewhere. The pattern is broad.'}
+      ]
+    },
+    {
+      id:'l13', tier:4, title:'Merit without boasting',
+      keyVerses:[['I Corinthians',3,8,9],['II Timothy',4,7,8],['Matthew',5,11,12],['Revelation',22,12,12]],
+      teach:[
+        {h:'The uncomfortable word', p:'Catholic theology uses "merit", which sounds like earning. Understand it precisely: merit exists only because God freely promised to reward works that his own grace produces. It is God crowning his own gifts, in Augustine\'s phrase.'},
+        {h:'Scripture speaks of reward openly', p:'Christ tells the persecuted their reward in heaven is great. Paul expects a crown of righteousness. Revelation closes with Christ bringing his reward to give every man according to his work. The category is biblical, whatever word is used.', refs:[['II Timothy',4,7,8]]},
+        {h:'Why boasting is still excluded', p:'Because the grace enabling the work, the will to do it, and the promise to reward it are all gifts. Nothing originates with us, so nothing is owed to us by nature.'}
+      ],
+      questions:[
+        {type:'recall', q:'What does "merit" mean in Catholic theology?',
+          options:['Earning salvation by human effort.','Reward that God freely promised for works his own grace produces - God crowning his own gifts.','A payment owed to God.','An indulgence purchased with money.'],
+          correct:1,
+          explain:'Augustine\'s phrase is the clearest summary: when God crowns our merits, he crowns nothing but his own gifts.'},
+        {type:'verse', q:'Which verse has Paul expecting "a crown of righteousness"?',
+          options:['2 Timothy 4:8','Romans 8:30','1 Peter 5:4','James 1:12'],
+          correct:0,
+          explain:'2 Timothy 4:7-8, after saying he has fought the good fight and finished his course.'},
+        {type:'tf', q:'Scripture avoids the language of reward for good works.', correct:false,
+          explain:'It uses it constantly - Matthew 5:12, 1 Corinthians 3:8, 2 Timothy 4:8, Revelation 22:12. The concept is unavoidable.'},
+        {type:'objection', quote:'"Merit means God owes you salvation, which is absurd."',
+          q:'How do you answer?',
+          options:['Concede the word is indefensible.','Merit rests on a free divine promise, not natural debt - God binds himself to reward works his grace produced. Nothing originates with us, so nothing is owed by nature.','God does owe the just their reward.','Merit applies only to saints.'],
+          correct:1,
+          explain:'The distinction between condign reward under promise and debt owed by nature is what keeps the doctrine from Pelagianism.'}
+      ]
+    },
+
+    /* ======== TIER 5 - DOCTOR ======== */
+    {
+      id:'l14', tier:5, title:'How much still divides us',
+      keyVerses:[['Romans',3,23,24],['Ephesians',2,8,10],['James',2,24,24]],
+      teach:[
+        {h:'The 1999 Joint Declaration', p:'Catholics and Lutherans signed a Joint Declaration on the Doctrine of Justification, agreeing that by grace alone, in faith in Christ\'s saving work, we are accepted by God - and that good works follow as fruit. It did not dissolve every difference, but it narrowed the ground considerably.'},
+        {h:'Use it carefully', p:'Do not overstate it. Reformed and Evangelical bodies were not party to it and many reject it, and real differences remain over the nature of justification and merit. But it shows the caricature of Catholics as Pelagians is not sustainable at the official level.'},
+        {h:'What genuinely remains', p:'Whether justification is declarative or transformative; whether it can be lost; whether works have any constitutive role. These are real, and worth arguing honestly rather than pretending agreement.'}
+      ],
+      questions:[
+        {type:'recall', q:'What did the 1999 Joint Declaration affirm?',
+          options:['That all differences on justification are resolved.','That by grace alone, in faith in Christ\'s saving work, we are accepted by God, with good works following as fruit - narrowing but not eliminating the disagreement.','That Catholics accepted sola fide entirely.','That Lutherans accepted the Council of Trent.'],
+          correct:1,
+          explain:'Accuracy matters here. Overstating the Declaration is easily corrected by an informed opponent.'},
+        {type:'tf', q:'All Protestant bodies were party to the Joint Declaration.', correct:false,
+          explain:'It was Catholic-Lutheran. Reformed and Evangelical bodies were not party to it and many reject it.'},
+        {type:'recall', q:'What genuine differences remain after the Joint Declaration?',
+          options:['None.','Whether justification is declarative or transformative, whether it can be lost, and whether works play any constitutive role.','Only the language used.','Whether grace is necessary.'],
+          correct:1,
+          explain:'Naming what remains is more persuasive than claiming the dispute is over.'},
+        {type:'objection', quote:'"Catholics are Pelagians who think they save themselves."',
+          q:'What is the strongest reply?',
+          options:['Deny that Pelagianism exists.','Note that the Church condemned Pelagianism in the fifth century, Trent anathematised justification apart from grace, and the 1999 Declaration affirmed acceptance by grace alone - the charge fails at every official level.','Concede the charge.','Argue Pelagius was right.'],
+          correct:1,
+          explain:'A charge contradicted by fifteen centuries of the Church\'s own condemnations is not a strong charge.'}
+      ]
+    },
+    {
+      id:'l15', tier:5, title:'The Greek behind the argument',
+      keyVerses:[['Romans',4,1,5],['James',2,21,24],['Galatians',2,16,16]],
+      teach:[
+        {h:'One word, two uses', p:'Both Paul and James use dikaioo, to justify. Protestants argue Paul means to declare righteous while James means to demonstrate righteous. That is a possible range for the word - but it is an argument about which sense applies where, not a settled fact.'},
+        {h:'Do not overreach', p:'A dangerous temptation at this level is claiming more from Greek than you can support. If you cannot read it, say so and argue from context instead. An opponent who catches you overstating a language claim wins the exchange regardless of the substance.'},
+        {h:'The safer ground', p:'Context beats lexicons in this dispute. James supplies the Abraham example, the completion language, and the absence of any human audience. Those points require no Greek at all.'}
+      ],
+      questions:[
+        {type:'recall', q:'What Greek verb do both Paul and James use for "justify"?',
+          options:['Sozo','Dikaioo','Pisteuo','Hagiazo'],
+          correct:1,
+          explain:'Both use dikaioo. The dispute is over which sense of the word applies in each context.'},
+        {type:'recall', q:'What is the risk of arguing from Greek at this level?',
+          options:['There is no risk.','Overstating what the language proves - if an opponent catches you claiming more than the lexicon supports, you lose the exchange regardless of the underlying substance.','That Greek is unreliable.','That only scholars may cite it.'],
+          correct:1,
+          explain:'Honesty about the limits of your own expertise is a strength in debate, not a weakness.'},
+        {type:'tf', q:'The Greek word dikaioo can only mean "to declare righteous".', correct:false,
+          explain:'It carries a range. Insisting on a single meaning is exactly the overreach to avoid.'},
+        {type:'recall', q:'What is the safer ground than lexical argument in the James dispute?',
+          options:['Quoting Trent.','Context: the Abraham example, the completion language, and the absence of any human audience in Genesis 22 - none of which requires Greek.','Attacking Luther.','Citing the Joint Declaration.'],
+          correct:1,
+          explain:'Contextual arguments are available to everyone and cannot be dismissed as amateur linguistics.'}
+      ]
+    },
+    {
+      id:'l16', tier:5, title:'Putting it together',
+      keyVerses:[['Ephesians',2,8,10],['James',2,24,26],['Galatians',5,6,6],['Romans',2,6,13],['Matthew',25,34,40],['Philippians',2,12,13]],
+      teach:[
+        {h:'The order of battle', p:'One: agree loudly that salvation is unearned grace. Two: name the real question - does grace merely cover us, or actually transform us? Three: James 2, read whole. Four: Ephesians 2:10 and Galatians 5:6. Five: the judgement passages. Six: name imputed versus infused and let them defend it.'},
+        {h:'The single best question', p:'If a man has genuine faith and refuses to feed his starving neighbour, is he saved? Every answer costs them something. It puts James 2 and Matthew 25 into one concrete case they cannot escape by redefining terms.'},
+        {h:'What winning looks like', p:'Not a concession. It is that they see Scripture describes judgement by works so consistently that "works are merely evidence" is a reading imposed on the texts rather than drawn from them - and that Catholics believe in grace as fully as they do.'}
+      ],
+      questions:[
+        {type:'recall', q:'What is the correct opening move in this debate?',
+          options:['Quoting James 2 immediately.','Agreeing emphatically that salvation is unearned grace, which removes the caricature and forces the real question.','Attacking Luther.','Citing the Council of Trent.'],
+          correct:1,
+          explain:'You cannot defend a position they are not attacking. Clear the ground first.'},
+        {type:'recall', q:'What is the single most useful question to pose?',
+          options:['Why do you reject the deuterocanon?','Whether a man with genuine faith who refuses to feed his starving neighbour is saved - a concrete case that James 2 and Matthew 25 both address.','Why did Luther add a word to Romans?','Do you accept the Joint Declaration?'],
+          correct:1,
+          explain:'Concrete cases resist redefinition in a way abstract formulas do not.'},
+        {type:'tf', q:'The aim of this argument is to make them concede sola fide is false.', correct:false,
+          explain:'The aim is that they see the evidential reading of the judgement passages is imposed rather than derived - and that Catholics hold grace as fully as they do.'},
+        {type:'objection', quote:'"We will just have to agree to disagree - both sides love Jesus."',
+          q:'What is a good closing?',
+          options:['Insist on winning the point.','Accept the goodwill, then leave one question with them: why Scripture describes the final judgement in terms of deeds so consistently, if deeds are strictly evidential.','Declare the argument won.','Change the subject to the papacy.'],
+          correct:1,
+          explain:'A question they carry away does more than a conclusion you assert.'}
+      ]
+    }
+
     ]
   },
 
